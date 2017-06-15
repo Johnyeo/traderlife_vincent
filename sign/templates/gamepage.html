@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>welcome to tradecenter</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="{% static 'js/gamepage.js' %}"></script>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+
+    <style type="text/css">
+        /* entire container, keeps perspective */
+        .flip-container {
+            /*perspective: 900;*/
+        }
+
+        /* flip the pane when hovered */
+        .flip-container:hover .flipper, .flip-container.hover .flipper {
+            transform: rotateY(180deg);
+        }
+
+        .flip-container, .front, .back {
+            width: 90px;
+            height: 90px;
+        }
+
+        /* flip speed goes here */
+        .flipper {
+            transition: 0.6s;
+            transform-style: preserve-3d;
+
+            position: relative;
+        }
+
+        /* hide back of pane during swap */
+        .front, .back {
+            backface-visibility: hidden;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* front pane, placed above back */
+        .front {
+            z-index: 2;
+        }
+
+        /* back, initially hidden pane */
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        .pricetag {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+
+        }
+
+        .pricetag.price {
+            position: absolute;
+            font-style: normal;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            height: 30px;
+            color: #C0C0C0;
+            bottom: 0%;
+        }
+
+        .add2order_btn {
+            margin-top: 4px;
+        }
+
+        .goodname {
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+        }
+    </style>
+
+</head>
+
+<body role='document'>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/event_manage/">Guest manage system</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">fabuhui</a></li>
+                <li><a href="/guest_manage/">嘉宾</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{user}}</a></li>
+                <li><a href="/logout/">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<span>
+
+
+<div style="padding-top: 80px;">
+    <div class="col-md-5">
+        <table class="table table-striped">
+            <tbody>
+
+            <tr>
+                {% for good in market_goods %}
+                {% if good.id <= 5 %}
+                {% if good.status == 1 %}
+                <td>
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper">
+                            <div class="front">
+                                <!-- 前面内容 -->
+                                <div class="pricetag">
+                                    <div class="pricetag price"
+                                         style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                        ${{ good.price }}
+                                    </div>
+                                    <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                         class="img-rounded"
+                                         width="90" height="90">
+                                </div>
+                            </div>
+                            <div class="back">
+                                <!-- 背面内容 -->
+                                <!--<form method="post">-->
+
+                                    <input type="hidden" id="goodname" name="good_name" value="{{ good.name }}" class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}">
+
+                                    <div>
+                                        <input name="count" type="number" min="1" max="99999" class="form-control"
+                                               id="count"
+                                               placeholder="数量">
+                                    </div>
+                                    <div id="total">
+
+                                    </div>
+                                    <button id="add2order_btn" class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
+
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                {% elif good.status == 0 %}
+                <td>
+                    <div class="goodname"></div>
+                    <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
+                         class="img-rounded"
+                         width="90" height="90">
+                </td>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+
+            <tr>
+                {% for good in market_goods %}
+                {% if good.id <= 10 %}
+                {% if good.id > 5 %}
+                {% if good.status == 1 %}
+                <td>
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper">
+                            <div class="front">
+                                <!-- 前面内容 -->
+                                <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                     class="img-rounded"
+                                     width="90" height="90">
+                            </div>
+                            <div class="back">
+                                <!-- 背面内容 -->
+                                {{ good.name }}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                {% elif good.status == 0 %}
+                <td>
+                    <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
+                         class="img-rounded"
+                         width="90" height="90">
+                </td>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+
+            <tr>
+                {% for good in market_goods %}
+                {% if good.id <= 15 %}
+                {% if good.id > 10 %}
+                {% if good.status == 1 %}
+                <td>
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper">
+                            <div class="front">
+                                <!-- 前面内容 -->
+                                <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                     class="img-rounded"
+                                     width="90" height="90">
+                            </div>
+                            <div class="back">
+                                <!-- 背面内容 -->
+                                {{ good.name }}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                {% elif good.status == 0 %}
+                <td>
+                    <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
+                         class="img-rounded"
+                         width="90" height="90">
+                </td>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</span>
+
+
+<span>
+    你的物品:
+    <button id="testasd">testasd</button>
+    {% for good in my_goods %}
+    <div>
+        <span>{{ good.name }}</span>
+        <span>{{ good.count }}</span>
+    </div>
+    {% endfor %}
+</span>
+
+</body>
+</html>
