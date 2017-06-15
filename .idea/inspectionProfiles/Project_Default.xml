@@ -11,5 +11,13 @@
       </option>
       <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="guideline.游戏开始的时候" />
+          <option value="guideline.游戏开始的时候决定" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

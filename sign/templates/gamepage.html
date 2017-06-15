@@ -133,22 +133,13 @@
                             <div class="back">
                                 <!-- 背面内容 -->
                                 <!--<form method="post">-->
-
                                     <input type="hidden" id="goodname" name="good_name" value="{{ good.name }}" class="goodname">
                                     <div>{{ good.name }}</div>
-                                    <input type="hidden" name="good_price" value="{{ good.price }}">
-
-                                    <div>
-                                        <input name="count" type="number" min="1" max="99999" class="form-control"
-                                               id="count"
-                                               placeholder="数量">
-                                    </div>
-                                    <div id="total">
-
-                                    </div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control" id="count" placeholder="数量" >
+                                    <div id="total"></div>
                                     <button id="add2order_btn" class="add2order_btn">加入订单</button>
                                     {% csrf_token %}
-
                             </div>
                         </div>
                     </div>
