@@ -9,7 +9,11 @@
     {% load bootstrap3 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-
+    <script>
+        $.ajaxSetup({
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+        });
+    </script>
 
     <style type="text/css">
         /* entire container, keeps perspective */
@@ -133,10 +137,12 @@
                             <div class="back">
                                 <!-- 背面内容 -->
                                 <!--<form method="post">-->
-                                    <input type="hidden" id="goodname" name="good_name" value="{{ good.name }}" class="goodname">
+                                    <input type="hidden" id="goodname" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
                                     <div>{{ good.name }}</div>
                                     <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
-                                    <input name="count" type="number" min="1" max="99999" class="form-control" id="count" placeholder="数量" >
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           id="count" placeholder="数量">
                                     <div id="total"></div>
                                     <button id="add2order_btn" class="add2order_btn">加入订单</button>
                                     {% csrf_token %}
@@ -231,7 +237,7 @@
 
 <span>
     你的物品:
-    <button id="testasd">testasd</button>
+    <button id="submit_order">提交订单</button>
     {% for good in my_goods %}
     <div>
         <span>{{ good.name }}</span>

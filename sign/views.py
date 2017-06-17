@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -57,23 +59,31 @@ def gamepage(request):
 
 #  防止刷新的时候重复提交表单, 只有post方法的时候才修改数据
     if request.method == 'POST':
-        good_name = request.POST.get('good_name', '')
-        good_price = request.POST.get('good_price', '')
-        count = request.POST.get('count', '')
-        record = [good_name, good_price, count]
-        mygoods = My_goods(
-            name = good_name,
-            price = good_price,
-            count = count,
-            username = username,
-            status = 1,
-            flag = "A",
-            quality = 1 ,
-            gameround=1,
-            gameid_id=1000001
-        )
-        mygoods.save()
-        response = HttpResponseRedirect('/gamepage/')
-        return response
+        # good_name = request.POST.get('goodname', '')
+        # good_price = request.POST.get('price', '')
+        # count = request.POST.get('count', '')
+        # record = [good_name, good_price, count]
+        # mygoods = My_goods(
+        #     name = good_name,
+        #     price = good_price,
+        #     count = count,
+        #     username = username,
+        #     status = 1,
+        #     flag = "A",
+        #     quality = 1 ,
+        #     gameround=1,
+        #     gameid_id=1000001
+        # )
+        # mygoods.save()
+
+        received_json_data = request.POST.get('orderdata','')
+        good1 = json.loads(received_json_data)
+
+
+        return HttpResponse("asdfasdfasdf")
+        # response = HttpResponseRedirect('/gamepage/')
+        # return response
+
+        # TODO 使用ajax因此不需要redirect了。后续判断实际情况返回结果。
     else:
         return render(request, 'gamepage.html',{'user':username,'market_goods':market_goods_list, 'my_goods':my_goods_list })
