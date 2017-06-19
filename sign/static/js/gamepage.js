@@ -47,10 +47,21 @@ $(document).ready(function () {
         this.price = count;
     };
 
+    function caculate_total(good_price,count,total) {
+        // 计算总订单额
+        if (count != null){
+            total = total + good_price*count;
+        }
+        return total
+    };
+
     // 创建一个数组。
+
     var order = [];
-    var add2order = $('.add2order_btn');
-    add2order.click(function () {
+    var order_total = 0;
+    function click_add_to_order() {
+        var add2order = $('.add2order_btn');
+        add2order.click(function () {
         var goodname = $(this).parent().find('.goodname');
         var count = $(this).parent().find(".form-control");
         var price = $(this).parent().find(".price");
@@ -59,6 +70,8 @@ $(document).ready(function () {
             goodname: goodname.attr('value'),
             count: count.val(),
             // price: price.attr('value'), 不能让用户输入这个价格。 防止伪造请求
+            // price真正扣钱的时候要根据服务器上的 price，前台只是提供一个方便计算的途径。
+            price: price.attr('value')
         };
         // 将good对象加入到order对象里。
         order.push(good);
@@ -68,10 +81,17 @@ $(document).ready(function () {
         // 在页面上增加已经加入订单的产品
         var order_goodname = $("<td></td>").text(good.goodname)
         var order_goodcount = $("<td></td>").text(good.count)
-        var order_item_del = $("<td></td>").append("<button class='btn btn-danger'>移除</button>")
+        var order_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger' style='width: 60px'>移除</button>")
         var order_tr_1 = $("<tr>").append(order_goodname, order_goodcount, order_item_del)
         $(".order_list").append(order_tr_1)
+
+        // 计算总额
+
+        order_total = caculate_total(good.price,good.count, order_total)
+        $(".order_total").append("<span></span>").text(order_total)
      });
+    };
+    click_add_to_order()
 
     // 点击提交，把对象提交
     $('#submit_order').click(function () {
