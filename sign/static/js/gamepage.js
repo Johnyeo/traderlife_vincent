@@ -46,6 +46,7 @@ $(document).ready(function () {
         this.goodname = goodname;
         this.price = count;
     };
+
     // 创建一个数组。
     var order = [];
     var add2order = $('.add2order_btn');
@@ -59,8 +60,15 @@ $(document).ready(function () {
             count: count.val(),
             // price: price.attr('value'), 不能让用户输入这个价格。 防止伪造请求
         };
+        // 将good对象加入到order对象里。
         order.push(good);
         console.log(good.goodname, good.count, good.price);
+
+        // 在页面上增加已经加入订单的产品
+        var order_goodname = $("<span></span>").text(good.goodname)
+        var order_goodcount = $("<span></span>").text(good.count)
+        var order_item_divider = $("<br>")
+        $(".order_list").append(order_goodname, order_goodcount, order_item_divider)
      });
 
     // 点击提交，把对象提交

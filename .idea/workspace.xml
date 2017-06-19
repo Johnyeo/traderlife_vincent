@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/models.py" afterPath="$PROJECT_DIR$/sign/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/static/js/gamepage.js" afterPath="$PROJECT_DIR$/sign/static/js/gamepage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gamepage.html" afterPath="$PROJECT_DIR$/sign/templates/gamepage.html" />
     </list>
     <ignored path="traderlife.iws" />
@@ -38,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
+            <state relative-caret-position="354">
+              <caret line="70" column="84" lean-forward="true" selection-start-line="70" selection-start-column="84" selection-end-line="70" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -122,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="283" column="43" lean-forward="true" selection-start-line="283" selection-start-column="43" selection-end-line="283" selection-end-column="43" />
+            <state relative-caret-position="240">
+              <caret line="274" column="28" lean-forward="false" selection-start-line="274" selection-start-column="28" selection-end-line="274" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -176,10 +175,10 @@
         <option value="$PROJECT_DIR$/guideline.txt" />
         <option value="$PROJECT_DIR$/tradelife_test/test01.py" />
         <option value="$PROJECT_DIR$/traderlife/urls.py" />
-        <option value="$PROJECT_DIR$/sign/static/js/gamepage.js" />
         <option value="$PROJECT_DIR$/sign/views.py" />
         <option value="$PROJECT_DIR$/sign/models.py" />
         <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
+        <option value="$PROJECT_DIR$/sign/static/js/gamepage.js" />
       </list>
     </option>
   </component>
@@ -726,7 +725,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497859744209</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add column &quot;price_scope&quot; in database. and modify the order area in html">
+      <created>1497862259460</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1497862259460</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -846,7 +852,8 @@
     <MESSAGE value="fix response &quot;None&quot; issue by decoding the requestbody with &quot;utf-8&quot;" />
     <MESSAGE value="Alternating the json str to dict." />
     <MESSAGE value="complete all products list and optimize the header in gamepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete all products list and optimize the header in gamepage" />
+    <MESSAGE value="add column &quot;price_scope&quot; in database. and modify the order area in html" />
+    <option name="LAST_COMMIT_MESSAGE" value="add column &quot;price_scope&quot; in database. and modify the order area in html" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1142,14 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/guideline.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tradelife_test/test01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1174,6 +1173,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sign/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/traderlife/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -1181,6 +1188,14 @@
           <folding>
             <element signature="e#644#676#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guideline.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1194,26 +1209,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="283" column="43" lean-forward="true" selection-start-line="283" selection-start-column="43" selection-end-line="283" selection-end-column="43" />
+        <state relative-caret-position="240">
+          <caret line="274" column="28" lean-forward="false" selection-start-line="274" selection-start-column="28" selection-end-line="274" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="70" column="84" lean-forward="true" selection-start-line="70" selection-start-column="84" selection-end-line="70" selection-end-column="84" />
           <folding />
         </state>
       </provider>
