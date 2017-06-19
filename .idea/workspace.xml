@@ -4,7 +4,6 @@
     <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/static/js/gamepage.js" afterPath="$PROJECT_DIR$/sign/static/js/gamepage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gamepage.html" afterPath="$PROJECT_DIR$/sign/templates/gamepage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/views.py" afterPath="$PROJECT_DIR$/sign/views.py" />
     </list>
     <ignored path="traderlife.iws" />
@@ -38,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="73" column="73" lean-forward="false" selection-start-line="73" selection-start-column="73" selection-end-line="73" selection-end-column="73" />
+            <state relative-caret-position="430">
+              <caret line="85" column="3" lean-forward="true" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -60,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sign/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="96" column="47" lean-forward="true" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+            <state relative-caret-position="373">
+              <caret line="97" column="43" lean-forward="true" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -178,8 +177,8 @@
         <option value="$PROJECT_DIR$/tradelife_test/test01.py" />
         <option value="$PROJECT_DIR$/traderlife/urls.py" />
         <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
-        <option value="$PROJECT_DIR$/sign/views.py" />
         <option value="$PROJECT_DIR$/sign/static/js/gamepage.js" />
+        <option value="$PROJECT_DIR$/sign/views.py" />
       </list>
     </option>
   </component>
@@ -680,7 +679,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497840163486</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix the ajax request">
+      <created>1497844238585</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1497844238585</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -796,7 +802,8 @@
     <MESSAGE value="1. Feature: add goodname, price, count.&#10;2. File: create developing guideline." />
     <MESSAGE value="Js post data to server end" />
     <MESSAGE value="Add url and view &quot;getOrder&quot;, post the order data to server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add url and view &quot;getOrder&quot;, post the order data to server" />
+    <MESSAGE value="fix the ajax request" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the ajax request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1150,21 +1157,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/views.py">
+    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="96" column="47" lean-forward="true" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="430">
+          <caret line="85" column="3" lean-forward="true" selection-start-line="85" selection-start-column="3" selection-end-line="85" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
+    <entry file="file://$PROJECT_DIR$/sign/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="73" column="73" lean-forward="false" selection-start-line="73" selection-start-column="73" selection-end-line="73" selection-end-column="73" />
-          <folding />
+        <state relative-caret-position="373">
+          <caret line="97" column="43" lean-forward="true" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

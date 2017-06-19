@@ -92,6 +92,9 @@ def gamepage(request):
 
 def getOrder(request):
     if request.method == 'POST':
-        received_json_data = request.POST.get('orderdata')
+        received_json_data_raw = request.body
+        received_json_data = received_json_data_raw.decode('utf-8') # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
+        # received_json_data = json.loads(request.body)
+        # received_json_data = request.body
         print (received_json_data)
         return HttpResponse(received_json_data)

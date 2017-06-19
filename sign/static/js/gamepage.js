@@ -75,11 +75,10 @@ $(document).ready(function () {
             // dataType: "json",  // 规定了返回 数据的类型。
             data:orderdata,
             success: function (result) {
-                alert("请求已提交！我们会尽快与您取得联系");
                 alert(orderdata);
             },
             error:function (result) {
-                alert("helloworld")
+                alert("错误，请稍后再试。")
             }
     });
     })
