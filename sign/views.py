@@ -76,14 +76,22 @@ def gamepage(request):
         # )
         # mygoods.save()
 
-        received_json_data = request.POST.get('orderdata','')
+        received_json_data = request.POST.get('orderdata')
+        # 之前的 get('orderdata', '')只能获取到 goodnamecount 这样的参数。
         good1 = json.loads(received_json_data)
 
-
-        return HttpResponse("asdfasdfasdf")
+        return HttpResponse(received_json_data)
         # response = HttpResponseRedirect('/gamepage/')
         # return response
 
         # TODO 使用ajax因此不需要redirect了。后续判断实际情况返回结果。
     else:
         return render(request, 'gamepage.html',{'user':username,'market_goods':market_goods_list, 'my_goods':my_goods_list })
+
+def getOrder(request):
+    if request.method == 'POST':
+        received_json_data = request.POST
+        # 之前的 get('orderdata', '')只能获取到 goodnamecount 这样的参数。
+        # good1 = json.loads(received_json_data)
+
+        return HttpResponse(received_json_data)

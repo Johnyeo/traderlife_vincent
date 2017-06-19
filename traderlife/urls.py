@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^login_action/$',views.login_action),
     url(r'^event_manage', views.event_manage),
     url(r'^accounts/login/$', views.index),
-    url(r'^gamepage', views.gamepage)
+    url(r'^gamepage', views.gamepage),
+    url(r'^getOrder',views.getOrder)
 ]
