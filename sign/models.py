@@ -10,10 +10,11 @@ class Game(models.Model):
 
 class Market_goods(models.Model):
     name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=24, decimal_places=2)
+    price = models.DecimalField(max_digits=24, decimal_places=2) # 不是实际价格， 而是最低价格。
     quality = models.IntegerField()
     count = models.IntegerField()
     status = models.BooleanField()
+    price_scope = models.DecimalField(max_digits=24, decimal_places=2) # 价格区间。最大24位， 保留两位小数。 实际价格应该在 (price, price+price_scope)之间
     flag = models.CharField(max_length=1)
     create_time = models.DateTimeField(auto_now=True)
     image_url = models.CharField(max_length=200)
