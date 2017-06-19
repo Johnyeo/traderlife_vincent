@@ -107,11 +107,13 @@
     </div>
 </nav>
 
-<span>
 
 
-<div style="padding-top: 80px;">
-    <div class="col-md-5">
+<div class="container" role="main">
+<div style="padding-top: 40px;">
+    <div class="page-header"><h2>你的订单:</h2></div>
+    <span>
+    <div class="col-md-6">
         <table class="table table-striped">
             <tbody>
             <!--显示三排，每排一层循环，两层if判断-->
@@ -266,15 +268,18 @@
         </table>
     </div>
 </div>
-
 </span>
 
-
 <span>
-    <div class="col-md-5">
-        你的订单:
+    <div class="col-md-4">
     <table class="table table-striped">
-            <tbody class="order_list" ></tbody>
+        <thead>
+        <tr>
+            <th>名称</th><th>数量</th><th>操作</th>
+        </tr>
+        </thead>
+            <tbody class="order_list">
+            </tbody>
             <!--这里用tr 加行， td加元素-->
     </table>
 
@@ -282,10 +287,13 @@
         <span>总金额：</span>
         <span class="order_total"></span>
     </div>
-    <button id="submit_order">提交订单</button>
+    <button id="submit_order" class="btn btn-primary">提交订单</button>
     </div>
 
 </span>
+
+</div>
+</div>
 
 </body>
 </html>

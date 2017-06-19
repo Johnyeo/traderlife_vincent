@@ -64,12 +64,13 @@ $(document).ready(function () {
         order.push(good);
         console.log(good.goodname, good.count, good.price);
 
+// TODO 进行重复判断。 如果该元素已经存在，则只加数字，不新增元素
         // 在页面上增加已经加入订单的产品
-        var order_tr_1 = $("<tr>")
         var order_goodname = $("<td></td>").text(good.goodname)
         var order_goodcount = $("<td></td>").text(good.count)
-        var order_tr_2 = $("</tr>")
-        $(".order_list").append(order_tr_1, order_goodname, order_goodcount, order_tr_2)
+        var order_item_del = $("<td></td>").append("<button class='btn btn-danger'>移除</button>")
+        var order_tr_1 = $("<tr>").append(order_goodname, order_goodcount, order_item_del)
+        $(".order_list").append(order_tr_1)
      });
 
     // 点击提交，把对象提交
