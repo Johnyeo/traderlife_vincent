@@ -65,10 +65,11 @@ $(document).ready(function () {
         console.log(good.goodname, good.count, good.price);
 
         // 在页面上增加已经加入订单的产品
-        var order_goodname = $("<span></span>").text(good.goodname)
-        var order_goodcount = $("<span></span>").text(good.count)
-        var order_item_divider = $("<br>")
-        $(".order_list").append(order_goodname, order_goodcount, order_item_divider)
+        var order_tr_1 = $("<tr>")
+        var order_goodname = $("<td></td>").text(good.goodname)
+        var order_goodcount = $("<td></td>").text(good.count)
+        var order_tr_2 = $("</tr>")
+        $(".order_list").append(order_tr_1, order_goodname, order_goodcount, order_tr_2)
      });
 
     // 点击提交，把对象提交
