@@ -92,12 +92,12 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/event_manage/">Guest manage system</a>
+            <a class="navbar-brand" href="/event_manage/">TRADERLIFE</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">fabuhui</a></li>
-                <li><a href="/guest_manage/">嘉宾</a></li>
+                <li class="active"><a href="#">市场</a></li>
+                <li><a href="/guest_manage/">个人</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">{{user}}</a></li>
@@ -114,7 +114,10 @@
     <div class="col-md-5">
         <table class="table table-striped">
             <tbody>
-
+            <!--显示三排，每排一层循环，两层if判断-->
+            <!--循环数据库里，所有的市场产品。
+            <!--根据排判断，显示(0,5)的图，(5,10)的图，(10,15)的图-->
+            <!--判断数据库中，是否是有效的产品（1），如果不是1，则显示一个默认图片-->
             <tr>
                 {% for good in market_goods %}
                 {% if good.id <= 5 %}
@@ -137,14 +140,14 @@
                             <div class="back">
                                 <!-- 背面内容 -->
                                 <!--<form method="post">-->
-                                    <input type="hidden" id="goodname" name="good_name" value="{{ good.name }}"
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
                                            class="goodname">
                                     <div>{{ good.name }}</div>
                                     <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
                                     <input name="count" type="number" min="1" max="99999" class="form-control"
-                                           id="count" placeholder="数量">
-                                    <div id="total"></div>
-                                    <button id="add2order_btn" class="add2order_btn">加入订单</button>
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
                                     {% csrf_token %}
                             </div>
                         </div>
@@ -161,7 +164,7 @@
                 {% endif %}
                 {% endfor %}
             </tr>
-
+            <!--第二排-->
             <tr>
                 {% for good in market_goods %}
                 {% if good.id <= 10 %}
@@ -172,19 +175,35 @@
                         <div class="flipper">
                             <div class="front">
                                 <!-- 前面内容 -->
-                                <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
-                                     class="img-rounded"
-                                     width="90" height="90">
+                                <div class="pricetag">
+                                    <div class="pricetag price"
+                                         style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                        ${{ good.price }}
+                                    </div>
+                                    <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                         class="img-rounded"
+                                         width="90" height="90">
+                                </div>
                             </div>
                             <div class="back">
                                 <!-- 背面内容 -->
-                                {{ good.name }}
+                                <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
                             </div>
                         </div>
                     </div>
                 </td>
                 {% elif good.status == 0 %}
                 <td>
+                    <div class="goodname"></div>
                     <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
                          class="img-rounded"
                          width="90" height="90">
@@ -194,7 +213,7 @@
                 {% endif %}
                 {% endfor %}
             </tr>
-
+            <!--第三排-->
             <tr>
                 {% for good in market_goods %}
                 {% if good.id <= 15 %}
@@ -205,19 +224,35 @@
                         <div class="flipper">
                             <div class="front">
                                 <!-- 前面内容 -->
-                                <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
-                                     class="img-rounded"
-                                     width="90" height="90">
+                                <div class="pricetag">
+                                    <div class="pricetag price"
+                                         style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                        ${{ good.price }}
+                                    </div>
+                                    <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                         class="img-rounded"
+                                         width="90" height="90">
+                                </div>
                             </div>
                             <div class="back">
                                 <!-- 背面内容 -->
-                                {{ good.name }}
+                                <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
                             </div>
                         </div>
                     </div>
                 </td>
                 {% elif good.status == 0 %}
                 <td>
+                    <div class="goodname"></div>
                     <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
                          class="img-rounded"
                          width="90" height="90">
