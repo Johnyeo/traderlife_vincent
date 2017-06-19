@@ -65,28 +65,22 @@ $(document).ready(function () {
 
     // 点击提交，把对象提交
     $('#submit_order').click(function () {
-        orderdata = JSON.stringify(order);
+        orderdata = JSON.stringify({"order":order});
         console.log(orderdata);
-        // post直接就变成了表单。
-        // $.post("gamepage/",
-        //     {
-        //         orderdata
-        //     });
 
         $.ajax({
-        type: "POST",
-        url: "getOrder",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(order),
-        dataType: "json",
-        success: function (message) {
-            if (message > 0) {
+            type: "POST",
+            url: "getOrder",
+            contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+            // dataType: "json",  // 规定了返回 数据的类型。
+            data:orderdata,
+            success: function (result) {
                 alert("请求已提交！我们会尽快与您取得联系");
+                alert(orderdata);
+            },
+            error:function (result) {
+                alert("helloworld")
             }
-        },
-        error: function (message) {
-            $("#request-process-patent").html("提交数据失败！");
-        }
     });
     })
 
