@@ -47,12 +47,16 @@ $(document).ready(function () {
         this.price = count;
     };
 
-    function caculate_total(good_price,count,total) {
+    // 修改成，计算order对象中的总价值
+    function caculate_total(order) {
         // 计算总订单额
-        if (count != null){
-            total = total + good_price*count;
-        }
-        return total
+        total = 0
+        $.each(order,function (i, good) {
+            total = total + good.count * good.price;
+            // alert(good.count);
+
+        });
+        return total;
     };
 
     // 创建一个数组。用来盛放加入订单的产品。 order_total用于计算总额。
@@ -82,14 +86,15 @@ $(document).ready(function () {
         var order_index = $("<td class='order_index'>").text(index);
         var order_goodname = $("<td></td>").text(good.goodname);
         var order_goodcount = $("<td></td>").text(good.count);
+        var order_goodprice = $("<td>").text("$"+ good.count * good.price);
         var order_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger remove_btn' style='width: 60px'>移除</button>");
-        var order_tr_1 = $("<tr class='order_tr'>").append(order_index, order_goodname, order_goodcount, order_item_del);
+        var order_tr_1 = $("<tr class='order_tr'>").append(order_index, order_goodname, order_goodcount, order_goodprice, order_item_del);
         $(".order_list").append(order_tr_1);
         index = index + 1;  // 序号
 
         // 计算总额
-        order_total = caculate_total(good.price,good.count, order_total);
-        $(".order_total").append("<span></span>").text(order_total);
+        order_total = caculate_total(order);
+        $(".order_total").append("<span></span>").text("$"+order_total);
      });
     };
     click_add_to_order();
@@ -112,10 +117,9 @@ $(document).ready(function () {
             })
         // })
 
-
        //重新计算总额
-        order_total = caculate_total(good.price,good.count, order_total)
-        $(".order_total").append("<span></span>").text(order_total)
+        order_total = caculate_total(order)
+        $(".order_total").text("$"+order_total)
     });
 
     // 点击提交，把对象提交
