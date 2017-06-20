@@ -55,8 +55,7 @@ $(document).ready(function () {
         return total
     };
 
-    // 创建一个数组。
-
+    // 创建一个数组。用来盛放加入订单的产品。 order_total用于计算总额。
     var order = [];
     var order_total = 0;
     function click_add_to_order() {
@@ -81,7 +80,7 @@ $(document).ready(function () {
         // 在页面上增加已经加入订单的产品
         var order_goodname = $("<td></td>").text(good.goodname)
         var order_goodcount = $("<td></td>").text(good.count)
-        var order_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger' style='width: 60px'>移除</button>")
+        var order_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger remove_btn' style='width: 60px'>移除</button>")
         var order_tr_1 = $("<tr>").append(order_goodname, order_goodcount, order_item_del)
         $(".order_list").append(order_tr_1)
 
@@ -91,7 +90,13 @@ $(document).ready(function () {
         $(".order_total").append("<span></span>").text(order_total)
      });
     };
+    
     click_add_to_order()
+    
+    $('.remove_btn').click(function () {
+        $(this).parent().remove()
+        
+    })
 
     // 点击提交，把对象提交
     $('#submit_order').click(function () {
