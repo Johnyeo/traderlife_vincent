@@ -10,9 +10,9 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <!--<script>-->
-        <!--$.ajaxSetup({-->
-            <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
-        <!--});-->
+    <!--$.ajaxSetup({-->
+    <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
+    <!--});-->
     <!--</script>-->
 
     <style type="text/css">
@@ -108,11 +108,10 @@
 </nav>
 
 
-
 <div class="container" role="main">
-<div style="padding-top: 40px;">
-    <div class="page-header"><h2>市场</h2></div>
-    <span>
+    <div style="padding-top: 40px;">
+        <div class="page-header"><h2>市场</h2></div>
+        <span>
     <div class="col-md-6">
         <table class="table table-striped">
             <tbody>
@@ -267,10 +266,10 @@
             </tbody>
         </table>
     </div>
-<!--</div>-->
+            <!--</div>-->
 </span>
 
-<span>
+        <span>
     <!--<div class="panel panel-primary">-->
     <div class="col-md-6">
     <table class="table table-striped">
@@ -281,8 +280,7 @@
         </thead>
         <tbody class="order_list">
         </tbody>
-            <!--这里用tr 加行， td加元素-->
-
+        <!--这里用tr 加行， td加元素-->
     </table>
 
     <div>
@@ -291,11 +289,30 @@
     </div>
     <button id="submit_order" class="btn btn-primary">提交订单</button>
     </div>
-
 </span>
+    </div>
 
 </div>
+<div class="page-header container" style="margin-top: 10px"><h2>你的货仓</h2>
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+            <th>
+                <th>序号</th><th>名称</th><th>数量</th><th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
 </div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+<div class="col-md-6">
+    <div class="container">
+        <div style="float: right;"><button class="btn btn-primary navbar-btn">下一回合</button></div>
+    </div>
+</div>
+</nav>
+
 
 </body>
 </html>

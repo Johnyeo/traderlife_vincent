@@ -90,10 +90,12 @@ def gamepage(request):
     '''
     return render(request, 'gamepage.html',{'user':username,'market_goods':market_goods_list, 'my_goods':my_goods_list })
 
+# getorder,是从server的角度说，获取订单，同时更新数据库
 def getOrder(request):
     if request.method == 'POST':
         received_data_body = request.body
         received_json_data_raw = received_data_body.decode('utf-8') # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
         received_json_data = json.loads(received_json_data_raw)
         # print (type(received_json_data)) # 调试代码。 经过loads之后，json str果然变成了dict。
+
         return HttpResponse(received_json_data)
