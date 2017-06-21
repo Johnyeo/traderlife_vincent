@@ -96,6 +96,6 @@ def getOrder(request):
         received_data_body = request.body
         received_json_data_raw = received_data_body.decode('utf-8') # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
         received_json_data = json.loads(received_json_data_raw)
-        # print (type(received_json_data)) # 调试代码。 经过loads之后，json str果然变成了dict。
+        print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
 
         return HttpResponse(received_json_data)
