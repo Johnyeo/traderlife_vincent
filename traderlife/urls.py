@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic import RedirectView
+
 from sign import views
 
 urlpatterns = [
@@ -25,5 +27,6 @@ urlpatterns = [
     url(r'^event_manage', views.event_manage),
     url(r'^accounts/login/$', views.index),
     url(r'^gamepage', views.gamepage),
-    url(r'^getOrder',views.getOrder)
+    url(r'^getOrder',views.getOrder), # 获取订单的ajax
+    url(r'^favicon.ico$', RedirectView.as_view(url=r'static/favicon.ico')), # 设置favicon
 ]
