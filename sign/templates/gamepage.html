@@ -287,28 +287,32 @@
         <span>总金额：</span>
         <span class="order_total"></span>
     </div>
-    <button id="submit_order" class="btn btn-primary">提交订单</button>
+
     </div>
 </span>
     </div>
 
 </div>
-<div class="page-header container" style="margin-top: 10px"><h2>你的货仓</h2>
+<div class="page-header container" style="margin-top: 10px;padding-bottom: 100px"><h2>你的货仓</h2>
     <div class="col-md-6">
         <table class="table table-striped">
             <thead>
-            <th>
-                <th>序号</th><th>名称</th><th>数量</th><th>操作</th>
+            <tr>
+                <th>序号</th><th>名称</th><th>数量</th><th>价值</th><th>操作</th>
             </tr>
+            <tbody id="warehouse_list"></tbody>
             </thead>
         </table>
     </div>
 </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-bottom" style="height: 70px">
 <div class="col-md-6">
     <div class="container">
-        <div style="float: right;"><button class="btn btn-primary navbar-btn" id="next_turn">下一回合</button></div>
+        <div style="float: right">
+            <button id="submit_order" class="btn btn-primary " style="margin-right: 10px; margin-top: 16px">提交订单</button>
+            <button class="btn btn-success " id="next_turn" style="margin-top: 16px">下一回合</button>
+        </div>
     </div>
 </div>
 </nav>

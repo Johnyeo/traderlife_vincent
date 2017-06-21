@@ -44,9 +44,10 @@ jQuery(document).ajaxSend(function (event, xhr, settings) {
 $(document).ready(function () {
 
     // 构造good对象的类
-    function good(goodname, count) {
+    function good(goodname, count, price) {
         this.goodname = goodname;
-        this.price = count;
+        this.count = count;
+        this.price = price;
     };
 
     // 修改成，计算order对象中的总价值
@@ -204,7 +205,29 @@ $(document).ready(function () {
         });
     })
 
+    // updateWarehose的方法
+    var index_w = 1;
+    function updateWarehouse() {
+        // var good_warehouse = good('asdf', 1, 1.2);
+        var good_warehouse = {
+            goodname:"牛奶",
+            count:2,
+            price:12,
+        }
+
+            // 在UI上增加已经加入订单的产品
+        var warehouse_index = $("<td class='w_index'>").text(index_w);
+        var warehouse_goodname = $("<td></td>").text(good_warehouse.goodname);
+        var warehouse_goodcount = $("<td class='w_count'></td>").text(good_warehouse.count);
+        var warehouse_goodprice = $("<td class='w_item_sum'>").text("$" + good_warehouse.count * good_warehouse.price);
+        var warehouse_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger sell_btn' style='width: 60px'>卖出</button>");
+        var warehouse_tr_1 = $("<tr class='w_tr'>").append(warehouse_index, warehouse_goodname, warehouse_goodcount, warehouse_goodprice, warehouse_item_del);
+        $("#warehouse_list").append(warehouse_tr_1);
+        index_w = index_w + 1;  // 序号
+    }
+
     $("#next_turn").click(function () {
+
         $.ajax({
             type: "POST",
             url: "updateWareHouse",
@@ -212,12 +235,16 @@ $(document).ready(function () {
             // dataType: "json",  // 规定了返回 数据的类型。
             data: {username:'zhangyao'},
             success: function (result) {
-                alert(orderdata);
+                alert("success");
+                updateWarehouse()
             },
             error: function (result) {
                 alert("错误，请稍后再试。")
             }
         });
+
+
+
     })
 
 });
