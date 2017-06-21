@@ -93,12 +93,12 @@ $(document).ready(function () {
         new_add = Number(count.val());
         origin = origin + new_add;
         good.count = origin;
-        console.log(good.count+"and"+count.val())
+        console.log(good.count + "and" + count.val())
 
         // 重新计算所有的在list中的,count 和 subtotal
         // 注意eq选择器，用的是两个双引号两个+号。
-        $(".order_tr:eq("+good_2b_add_id+")").find(".order_count").text(good.count);
-        $(".order_tr:eq("+good_2b_add_id+")").find(".order_item_sum").text("$" + good.count * good.price);
+        $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_count").text(good.count);
+        $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_item_sum").text("$" + good.count * good.price);
 
 
         // $(".order_tr").each(function () {
@@ -145,15 +145,16 @@ $(document).ready(function () {
                 });
             }
             // 根据是否existed，决定是加条目，还是只加数。
-            if (good_existed){
-                add_good_count(order, index,goodname, count, price, good_2b_add_id)
+            if (good_existed) {
+                add_good_count(order, index, goodname, count, price, good_2b_add_id)
                 console.log(good_2b_add_id)
             }
             else {
                 add_good(order, goodname, count, price);
-            };
+            }
+            ;
 
-             // 计算总额
+            // 计算总额
             order_total = caculate_total(order);
             $(".order_total").append("<span></span>").text("$" + order_total);
         });
@@ -203,6 +204,20 @@ $(document).ready(function () {
         });
     })
 
-
+    $("#next_turn").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "updateWareHouse",
+            // contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+            // dataType: "json",  // 规定了返回 数据的类型。
+            data: {username:'zhangyao'},
+            success: function (result) {
+                alert(orderdata);
+            },
+            error: function (result) {
+                alert("错误，请稍后再试。")
+            }
+        });
+    })
 
 });

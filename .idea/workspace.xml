@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/db_handler.py" afterPath="$PROJECT_DIR$/sign/market/db_handler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/static/js/gamepage.js" afterPath="$PROJECT_DIR$/sign/static/js/gamepage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gamepage.html" afterPath="$PROJECT_DIR$/sign/templates/gamepage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/views.py" afterPath="$PROJECT_DIR$/sign/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/traderlife/urls.py" afterPath="$PROJECT_DIR$/traderlife/urls.py" />
     </list>
@@ -44,10 +43,10 @@
       <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+            <state relative-caret-position="411">
+              <caret line="214" column="33" lean-forward="true" selection-start-line="214" selection-start-column="33" selection-end-line="214" selection-end-column="33" />
               <folding>
-                <marker date="1498038020413" expanded="true" signature="2917:2928" ph="..." />
+                <marker date="1498038532345" expanded="true" signature="2917:2928" ph="..." />
               </folding>
             </state>
           </provider>
@@ -56,8 +55,8 @@
       <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="310" column="33" lean-forward="false" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="33" />
+            <state relative-caret-position="297">
+              <caret line="310" column="91" lean-forward="false" selection-start-line="310" selection-start-column="82" selection-end-line="310" selection-end-column="91" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -70,18 +69,18 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/traderlife/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
+            <state relative-caret-position="-1225">
               <caret line="39" column="11" lean-forward="false" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/traderlife/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="392">
-              <caret line="30" column="87" lean-forward="true" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="87" />
+              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -90,9 +89,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-190">
-              <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="504">
+              <caret line="107" column="34" lean-forward="true" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,7 +118,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="411">
@@ -191,14 +192,14 @@
         <option value="$PROJECT_DIR$/guideline.py" />
         <option value="$PROJECT_DIR$/tradelife_test/test01.py" />
         <option value="$PROJECT_DIR$/traderlife/settings.py" />
-        <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
         <option value="$PROJECT_DIR$/sign/market/game_thread.py" />
         <option value="$PROJECT_DIR$/guideline.txt" />
         <option value="$PROJECT_DIR$/sign/models.py" />
-        <option value="$PROJECT_DIR$/traderlife/urls.py" />
-        <option value="$PROJECT_DIR$/sign/views.py" />
         <option value="$PROJECT_DIR$/sign/market/db_handler.py" />
+        <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
         <option value="$PROJECT_DIR$/sign/static/js/gamepage.js" />
+        <option value="$PROJECT_DIR$/sign/views.py" />
+        <option value="$PROJECT_DIR$/traderlife/urls.py" />
       </list>
     </option>
   </component>
@@ -210,8 +211,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
+    <option name="y" value="2" />
     <option name="width" value="1378" />
-    <option name="height" value="735" />
+    <option name="height" value="733" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -854,7 +856,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498034287133</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="adding some function about db_handler">
+      <created>1498038048716</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1498038048716</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -867,7 +876,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
+    <frame x="-7" y="2" width="1378" height="733" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20409712" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -988,7 +997,8 @@
     <MESSAGE value="add bottom navi bar and 2 files: db_handler, game_thread" />
     <MESSAGE value="add method put_good_in_warehouse to dbhandler" />
     <MESSAGE value="add the model my_goods, my_goods_history" />
-    <option name="LAST_COMMIT_MESSAGE" value="add the model my_goods, my_goods_history" />
+    <MESSAGE value="adding some function about db_handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding some function about db_handler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1275,30 +1285,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="310" column="33" lean-forward="false" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traderlife/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="39" column="11" lean-forward="false" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -1327,32 +1317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-190">
-          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traderlife/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="30" column="87" lean-forward="true" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
-          <folding>
-            <marker date="1498038020413" expanded="true" signature="2917:2928" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -1360,6 +1324,54 @@
           <folding>
             <element signature="e#184#215#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="310" column="91" lean-forward="false" selection-start-line="310" selection-start-column="82" selection-end-line="310" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="214" column="33" lean-forward="true" selection-start-line="214" selection-start-column="33" selection-end-line="214" selection-end-column="33" />
+          <folding>
+            <marker date="1498038532345" expanded="true" signature="2917:2928" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traderlife/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1225">
+          <caret line="39" column="11" lean-forward="false" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="107" column="34" lean-forward="true" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traderlife/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

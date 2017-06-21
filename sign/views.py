@@ -102,3 +102,7 @@ def getOrder(request):
         db_handler.put_good_in_warehouse(received_json_data)
         db_handler.update_good_in_wareHouse()
         return HttpResponse(received_json_data)
+
+
+def updateWarehouse(request):
+    return HttpResponse("heloese")
