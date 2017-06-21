@@ -18,11 +18,25 @@ class Market_goods(models.Model):
     flag = models.CharField(max_length=1)
     create_time = models.DateTimeField(auto_now=True)
     image_url = models.CharField(max_length=200)
-
     def __str__(self):
         return self.name
 
+# 当前回合的结果
 class My_goods(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=24, decimal_places=2)
+    quality = models.IntegerField()
+    count = models.IntegerField()
+    status = models.BooleanField()
+    username = models.CharField(max_length=100)
+    flag = models.CharField(max_length=1)
+    create_time = models.DateTimeField(auto_now=True)
+    image_url = models.CharField(max_length=200)
+    gameid = models.ForeignKey(Game)  # 游戏场次的id
+    gameround = models.IntegerField()   # 该场次，游戏回合的id
+
+# 数据记录
+class My_goods_history(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=24, decimal_places=2)
     quality = models.IntegerField()

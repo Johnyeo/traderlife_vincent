@@ -10,12 +10,12 @@
 #   2. 将处理过的的dict分解成产品
 #   3. 写入数据库
 
-from sign.models import Event, Market_goods, My_goods
+from sign import models
 
 def put_good_in_warehouse(json_dict):
     goods_list = json_dict["order"]
     for good_dict in goods_list:
-        mygoods = My_goods(
+        mygoods = models.My_goods_history(
             name=good_dict['goodname'],
             price=good_dict['price'],
             count=good_dict['count'],
@@ -29,7 +29,11 @@ def put_good_in_warehouse(json_dict):
         mygoods.save()
 
 # 根据username和gameid 获取所有的仓库产品记录
-# 将所有的数量加减后，
+# 每回合结束将所有的数量加减后，
 # 写入一个新的表里。 然后从这个表取数据。
+def update_good_in_wareHouse():
+    pass
+
+
 def get_good_in_warehouse(username, gameid):
     pass
