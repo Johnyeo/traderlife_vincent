@@ -9,6 +9,7 @@
 #   1. 从gamethread中获取游戏局和回合。
 #   2. 将处理过的的dict分解成产品
 #   3. 写入数据库
+from django.contrib import auth
 
 from sign import models
 
@@ -32,8 +33,13 @@ def put_good_in_warehouse(json_dict):
 # 每回合结束将所有的数量加减后，
 # 写入一个新的表里。 然后从这个表取数据。
 def update_good_in_wareHouse():
-    pass
-
+    goodslist = models.My_goods_history.objects.all()
+    userlist = auth.get_user_model().objects.all()
+    for user in userlist:
+         for item in goodslist:
+            if item.username == user.username:
+                print("find the user and matched>>>>>>>>>>>>>>")
+                print()
 
 def get_good_in_warehouse(username, gameid):
     pass

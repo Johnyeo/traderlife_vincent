@@ -4,8 +4,10 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+
+from sign.market import db_handler
 from sign.models import Event, Market_goods, My_goods
-from sign.market import goods
+# from sign.market import goods
 
 # Create your views here.
 def index2(request):
@@ -34,8 +36,8 @@ def login_action(request):
         else:
             return render(request, 'index.html', {'error':'username or password error!'})
 
-@login_required
-def event_manage(request):
+# @login_required
+# def event_manage(request):
     # username = request.COOKIES.get('user','') # 读取cookie
     # username = request.session.get('user', '') # 读取浏览器的session
     # return render(request, "event_manage.html" , {"user":username})
@@ -44,11 +46,11 @@ def event_manage(request):
     # image_list = images.MarketGoods().get_market_goods_images_fixed_group(['牛奶','电子元件'])
     # name_list = images.MarketGoods().get_market_goods_names_fixed_group(['牛奶','电子元件'])
 
-    name_image_list = goods.MarketGoods().get_market_goods_names_images_fixed_group(['牛奶','电子元件'])
-    print(name_image_list)
-    event_list = Event.objects.all()
-    username = request.session.get('user','')
-    return render(request,'event_manage.html',{'user':username, 'events':event_list ,'name_images_list':name_image_list})
+    # name_image_list = goods.MarketGoods().get_market_goods_names_images_fixed_group(['牛奶','电子元件'])
+    # print(name_image_list)
+    # event_list = Event.objects.all()
+    # username = request.session.get('user','')
+    # return render(request,'event_manage.html',{'user':username, 'events':event_list ,'name_images_list':name_image_list})
 
 
 # @login_required
@@ -96,6 +98,7 @@ def getOrder(request):
         received_data_body = request.body
         received_json_data_raw = received_data_body.decode('utf-8') # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
         received_json_data = json.loads(received_json_data_raw)
-        print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
-
+        # print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
+        db_handler.put_good_in_warehouse(received_json_data)
+        db_handler.update_good_in_wareHouse()
         return HttpResponse(received_json_data)
