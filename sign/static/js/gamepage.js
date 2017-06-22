@@ -73,7 +73,7 @@ $(document).ready(function () {
         };
         order.push(good);
 
-        // 在UI上增加已经加入订单的产品
+        // 在UI上增加已经加入订单的产品  √
         var order_index = $("<td class='order_index'>").text(index);
         var order_goodname = $("<td></td>").text(good.goodname);
         var order_goodcount = $("<td class='order_count'></td>").text(good.count);
@@ -100,13 +100,6 @@ $(document).ready(function () {
         // 注意eq选择器，用的是两个双引号两个+号。
         $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_count").text(good.count);
         $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_item_sum").text("$" + good.count * good.price);
-
-
-        // $(".order_tr").each(function () {
-        //     $(this).find(".order_count").text()
-        //     $(this).find(".order_item_sum").text()
-        // })
-
     }
 
     // 创建一个数组。用来盛放加入订单的产品。 order_total用于计算总额。
@@ -178,7 +171,6 @@ $(document).ready(function () {
             $(this).find(".order_index").text(index); // 最开头这个this，想了 好久才明白过来。如果不加this，改的就是所有的index
             index++;
         })
-        // })
 
         //重新计算总额
         order_total = caculate_total(order)
@@ -205,7 +197,11 @@ $(document).ready(function () {
         });
     })
 
-    // updateWarehose的方法
+    //++++++------------++++++++++------------++++++++++++-----------++++++++++++++-----------+++++++++++
+    //                                       我的货仓                                               //
+    //++++++------------++++++++++------------++++++++++++-----------++++++++++++++-----------+++++++++++
+
+    // 更新仓库updateWarehose的方法
     var index_w = 1;
     function updateWarehouse() {
         // var good_warehouse = good('asdf', 1, 1.2);
@@ -214,8 +210,7 @@ $(document).ready(function () {
             count:2,
             price:12,
         }
-
-            // 在UI上增加已经加入订单的产品
+        // 在UI上增加已经加入订单的产品
         var warehouse_index = $("<td class='w_index'>").text(index_w);
         var warehouse_goodname = $("<td></td>").text(good_warehouse.goodname);
         var warehouse_goodcount = $("<td class='w_count'></td>").text(good_warehouse.count);
@@ -226,8 +221,8 @@ $(document).ready(function () {
         index_w = index_w + 1;  // 序号
     }
 
+    // 点击下一回合。
     $("#next_turn").click(function () {
-
         $.ajax({
             type: "POST",
             url: "updateWareHouse",

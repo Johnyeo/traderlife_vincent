@@ -298,7 +298,11 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>序号</th><th>名称</th><th>数量</th><th>价值</th><th>操作</th>
+                <th>序号</th>
+                <th>名称</th>
+                <th>数量</th>
+                <th>价值</th>
+                <th>操作</th>
             </tr>
             <tbody id="warehouse_list"></tbody>
             </thead>
@@ -307,14 +311,23 @@
 </div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom" style="height: 70px">
-<div class="col-md-6">
-    <div class="container">
-        <div style="float: right">
-            <button id="submit_order" class="btn btn-primary " style="margin-right: 10px; margin-top: 16px">提交订单</button>
-            <button class="btn btn-success " id="next_turn" style="margin-top: 16px">下一回合</button>
+    <div class="col-md-6">
+        <div class="container">
+            <span style="width: 50%; float: left">
+                <div style="margin-right: 10px; margin-top: 15px;color: #dddddd">
+                    <h4 style="float: left; width: 280px; padding-left: 60px">现金：</h4>
+                    <h4 style="float: left">总资产：</h4>
+                </div>
+            </span>
+            <span style="width: 50%; float: left">
+            <div style="float: right">
+                <button id="submit_order" class="btn btn-primary " style="margin-right: 10px; margin-top: 16px">提交订单
+                </button>
+                <button class="btn btn-success " id="next_turn" style="margin-top: 16px">下一回合</button>
+            </div>
+            </span>
         </div>
     </div>
-</div>
 </nav>
 
 
