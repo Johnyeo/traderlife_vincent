@@ -210,11 +210,13 @@ $(document).ready(function () {
 
     // 更新仓库updateWarehose的方法
     var index_w = 1;
-    function updateWarehouse(w_house_json) {
-        // var good_warehouse = good('asdf', 1, 1.2);
+    function updateWarehouse(w_house_json_raw) {
         // 此数据应从数据库获取 方法传入参数 json
         // 通过updateWareHouse返回的数据。
-        var good_warehouse = JSON.parse(w_house_json)
+        w_house_json_1= JSON.parse(w_house_json_raw);
+        w_house_json_list = w_house_json_1.goodlist;
+        $.each(w_house_json_list, function (i, w_house_json) {
+        good_warehouse = w_house_json;
         // 标准的对象的样子
         // var good_warehouse = {
         //     goodname:"牛奶",
@@ -230,6 +232,7 @@ $(document).ready(function () {
         var warehouse_tr_1 = $("<tr class='w_tr'>").append(warehouse_index, warehouse_goodname, warehouse_goodcount, warehouse_goodprice, warehouse_item_del);
         $("#warehouse_list").append(warehouse_tr_1);
         index_w = index_w + 1;  // 序号
+            });
     }
 
     // 点击下一回合。

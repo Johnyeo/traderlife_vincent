@@ -105,6 +105,6 @@ def getOrder(request):
 
 
 def updateWarehouse(request):
-    warehouse = {'goodname': '白菜', 'price':'15', 'count':'2'}
+    warehouse = {'goodlist':[{'goodname': '白菜', 'price':'15', 'count':'2'},{'goodname': '豆角', 'price':'15', 'count':'2'}]}
     w_data = json.dumps(warehouse)
     return HttpResponse(w_data)
