@@ -198,18 +198,29 @@ $(document).ready(function () {
     })
 
     //++++++------------++++++++++------------++++++++++++-----------++++++++++++++-----------+++++++++++
-    //                                       我的货仓                                               //
+    //                                       我的货仓
+    // 仓库为空。无操作。
+    // 仓库有货，点击卖出 -- >
+    // 发送get查询是否能够卖出 ->
+    // 服务端操作数据库 ->
+    // 返回结果和message。如果成功
+    // js执行刷新。
+    // 失败则显示message。  message可以bootstrap提供的样式。
     //++++++------------++++++++++------------++++++++++++-----------++++++++++++++-----------+++++++++++
 
     // 更新仓库updateWarehose的方法
     var index_w = 1;
-    function updateWarehouse() {
+    function updateWarehouse(w_house_json) {
         // var good_warehouse = good('asdf', 1, 1.2);
-        var good_warehouse = {
-            goodname:"牛奶",
-            count:2,
-            price:12,
-        }
+        // 此数据应从数据库获取 方法传入参数 json
+        // 通过updateWareHouse返回的数据。
+        var good_warehouse = JSON.parse(w_house_json)
+        // 标准的对象的样子
+        // var good_warehouse = {
+        //     goodname:"牛奶",
+        //     count:2,
+        //     price:12,
+        // }
         // 在UI上增加已经加入订单的产品
         var warehouse_index = $("<td class='w_index'>").text(index_w);
         var warehouse_goodname = $("<td></td>").text(good_warehouse.goodname);
@@ -230,14 +241,15 @@ $(document).ready(function () {
             // dataType: "json",  // 规定了返回 数据的类型。
             data: {username:'zhangyao'},
             success: function (result) {
-                alert("success");
-                updateWarehouse()
+                // 转换Unicode成可以正常显示的中文。
+                result = eval("'" + result + "'");
+                alert(result);
+                updateWarehouse(result)
             },
             error: function (result) {
                 alert("错误，请稍后再试。")
             }
         });
-
 
 
     })
