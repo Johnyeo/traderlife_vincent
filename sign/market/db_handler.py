@@ -76,34 +76,26 @@ def get_good_from_warehouse_in_json(username, gameid):
 # 两种做法。 一种自己循环判断。 已经写在下面。
 
 def get_same_good(query_obj_list):
+    query_set_ordered = query_obj_list.order_by('name')
     new_list = []
-    print( ">>>>>>>>>>>>>>>>>>>>")
-    print (type(query_obj_list) )
     count = query_obj_list.count()
+    templist = []
+    j = 0
+    goodcount = 0
+
     while count >= 0:
-        # 循环list的每一个元素然后挑
-        print("start the while looping")
-        templist = []
         for i in range(len(query_obj_list)):
             print("start the for in looping %d"%i )
-            print(query_obj_list[i].name)
-            if query_obj_list[0].name == query_obj_list[i].name:
-                namex = query_obj_list[i].name
-                # print('mark and move them out later id = %d' %  i)
-                # templist = []
-                # # 把list添加入
-                # templist.append(query_obj_list[i])
-                # # 把选过的元素清除 -- queryset不是list，不支持pop
-                # query_obj_list.
-                # # query_obj_list = query_obj_list[i:i+1]
-
-                # 上面的思路不对。 其实只要把数字加起来，和产品对应上就行了。 不用非得返回整个queryset。
-
-                templist.append(query_obj_list[i].count)
+            if query_set_ordered[j].name == query_set_ordered[i].name:
+                goodname = query_set_ordered[j].name
+                goodcount += query_set_ordered[i].count
                 count -= 1
-        tempdict = {namex:sum(templist)}
-
-        new_list.append(tempdict)
+            elif query_set_ordered[j].name != query_set_ordered[i].name:
+                query_set_ordered = query_set_ordered[j:count]
+                j = i
+                break
+        new_dict = {goodname: goodcount}
+        new_list.append(new_dict)
 
     print(">>>>>final>>>>>>")
     print(new_list)
