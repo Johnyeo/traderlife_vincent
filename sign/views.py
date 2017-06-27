@@ -59,37 +59,7 @@ def gamepage(request):
     username = request.session.get('user', '')
     my_goods_list = My_goods.objects.filter(username='zhangyao')
 
-    '''
-#  防止刷新的时候重复提交表单, 只有post方法的时候才修改数据
-    if request.method == 'POST':
-        good_name = request.POST.get('goodname', '')
-        good_price = request.POST.get('price', '')
-        count = request.POST.get('count', '')
-        record = [good_name, good_price, count]
-        mygoods = My_goods(
-            name = good_name,
-            price = good_price,
-            count = count,
-            username = username,
-            status = 1,
-            flag = "A",
-            quality = 1 ,
-            gameround=1,
-            gameid_id=1000001
-        )
-        mygoods.save()
 
-        received_json_data = request.POST.get('orderdata')
-        # 之前的 get('orderdata', '')只能获取到 goodnamecount 这样的参数。
-        good1 = json.loads(received_json_data)
-
-        return HttpResponse(received_json_data)
-        # response = HttpResponseRedirect('/gamepage/')
-        # return response
-
-        # TODO 使用ajax因此不需要redirect了。后续判断实际情况返回结果。
-    else:
-    '''
     return render(request, 'gamepage.html',{'user':username,'market_goods':market_goods_list, 'my_goods':my_goods_list })
 
 # getorder,是从server的角度说，获取订单，同时更新数据库

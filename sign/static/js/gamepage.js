@@ -42,6 +42,25 @@ jQuery(document).ajaxSend(function (event, xhr, settings) {
 });
 
 $(document).ready(function () {
+    updateWareHouse ()
+    function updateWareHouse () {
+        $.ajax({
+            type: "POST",
+            url: "updateWareHouse",
+            // contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+            // dataType: "json",  // 规定了返回 数据的类型。
+            data: {username:'zhangyao'},
+            success: function (result) {
+                // 转换Unicode成可以正常显示的中文。
+                result = eval("'" + result + "'");
+                alert(result);
+                updateWarehouse(result)
+            },
+            error: function (result) {
+                alert("错误，请稍后再试。")
+            }
+        });
+
 
     // 构造good对象的类
     function good(goodname, count, price) {
@@ -209,8 +228,11 @@ $(document).ready(function () {
     //++++++------------++++++++++------------++++++++++++-----------++++++++++++++-----------+++++++++++
 
     // 更新仓库updateWarehose的方法
-    var index_w = 1;
+    // var index_w = 1;
     function updateWarehouse(w_house_json_raw) {
+        // 首先清空原来的数据
+        $(".w_tr").remove()
+        index_w = 1
         // 此数据应从数据库获取 方法传入参数 json
         // 通过updateWareHouse返回的数据。
         w_house_json_1= JSON.parse(w_house_json_raw);
@@ -257,4 +279,4 @@ $(document).ready(function () {
 
     })
 
-});
+}});
