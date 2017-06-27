@@ -12,10 +12,11 @@
 from collections import Counter
 
 from django.contrib import auth
+from django.core.exceptions import ObjectDoesNotExist
 
 from sign import models
 
-
+# 将产品加入到仓库
 def put_good_in_warehouse(json_dict):
     goods_list = json_dict["order"]
     for good_dict in goods_list:
@@ -37,32 +38,33 @@ def put_good_in_warehouse(json_dict):
 # 每回合结束将所有的数量加减后，
 # 把history的内容提出来，写入一个新的表my_goods里。 然后从这个表取数据。
 def update_good_in_wareHouse():
-    goodslist = models.My_goods_history.objects.all()  # 获取产品记录表
-    userlist = auth.get_user_model().objects.all()  # 获取user表模型
-    # test = auth.get_user_model().objects.all().values_list('id', 'username') 生成一个queryset格式的列表
-    # test2 = models.My_goods_history.objects.get(username='zhangyao') 获取username为zhangyao的信息。 get只能获得一条信息。
     goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid='1000001')
     print(len(goods_filter_by_user_gameid))
-    get_same_good(goods_filter_by_user_gameid)
-    # for user in userlist:
-    #     for item in goodslist:
-    #         if item.username == user.username:
-    #             print("find the user and matched>>>>>>>>>>>>>>")
-    #             print()
+    filtered_good_list = get_same_good(goods_filter_by_user_gameid)
+    # 写结果
+    for good_dict in filtered_good_list:
+        for goodname in good_dict:
+            # 如果该元素在数据库中不存在，进入exception. 如果存在则更新数字。
+            # django提供了一个现成的方法update or create，实现思路和下面的一样。都是利用ObjectDoesNotExist。
+            # https://docs.djangoproject.com/en/dev/ref/models/querysets/#update-or-create
+            try:
+                print(models.My_goods.objects.get(name = goodname))
+                models.My_goods.objects.filter(name = goodname).update(count = good_dict[goodname])
 
-                # 写结果
-                # for good_dict in filtered_good_list:
-                #     mygoods = models.My_goods(
-                #         name=good_dict['goodname'],
-                #         price=good_dict['price'],
-                #         count=good_dict['count'],
-                #         username='zhangyao',  # 通过gamethread来获取
-                #         status=1,  # 有效
-                #         flag="A",  # 新增操作
-                #         quality=1,
-                #         gameround=1,  # 通过gamethread来获取
-                #         gameid_id=1000001  # 通过gamethread来获取
-
+            except ObjectDoesNotExist: # 这个exception是从django api里查到的。 get方法当查不到内容的时候回返回这个。
+                print ("bingo --!!!")
+                mygoods = models.My_goods(
+                    name=goodname,
+                    price=10,
+                    count=good_dict[goodname],
+                    username='zhangyao',  # 通过gamethread来获取
+                    status=1,  # 有效
+                    flag="A",  # 新增操作
+                    quality=1,
+                    gameround=1,  # 通过gamethread来获取
+                    gameid_id=1000001  # 通过gamethread来获取
+                )
+                mygoods.save()
 
 # 从my_goods表里面获取，history的表里存每一条记录。 my_goods的表里存当前结果。
 def get_good_from_warehouse_in_json(username, gameid):
@@ -75,7 +77,6 @@ def get_good_from_warehouse_in_json(username, gameid):
 # 另一种办法，先把数据按name的顺序排列，
 # 把name和count分别放到两个list里。
 # 最终返回[{ 电脑:5},{ 牛奶:3}] 类似格式的结果
-
 def get_same_good(query_obj_list):
     query_set_ordered = query_obj_list.order_by('name')
     total = query_obj_list.count()
@@ -104,9 +105,7 @@ def get_same_good(query_obj_list):
             result_ls.append(g_dict)
             j = i
             c_ls = [countlist[i]]
-
-    print (namelist)
-    print(result_ls)
+    return result_ls
 
 def sum_good_count(namelist, countlist):
     pass
