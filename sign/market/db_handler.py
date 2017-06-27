@@ -9,6 +9,8 @@
 #   1. 从gamethread中获取游戏局和回合。
 #   2. 将处理过的的dict分解成产品
 #   3. 写入数据库
+from collections import Counter
+
 from django.contrib import auth
 
 from sign import models
@@ -42,15 +44,11 @@ def update_good_in_wareHouse():
     goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid='1000001')
     print(len(goods_filter_by_user_gameid))
     get_same_good(goods_filter_by_user_gameid)
-    for good in goods_filter_by_user_gameid:
-        # TODO select (name, price, count) where name = 'arg a' and gameid = 'arg b'
-
-        print(good.name)
-    for user in userlist:
-        for item in goodslist:
-            if item.username == user.username:
-                print("find the user and matched>>>>>>>>>>>>>>")
-                print()
+    # for user in userlist:
+    #     for item in goodslist:
+    #         if item.username == user.username:
+    #             print("find the user and matched>>>>>>>>>>>>>>")
+    #             print()
 
                 # 写结果
                 # for good_dict in filtered_good_list:
@@ -73,32 +71,42 @@ def get_good_from_warehouse_in_json(username, gameid):
 
 
 # 返回成组的相同的
-# 两种做法。 一种自己循环判断。 已经写在下面。
+# 两种做法。 一种自己循环判断。 已经写在下面。但是并没有成功。。。
+# 另一种办法，先把数据按name的顺序排列，
+# 把name和count分别放到两个list里。
+# 最终返回[{ 电脑:5},{ 牛奶:3}] 类似格式的结果
 
 def get_same_good(query_obj_list):
     query_set_ordered = query_obj_list.order_by('name')
-    new_list = []
-    count = query_obj_list.count()
-    templist = []
+    total = query_obj_list.count()
+    namelist = []
+    countlist= []
+    for good_ins in query_set_ordered:
+        namelist.append(good_ins.name)
+        countlist.append(good_ins.count)
     j = 0
-    goodcount = 0
+    result_ls = []
+    c_ls = []
+    for i in range(total):
+        # 最后一组
+        if i == total-1:
+            c_ls.append(countlist[i])
+            g_dict = {namelist[j]:sum(c_ls)}
+            result_ls.append(g_dict)
+        # 普通情况，一组
+        if namelist[j] == namelist[i]:
+            c_ls.append(countlist[i])
+            print (i)
+            print (namelist[i])
+        # 一组结束
+        else:
+            g_dict = {namelist[j]:sum(c_ls)}
+            result_ls.append(g_dict)
+            j = i
+            c_ls = [countlist[i]]
 
-    while count >= 0:
-        for i in range(len(query_obj_list)):
-            print("start the for in looping %d"%i )
-            if query_set_ordered[j].name == query_set_ordered[i].name:
-                goodname = query_set_ordered[j].name
-                goodcount += query_set_ordered[i].count
-                count -= 1
-            elif query_set_ordered[j].name != query_set_ordered[i].name:
-                query_set_ordered = query_set_ordered[j:count]
-                j = i
-                break
-        new_dict = {goodname: goodcount}
-        new_list.append(new_dict)
+    print (namelist)
+    print(result_ls)
 
-    print(">>>>>final>>>>>>")
-    print(new_list)
-
-def sum_good_count():
+def sum_good_count(namelist, countlist):
     pass
