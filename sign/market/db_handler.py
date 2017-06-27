@@ -68,9 +68,20 @@ def update_good_in_wareHouse():
 
 # 从my_goods表里面获取，history的表里存每一条记录。 my_goods的表里存当前结果。
 def get_good_from_warehouse_in_json(username, gameid):
-    return {
-        'goodlist': [{'goodname': '白菜', 'price': '15', 'count': '2'}, {'goodname': '豆角', 'price': '15', 'count': '2'}]}
+    goodlist = models.My_goods.objects.filter(username = username, gameid_id = gameid).values_list('name','price','count')
+    result = good_list_to_json(goodlist)
+    return result
+    # 测试代码
+    # return {
+    #     'goodlist': [{'goodname': '白菜', 'price': '15', 'count': '2'}, {'goodname': '豆角', 'price': '15', 'count': '2'}]}
 
+# 将从数据库通过valuelist搜出来的结果，转成json格式。！没有通用性！
+def good_list_to_json(list):
+    templist = []
+    for good_tuple in list:
+        tempdict = {'goodname': good_tuple[0], 'price':good_tuple[1], 'count':good_tuple[2]}
+        templist.append(tempdict)
+    return {'goodlist':templist}
 
 # 返回成组的相同的
 # 两种做法。 一种自己循环判断。 已经写在下面。但是并没有成功。。。

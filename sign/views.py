@@ -1,12 +1,12 @@
-import json
-
+import simplejson
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 
 from sign.market import db_handler
-from sign.models import Event, Market_goods, My_goods
+from sign.models import Market_goods, My_goods
+
+
 # from sign.market import goods
 
 # Create your views here.
@@ -97,7 +97,7 @@ def getOrder(request):
     if request.method == 'POST':
         received_data_body = request.body
         received_json_data_raw = received_data_body.decode('utf-8') # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
-        received_json_data = json.loads(received_json_data_raw)
+        received_json_data = simplejson.loads(received_json_data_raw)
         # print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
         db_handler.put_good_in_warehouse(received_json_data)
         db_handler.update_good_in_wareHouse()
@@ -109,5 +109,5 @@ def updateWarehouse(request):
     # 数据格式：
     # warehouse = {'goodlist':[{'goodname': '白菜', 'price':'15', 'count':'2'},{'goodname': '豆角', 'price':'15', 'count':'2'}]}
     warehouse = db_handler.get_good_from_warehouse_in_json('zhangyao',1000001)
-    w_data = json.dumps(warehouse)
+    w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
