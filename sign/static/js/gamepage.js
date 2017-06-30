@@ -1,7 +1,7 @@
 /**
  * Created by zhangyao on 2017/6/13.
  */
-
+// TODO:重构js，当前多次提交订单会导致bug
 jQuery(document).ajaxSend(function (event, xhr, settings) {
     function getCookie(name) {
         var cookieValue = null;
@@ -41,8 +41,25 @@ jQuery(document).ajaxSend(function (event, xhr, settings) {
     }
 });
 
+////////////////////////////////////////////////////////////////////////////
+//                      加载jquery
+//      1. 进入gamepage，更新仓库。全局更新即可。 可以尝试用django而不是js更新。
+//      2. 购买部分：
+//          1. 加入订单 -- js控制UI
+//          2. 提交订单 -- 发送请求，刷新页面（不需要用ajax请求）
+//          3. 从订单中删除 -- js控制UI
+//      3. 仓库：
+//          1. 点击卖出同样放到订单里。 数目为负。这样点击提交订单就可以借用。
+//          2. 点击下一回合，刷新整个页面。如果订单没有提交，应该提示“有没提交的订单”。
+//      结论（吐槽）：
+//          其实这里根本不需要ajax请求啊
+//
+////////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {
-    updateWareHouse ()
+    //-----------------------------------------------------------------------------
+    //                  进入首先页面更新我的仓库
+    //                  发数据库，更新仓库
+    //-----------------------------------------------------------------------------
     function updateWareHouse () {
         $.ajax({
             type: "POST",
@@ -53,13 +70,15 @@ $(document).ready(function () {
             success: function (result) {
                 // 转换Unicode成可以正常显示的中文。
                 result = eval("'" + result + "'");
-                alert(result);
+                // 测试代码
+                // alert(result);
                 updateWarehouse(result)
             },
             error: function (result) {
                 alert("错误，请稍后再试。")
             }
         });
+
 
 
     // 构造good对象的类
@@ -172,6 +191,7 @@ $(document).ready(function () {
             $(".order_total").append("<span></span>").text("$" + order_total);
         });
     };
+    updateWareHouse ()
     click_add_to_order();
 
     // 实现删除刚刚添加的元素。需要用.on的方法。 才能处理动态添加的元素。
@@ -192,7 +212,7 @@ $(document).ready(function () {
         })
 
         //重新计算总额
-        order_total = caculate_total(order)
+        order_total = 0
         $(".order_total").text("$" + order_total)
     });
 
@@ -200,6 +220,9 @@ $(document).ready(function () {
     $('#submit_order').click(function () {
         orderdata = JSON.stringify({"order": order});
         console.log(orderdata);
+        $(".order_tr").remove()
+        //重新计算总额
+        $(".order_total").text("")
 
         $.ajax({
             type: "POST",
@@ -208,7 +231,9 @@ $(document).ready(function () {
             // dataType: "json",  // 规定了返回 数据的类型。
             data: orderdata,
             success: function (result) {
-                alert(orderdata);
+                // 测试代码
+                // alert(orderdata);
+                updateWareHouse ()
             },
             error: function (result) {
                 alert("错误，请稍后再试。")
@@ -268,7 +293,8 @@ $(document).ready(function () {
             success: function (result) {
                 // 转换Unicode成可以正常显示的中文。
                 result = eval("'" + result + "'");
-                alert(result);
+                // 测试代码
+                // alert(result);
                 updateWarehouse(result)
             },
             error: function (result) {
