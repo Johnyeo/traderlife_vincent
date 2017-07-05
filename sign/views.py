@@ -31,7 +31,7 @@ def login_action(request):
         if user is not None:
             auth.login(request, user) # 登录
             request.session['user'] = username
-            response = HttpResponseRedirect('/event_manage/')
+            response = HttpResponseRedirect('/gamepage/')
             return response
         else:
             return render(request, 'index.html', {'error':'username or password error!'})
