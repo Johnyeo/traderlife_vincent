@@ -30,5 +30,6 @@ urlpatterns = [
     url(r'^submitOrder',views.submitOrder), # 获取订单的ajax
     url(r'^updateWareHouse',views.updateWarehouse), # 更新warehouse ajax
     url(r'^favicon.ico$', RedirectView.as_view(url=r'static/favicon.ico')), # 设置favicon
+    url(r'^gameover', views.gameover),
 
 ]

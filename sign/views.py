@@ -85,3 +85,6 @@ def updateWarehouse(request):
     warehouse = db_handler.get_good_from_warehouse_in_json('zhangyao', 1000001)
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
+
+def gameover(request):
+    return render(request, 'gameover.html')
