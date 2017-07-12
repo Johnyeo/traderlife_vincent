@@ -120,3 +120,4 @@ def get_same_good(query_obj_list):
 
 def sum_good_count(namelist, countlist):
     pass
+

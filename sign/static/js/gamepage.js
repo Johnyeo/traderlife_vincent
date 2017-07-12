@@ -130,6 +130,18 @@ $(document).ready(function () {
         }
         return [good_existed, good_2b_add_id];
     }
+    window.onload = function () {
+        alert("hello")
+    }
+
+    function caculate_order_total(){
+        total = 0
+        $.each(order, function (i, good) {
+            total = total + good.price*good.count
+        })
+
+        $("#order_total").text("$" + total);
+    }
 
     /////////////////////////////////////////////////////////////
     //                     点击按钮                             //
@@ -148,7 +160,6 @@ $(document).ready(function () {
         temp = is_in_order(good)
         good_existed = temp[0];
         good_2b_add_id = temp[1];
-        alert(good_existed);
 
         if (!good_existed) {
             js_add_good_to_order(good)
@@ -157,6 +168,7 @@ $(document).ready(function () {
         } else {
             add_good_count(order, goodname, count, price, good_2b_add_id)
         }
+        caculate_order_total()
 
     })
 
@@ -186,6 +198,7 @@ $(document).ready(function () {
             $(this).find(".order_index").text(od_index); // 最开头这个this，想了 好久才明白过来。如果不加this，改的就是所有的index
             od_index++;
         })
+        caculate_order_total()
     })
 
 })
@@ -319,7 +332,7 @@ $(document).ready(function () {
  }
  ;
 
- // 计算总额
+ // 计算总额 -- > 不是计算， 是显示
  order_total = caculate_total(order);
  $(".order_total").append("<span></span>").text("$" + order_total);
  });

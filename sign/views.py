@@ -3,6 +3,7 @@ from django.contrib import auth
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
+from sign import models
 from sign.market import db_handler
 from sign.models import Market_goods, My_goods
 
@@ -57,10 +58,10 @@ def login_action(request):
 def gamepage(request):
     market_goods_list = Market_goods.objects.all()
     username = request.session.get('user', '')
-    my_goods_list = My_goods.objects.filter(username='zhangyao')
-
-
-    return render(request, 'gamepage.html',{'user':username,'market_goods':market_goods_list, 'my_goods':my_goods_list })
+    username = "zhangyao"
+    gameid = '1000001'
+    goodlist = models.My_goods.objects.filter(username=username, gameid_id=gameid)
+    return render(request, 'gamepage.html',{'user':username,'market_goods':market_goods_list, 'my_goods':goodlist })
 
 # getorder,是从server的角度说，获取订单，同时更新数据库
 def getOrder(request):
