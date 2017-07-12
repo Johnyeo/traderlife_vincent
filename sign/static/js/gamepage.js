@@ -71,137 +71,200 @@ jQuery(document).ajaxSend(function (event, xhr, settings) {
 ////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function () {
-    var order = []
-    var od_index = 1
+        var order = []
+        var od_index = 1
 
-    // 将物品添加到order里
-    function js_add_good_to_order(good) {
-        order.push(good)
-    }
-
-    // 将物品添加到order里
-    function ui_add_good_to_order(good) {
-        order_index = $("<td class='order_index'>").text(od_index);
-        order_goodname = $("<td></td>").text(good.goodname);
-        order_goodcount = $("<td class='order_count'></td>").text(good.count);
-        order_goodprice = $("<td class='order_item_sum'>").text("$" + good.count * good.price);
-        order_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger remove_btn' style='width: 60px'>移除</button>");
-        order_tr_1 = $("<tr class='order_tr'>").append(order_index, order_goodname, order_goodcount, order_goodprice, order_item_del);
-        $(".order_list").append(order_tr_1);
-    }
-
-    // 给order中的货物加数
-    function add_good_count(order, goodname, count, price, good_2b_add_id) {
-        good = order[good_2b_add_id];
-        // 将str转换成数字 计算然后返回给goodcount， order的good_2b_add_id是从循环中得来的。
-        origin = Number(good.count);
-        new_add = Number(count.val());
-        origin = origin + new_add;
-        good.count = origin;
-        console.log(good.count + "and" + count.val())
-
-        // 重新计算所有的在list中的,count 和 subtotal
-        // 注意eq选择器，用的是两个双引号两个+号。
-        $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_count").text(good.count);
-        $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_item_sum").text("$" + good.count * good.price);
-    }
-
-    // 判断某货物是否在order里
-    function is_in_order(good) {
-        // 1. 判断order是否为空，是空，则!goodexisted。 非空则继续判断
-        // 2. 循环order，看是否有相等元素， 有则 goodexisted。 没有则!goodexisted。
-        if (order.length === 0) {
-            good_existed = false;
-            good_2b_add_id = -1;
+        // 每次页面刷新都运行
+        window.onload = function () {
+            getMyGoods()
         }
-        else {
-            $.each(order, function (i, good_in_order) {
-                if (good_in_order.goodname === good.goodname) {
-                    good_existed = true;
-                    good_2b_add_id = i;
-                    console.log(good_existed);
-                    return false; // 相当于break 不能删。
-                }
-                else {
-                    good_existed = false;
-                    console.log(good_existed);
-                }
+
+        // 将物品添加到order里
+        function js_add_good_to_order(good) {
+            order.push(good)
+        }
+
+        // 将物品添加到order里
+        function ui_add_good_to_order(good) {
+            order_index = $("<td class='order_index'>").text(od_index);
+            order_goodname = $("<td></td>").text(good.goodname);
+            order_goodcount = $("<td class='order_count'></td>").text(good.count);
+            order_goodprice = $("<td class='order_item_sum'>").text("$" + good.count * good.price);
+            order_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger remove_btn' style='width: 60px'>移除</button>");
+            order_tr_1 = $("<tr class='order_tr'>").append(order_index, order_goodname, order_goodcount, order_goodprice, order_item_del);
+            $(".order_list").append(order_tr_1);
+        }
+
+        // 给order中的货物加数
+        function add_good_count(order, goodname, count, price, good_2b_add_id) {
+            good = order[good_2b_add_id];
+            // 将str转换成数字 计算然后返回给goodcount， order的good_2b_add_id是从循环中得来的。
+            origin = Number(good.count);
+            new_add = Number(count.val());
+            origin = origin + new_add;
+            good.count = origin;
+            console.log(good.count + "and" + count.val())
+
+            // 重新计算所有的在list中的,count 和 subtotal
+            // 注意eq选择器，用的是两个双引号两个+号。
+            $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_count").text(good.count);
+            $(".order_tr:eq(" + good_2b_add_id + ")").find(".order_item_sum").text("$" + good.count * good.price);
+        }
+
+        // 判断某货物是否在order里
+        function is_in_order(good) {
+            // 1. 判断order是否为空，是空，则!goodexisted。 非空则继续判断
+            // 2. 循环order，看是否有相等元素， 有则 goodexisted。 没有则!goodexisted。
+            if (order.length === 0) {
+                good_existed = false;
+                good_2b_add_id = -1;
+            }
+            else {
+                $.each(order, function (i, good_in_order) {
+                    if (good_in_order.goodname === good.goodname) {
+                        good_existed = true;
+                        good_2b_add_id = i;
+                        console.log(good_existed);
+                        return false; // 相当于break 不能删。
+                    }
+                    else {
+                        good_existed = false;
+                        console.log(good_existed);
+                    }
+                });
+            }
+            return [good_existed, good_2b_add_id];
+        }
+
+        function caculate_order_total() {
+            total = 0
+            $.each(order, function (i, good) {
+                total = total + good.price * good.count
+            })
+
+            $("#order_total").text("$" + total);
+        }
+
+        function displayMyGoods(w_house_json_raw) {
+            // 此数据应从数据库获取 方法传入参数 json
+            // 通过updateWareHouse返回的数据。
+            w_house_json_1 = JSON.parse(w_house_json_raw);
+            w_house_json_list = w_house_json_1.goodlist;
+            $.each(w_house_json_list, function (i, w_house_json) {
+                good_warehouse = w_house_json;
+                warehouse_index = $("<td class='w_index'>").text(i + 1);
+                warehouse_goodname = $("<td class='goodname'>").text(good_warehouse.goodname);
+                warehouse_goodcount = $("<td class='w_count'></td>").text(good_warehouse.count);
+                warehouse_goodprice = $("<td class='w_item_sum'>").text("$" + good_warehouse.count * good_warehouse.price);
+                warehouse_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger sell_btn' style='width: 60px'>卖出</button>");
+                unit_price = $("<span class='hide unit_price'>").text(good_warehouse.price)
+                warehouse_tr_1 = $("<tr class='w_tr'>").append(warehouse_index, warehouse_goodname, warehouse_goodcount, warehouse_goodprice, warehouse_item_del,unit_price);
+                $("#warehouse_list").append(warehouse_tr_1);
             });
         }
-        return [good_existed, good_2b_add_id];
-    }
-    window.onload = function () {
-        alert("hello")
-    }
 
-    function caculate_order_total(){
-        total = 0
-        $.each(order, function (i, good) {
-            total = total + good.price*good.count
-        })
-
-        $("#order_total").text("$" + total);
-    }
-
-    /////////////////////////////////////////////////////////////
-    //                     点击按钮                             //
-    /////////////////////////////////////////////////////////////
-    //点击 加入订单
-    $('.add2order_btn').click(function () {
-        goodname = $(this).parent().find('.goodname');
-        count = $(this).parent().find(".form-control");
-        price = $(this).parent().find(".price");
-
-        good = {
-            goodname: goodname.attr('value'),
-            count: count.val(),
-            price: price.attr('value')
-        };
-        temp = is_in_order(good)
-        good_existed = temp[0];
-        good_2b_add_id = temp[1];
-
-        if (!good_existed) {
-            js_add_good_to_order(good)
-            ui_add_good_to_order(good)
-            od_index = od_index + 1;  // 序号
-        } else {
-            add_good_count(order, goodname, count, price, good_2b_add_id)
+        function getMyGoods() {
+            $.ajax({
+                type: "POST",
+                url: "updateWareHouse",
+                // contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+                // dataType: "json",  // 规定了返回 数据的类型。
+                data: {username: 'zhangyao'},
+                success: function (result) {
+                    // 转换Unicode成可以正常显示的中文。
+                    result = eval("'" + result + "'");
+                    // 测试代码
+                    // alert(result);
+                    displayMyGoods(result)
+                },
+                error: function (result) {
+                    alert("错误，请稍后再试。")
+                }
+            })
         }
-        caculate_order_total()
-
-    })
-
-    //点击提交订单,发请求， 刷新页面
-    $('#submit_order').click(function () {
-        orderdata = JSON.stringify({"order": order});
-        alert(orderdata);
-
-    })
-    //点击下一回合
-    $('#next_turn').click(function () {
 
 
-    })
+/////////////////////////////////////////////////////////////
+//                     点击按钮                             //
+/////////////////////////////////////////////////////////////
+//点击 加入订单
+        $('.add2order_btn').click(function () {
+            goodname = $(this).parent().find('.goodname');
+            count = $(this).parent().find(".form-control");
+            price = $(this).parent().find(".price");
 
-    //从订单移除产品 -- 放弃购买
-    $(".order_list").on("click", ".remove_btn", function () {
-        // 1. 获取要删除的元素的index
-        i_str = $(this).parent().parent().find(".order_index").text();
-        // 2. 从order中删除
-        order.splice(i_str - 1, 1);
-        // 3. 从UI上删除
-        $(this).parent().parent().remove();
-        // 4. 重排列list的序号
-        od_index = 1;
-        $(".order_tr").each(function () {
-            $(this).find(".order_index").text(od_index); // 最开头这个this，想了 好久才明白过来。如果不加this，改的就是所有的index
-            od_index++;
+            good = {
+                goodname: goodname.attr('value'),
+                count: count.val(),
+                price: price.attr('value')
+            };
+            temp = is_in_order(good)
+            good_existed = temp[0];
+            good_2b_add_id = temp[1];
+
+            if (!good_existed) {
+                js_add_good_to_order(good)
+                ui_add_good_to_order(good)
+                od_index = od_index + 1;  // 序号
+            } else {
+                add_good_count(order, goodname, count, price, good_2b_add_id)
+            }
+            caculate_order_total()
+
         })
-        caculate_order_total()
-    })
 
-})
+//点击提交订单,发请求， 刷新页面
+        $('#submit_order').click(function () {
+            orderdata = JSON.stringify({"order": order});
+            alert(orderdata);
+
+        })
+//点击下一回合
+        $('#next_turn').click(function () {
+
+
+        })
+
+//从订单移除产品 -- 放弃购买
+        $(".order_list").on("click", ".remove_btn", function () {
+            // 1. 获取要删除的元素的index
+            i_str = $(this).parent().parent().find(".order_index").text();
+            // 2. 从order中删除
+            order.splice(i_str - 1, 1);
+            // 3. 从UI上删除
+            $(this).parent().parent().remove();
+            // 4. 重排列list的序号
+            od_index = 1;
+            $(".order_tr").each(function () {
+                $(this).find(".order_index").text(od_index); // 最开头这个this，想了 好久才明白过来。如果不加this，改的就是所有的index
+                od_index++;
+            })
+            caculate_order_total()
+        })
+
+        // 点击卖出，将该货物加入订单。个数为负。
+        $('#warehouse_list').on("click", ".sell_btn", function () {
+            goodname = $(this).parent().parent().find('.goodname');
+            count = $(this).parent().parent().find(".w_count");
+            price = $(this).parent().parent().find(".unit_price");
+            good = {
+                goodname: goodname.text(),
+                count: -count.text(),
+                price: price.text(),
+            };
+            temp = is_in_order(good)
+            good_existed = temp[0];
+            good_2b_add_id = temp[1];
+            if (!good_existed) {
+                js_add_good_to_order(good)
+                ui_add_good_to_order(good)
+                od_index = od_index + 1;  // 序号
+            } else {
+                add_good_count(order, goodname, count, price, good_2b_add_id)
+            }
+        })
+    }
+)
 
 //-----------------------------------------------------------------------------
 //                  进入首先页面更新我的仓库

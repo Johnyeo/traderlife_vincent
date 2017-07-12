@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="Rebuild 1.0, those who doesn't kill you makes you stronger.">
+    <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/db_handler.py" afterPath="$PROJECT_DIR$/sign/market/db_handler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/static/js/gamepage.js" afterPath="$PROJECT_DIR$/sign/static/js/gamepage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gamepage.html" afterPath="$PROJECT_DIR$/sign/templates/gamepage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/views.py" afterPath="$PROJECT_DIR$/sign/views.py" />
     </list>
     <ignored path="traderlife.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,30 +38,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="141" column="0" lean-forward="false" selection-start-line="140" selection-start-column="9" selection-end-line="141" selection-end-column="0" />
+            <state relative-caret-position="327">
+              <caret line="257" column="32" lean-forward="true" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
               <folding>
-                <marker date="1499830680026" expanded="true" signature="3504:3515" ph="..." />
-                <marker date="1499830680026" expanded="true" signature="8946:8957" ph="..." />
-                <marker date="1499830680026" expanded="true" signature="13663:13674" ph="..." />
+                <marker date="1499846122811" expanded="true" signature="3651:3662" ph="..." />
+                <marker date="1499846122811" expanded="true" signature="6642:6653" ph="..." />
+                <marker date="1499846122811" expanded="true" signature="12171:12182" ph="..." />
+                <marker date="1499846122811" expanded="true" signature="16888:16899" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="309" column="47" lean-forward="true" selection-start-line="309" selection-start-column="47" selection-end-line="309" selection-end-column="47" />
+            <state relative-caret-position="168">
+              <caret line="317" column="26" lean-forward="false" selection-start-line="317" selection-start-column="25" selection-end-line="317" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h4#0;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h4#1;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -181,6 +179,7 @@
       <find>orderdata</find>
       <find>alert</find>
       <find>order_total</find>
+      <find>onload</find>
     </findStrings>
     <replaceStrings>
       <replace>images/</replace>
@@ -226,9 +225,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1" />
-    <option name="y" value="1" />
+    <option name="y" value="9" />
     <option name="width" value="1364" />
-    <option name="height" value="726" />
+    <option name="height" value="718" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1009,7 +1008,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499257418163</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Rebuild 1.1, the houseware still has problem.">
+      <created>1499830810780</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1499830810780</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1022,7 +1028,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
+    <frame x="1" y="9" width="1364" height="718" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2530675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1122,8 +1128,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="optimize order area tag to &quot;&lt;table&gt;&quot;" />
-    <MESSAGE value="fix the UI looking by adding all into container" />
     <MESSAGE value="caculate the total for the order" />
     <MESSAGE value="paste the bootstrap 3.3.7 in static(but not used)" />
     <MESSAGE value="Add function of dropping product from order.Changing index." />
@@ -1147,7 +1151,9 @@
     <MESSAGE value="fix warehouse issues." />
     <MESSAGE value="Before rebuild the js." />
     <MESSAGE value="Rebuild 1.0, those who doesn't kill you makes you stronger." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rebuild 1.0, those who doesn't kill you makes you stronger." />
+    <MESSAGE value="Rebuild 1.1, the houseware still has problem." />
+    <MESSAGE value="Rebuild 1.2, sell goods added in order" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rebuild 1.2, sell goods added in order" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1441,6 +1447,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1494,27 +1501,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="140" selection-start-column="9" selection-end-line="141" selection-end-column="0" />
-          <folding>
-            <marker date="1499830680026" expanded="true" signature="3504:3515" ph="..." />
-            <marker date="1499830680026" expanded="true" signature="8946:8957" ph="..." />
-            <marker date="1499830680026" expanded="true" signature="13663:13674" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="309" column="47" lean-forward="true" selection-start-line="309" selection-start-column="47" selection-end-line="309" selection-end-column="47" />
+        <state relative-caret-position="168">
+          <caret line="317" column="26" lean-forward="false" selection-start-line="317" selection-start-column="25" selection-end-line="317" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h4#0;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h4#1;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1524,6 +1518,19 @@
             <element signature="n#style#0;n#button#0;n#form#0;n#span#0;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#form#0;n#span#1;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="257" column="32" lean-forward="true" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
+          <folding>
+            <marker date="1499846122811" expanded="true" signature="3651:3662" ph="..." />
+            <marker date="1499846122811" expanded="true" signature="6642:6653" ph="..." />
+            <marker date="1499846122811" expanded="true" signature="12171:12182" ph="..." />
+            <marker date="1499846122811" expanded="true" signature="16888:16899" ph="..." />
           </folding>
         </state>
       </provider>
