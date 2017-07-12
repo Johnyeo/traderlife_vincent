@@ -27,7 +27,7 @@ urlpatterns = [
     # url(r'^event_manage', views.event_manage),
     url(r'^accounts/login/$', views.index),
     url(r'^gamepage', views.gamepage),
-    url(r'^getOrder',views.getOrder), # 获取订单的ajax
+    url(r'^submitOrder',views.submitOrder), # 获取订单的ajax
     url(r'^updateWareHouse',views.updateWarehouse), # 更新warehouse ajax
     url(r'^favicon.ico$', RedirectView.as_view(url=r'static/favicon.ico')), # 设置favicon
 

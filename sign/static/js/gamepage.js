@@ -158,7 +158,7 @@ $(document).ready(function () {
                 warehouse_goodprice = $("<td class='w_item_sum'>").text("$" + good_warehouse.count * good_warehouse.price);
                 warehouse_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger sell_btn' style='width: 60px'>卖出</button>");
                 unit_price = $("<span class='hide unit_price'>").text(good_warehouse.price)
-                warehouse_tr_1 = $("<tr class='w_tr'>").append(warehouse_index, warehouse_goodname, warehouse_goodcount, warehouse_goodprice, warehouse_item_del,unit_price);
+                warehouse_tr_1 = $("<tr class='w_tr'>").append(warehouse_index, warehouse_goodname, warehouse_goodcount, warehouse_goodprice, warehouse_item_del, unit_price);
                 $("#warehouse_list").append(warehouse_tr_1);
             });
         }
@@ -176,6 +176,23 @@ $(document).ready(function () {
                     // 测试代码
                     // alert(result);
                     displayMyGoods(result)
+                },
+                error: function (result) {
+                    alert("错误，请稍后再试。")
+                }
+            })
+        }
+
+        function submitOrder(orderdata) {
+            $.ajax({
+                type: "POST",
+                url: "submitOrder",
+                contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+                // dataType: "json",  // 规定了返回 数据的类型。
+                data: orderdata,
+                success: function (result) {
+                    // 测试代码
+                    alert(orderdata);
                 },
                 error: function (result) {
                     alert("错误，请稍后再试。")
@@ -216,7 +233,7 @@ $(document).ready(function () {
 //点击提交订单,发请求， 刷新页面
         $('#submit_order').click(function () {
             orderdata = JSON.stringify({"order": order});
-            alert(orderdata);
+            submitOrder(orderdata)
 
         })
 //点击下一回合

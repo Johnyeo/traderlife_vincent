@@ -48,7 +48,7 @@ def update_good_in_wareHouse():
             # django提供了一个现成的方法update or create，实现思路和下面的一样。都是利用ObjectDoesNotExist。
             # https://docs.djangoproject.com/en/dev/ref/models/querysets/#update-or-create
             try:
-                print(models.My_goods.objects.get(name = goodname))
+                # print(models.My_goods.objects.get(name = goodname))
                 models.My_goods.objects.filter(name = goodname).update(count = good_dict[goodname])
 
             except ObjectDoesNotExist: # 这个exception是从django api里查到的。 get方法当查不到内容的时候回返回这个。
@@ -65,6 +65,7 @@ def update_good_in_wareHouse():
                     gameid_id=1000001  # 通过gamethread来获取
                 )
                 mygoods.save()
+
 
 # 从my_goods表里面获取，history的表里存每一条记录。 my_goods的表里存当前结果。
 def get_good_from_warehouse_in_json(username, gameid):
@@ -108,8 +109,8 @@ def get_same_good(query_obj_list):
         # 普通情况，一组
         if namelist[j] == namelist[i]:
             c_ls.append(countlist[i])
-            print (i)
-            print (namelist[i])
+            # print (i)
+            # print (namelist[i])
         # 一组结束
         else:
             g_dict = {namelist[j]:sum(c_ls)}
