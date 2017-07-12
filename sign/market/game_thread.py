@@ -8,6 +8,14 @@
     # 用户A点击下一回合生成 roundid
     # 用户A下一次点击生成下一个eroundid
 
+# 数据库写入新的gameid
+def startGame():
+    pass
 
+def gameOver():
+    pass
+
+def nextTurn():
+    pass
 
 

@@ -48,7 +48,7 @@ def update_good_in_wareHouse():
             # django提供了一个现成的方法update or create，实现思路和下面的一样。都是利用ObjectDoesNotExist。
             # https://docs.djangoproject.com/en/dev/ref/models/querysets/#update-or-create
             try:
-                # print(models.My_goods.objects.get(name = goodname))
+                print(models.My_goods.objects.get(name = goodname)) # 这行不能注释，因为下面的exception需要它来判断
                 models.My_goods.objects.filter(name = goodname).update(count = good_dict[goodname])
 
             except ObjectDoesNotExist: # 这个exception是从django api里查到的。 get方法当查不到内容的时候回返回这个。

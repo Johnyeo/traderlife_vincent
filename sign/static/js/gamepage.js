@@ -193,6 +193,7 @@ $(document).ready(function () {
                 success: function (result) {
                     // 测试代码
                     alert(orderdata);
+                    window.location.reload()
                 },
                 error: function (result) {
                     alert("错误，请稍后再试。")
