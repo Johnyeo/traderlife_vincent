@@ -13,6 +13,7 @@ from collections import Counter
 
 from django.contrib import auth
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Max
 
 from sign import models
 
@@ -121,3 +122,8 @@ def get_same_good(query_obj_list):
 def sum_good_count(namelist, countlist):
     pass
 
+
+def getLatestGameID():
+    latest = models.Game.objects.aggregate(latestDate = Max('create_time'))['latestDate']
+    gameid = models.Game.
+    return latest

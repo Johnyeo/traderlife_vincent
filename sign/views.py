@@ -94,4 +94,6 @@ def gameover(request):
 
 def nextTurn(request):
     data = "hello"
+    test  = db_handler.getLatestGameID()
+    print(test)
     return HttpResponse(data)

@@ -9,14 +9,17 @@
     # 用户A下一次点击生成下一个eroundid
 
 # 数据库写入新的gameid
+from sign.market import db_handler
 
-def startGame():
-    pass
-
-def gameOver():
-    pass
+def startNewGame():
+    old_gameid = db_handler.getLatestGameID()
+    new_gameid = old_gameid + 1
+    db_handler.setNewGame(new_gameid)
 
 def nextTurn():
-    pass
+    old_gameround = db_handler.getLatestGameround()
+    new_gameround = old_gameround + 1
+    db_handler.setNewRound(new_gameround)
+
 
 
