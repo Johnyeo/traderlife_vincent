@@ -9,6 +9,7 @@
 #   1. 从gamethread中获取游戏局和回合。
 #   2. 将处理过的的dict分解成产品
 #   3. 写入数据库
+import datetime
 from collections import Counter
 
 from django.contrib import auth
@@ -123,7 +124,39 @@ def sum_good_count(namelist, countlist):
     pass
 
 
-def getLatestGameID():
-    latest = models.Game.objects.aggregate(latestDate = Max('create_time'))['latestDate']
-    gameid = models.Game.
-    return latest
+def generateGameidByTime():
+    timenow = datetime.datetime.now()
+    time = timenow.strftime("%Y%m%d%H%M%S")
+    return time
+
+
+def setNewGame(new_gameid):
+    newGame = models.Game(
+        player="zhangyao",
+        gameround = "0", # 初始值是0
+        gameid = new_gameid,
+        cash = 1000.00, # 初始值 1000块钱
+        balance = 0.00, # 初始交易金额 0
+        flag = "A",
+        # 创建时间：自动
+    )
+    newGame.save()
+
+
+def generateGameround(gameid):
+    g = models.Game.objects.filter(gameid = gameid).aggregate(Max('gameround'))
+    gameround = g['gameround__max'] + 1
+    return gameround
+
+
+def setNewRound(gameid, new_gameround):
+    newGame = models.Game(
+        player="zhangyao",
+        gameround = new_gameround, # 初始值是0
+        gameid = gameid,
+        cash = 800.00, # 初始值 1000块钱
+        balance = -200.00, # 初始交易金额 0
+        flag = "A",
+        # 创建时间：自动
+    )
+    newGame.save()

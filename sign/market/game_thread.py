@@ -12,14 +12,13 @@
 from sign.market import db_handler
 
 def startNewGame():
-    old_gameid = db_handler.getLatestGameID()
-    new_gameid = old_gameid + 1
+    new_gameid = db_handler.generateGameidByTime()
     db_handler.setNewGame(new_gameid)
 
-def nextTurn():
-    old_gameround = db_handler.getLatestGameround()
-    new_gameround = old_gameround + 1
-    db_handler.setNewRound(new_gameround)
+def nextTurn(gameid):
+    new_gameround = db_handler.generateGameround(gameid)
+    db_handler.setNewRound(gameid, new_gameround)
+    return new_gameround
 
 
 

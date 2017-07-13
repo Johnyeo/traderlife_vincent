@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from sign import models
-from sign.market import db_handler
+from sign.market import db_handler, game_thread
 from sign.models import Market_goods, My_goods
 
 
@@ -94,6 +94,5 @@ def gameover(request):
 
 def nextTurn(request):
     data = "hello"
-    test  = db_handler.getLatestGameID()
-    print(test)
-    return HttpResponse(data)
+    test = game_thread.nextTurn('20170713200537')
+    return HttpResponse(test)

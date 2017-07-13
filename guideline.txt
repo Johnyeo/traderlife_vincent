@@ -68,3 +68,5 @@ game表中插入数据cash  =  10000, profit = 0 gameround  = 0
 提交订单，数据库不动
 点击下一回合，从Mygoodshistory表查该回合的所有订单，加减得出balance
 第一局结束插入， 例如 balance = -1000 , cash = 9000 gameround = 1
+
+留坑：gameid没有处理同一秒内重复的问题。
