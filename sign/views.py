@@ -83,6 +83,8 @@ def updateWarehouse(request):
     # 数据格式：
     # warehouse = {'goodlist':[{'goodname': '白菜', 'price':'15', 'count':'2'},{'goodname': '豆角', 'price':'15', 'count':'2'}]}
     warehouse = db_handler.get_good_from_warehouse_in_json('zhangyao', 1000001)
+    # 如果产品的数量为0了，就从数据库中移除去该数据。
+    db_handler.remove_good_if_zero()
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
 
