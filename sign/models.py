@@ -57,8 +57,6 @@ class Event(models.Model):
     flag = models.CharField(max_length=1)
     create_time = models.DateTimeField(auto_now=True)
 
-
-
 class meta:
     unique_together = ()
 

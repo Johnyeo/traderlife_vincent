@@ -87,5 +87,10 @@ def updateWarehouse(request):
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
 
+
 def gameover(request):
     return render(request, 'gameover.html')
+
+
+def nextTurn(request):
+    pass
