@@ -94,5 +94,12 @@ def gameover(request):
 
 def nextTurn(request):
     data = "hello"
-    test = game_thread.nextTurn('20170713200537')
+    test = game_thread.nextTurn('20170713200537') # gameid应该存在cookie里。
     return HttpResponse(test)
+
+
+def newGame(request):
+    game_thread.startNewGame()
+    # 应该把gameid写入cookie里。
+    response = HttpResponseRedirect('/gamepage')
+    return response
