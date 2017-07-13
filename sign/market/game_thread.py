@@ -9,6 +9,7 @@
     # 用户A下一次点击生成下一个eroundid
 
 # 数据库写入新的gameid
+
 def startGame():
     pass
 

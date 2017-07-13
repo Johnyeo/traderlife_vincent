@@ -201,6 +201,21 @@ $(document).ready(function () {
             })
         }
 
+        function nextTurn() {
+            $.ajax({
+                type: "GET",
+                url: "nextTurn",
+                contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+                // dataType: "json",  // 规定了返回 数据的类型。
+                success: function (result) {
+                    alert(result)
+                },
+                error: function (result) {
+                    alert("错误，请稍后再试。")
+                }
+            })
+        }
+
 
 /////////////////////////////////////////////////////////////
 //                     点击按钮                             //
@@ -239,7 +254,7 @@ $(document).ready(function () {
         })
 //点击下一回合
         $('#next_turn').click(function () {
-
+            nextTurn();
 
         })
 

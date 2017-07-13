@@ -5,6 +5,9 @@ from django.db import models
 class Game(models.Model):
     player = models.CharField(max_length=100)
     gameround = models.IntegerField()
+    gameid = models.IntegerField()
+    cash = models.DecimalField(max_digits=24, decimal_places=2)
+    balance = models.DecimalField(max_digits=24, decimal_places=2)
     flag = models.CharField(max_length=1)
     create_time = models.DateTimeField(auto_now=True)
 

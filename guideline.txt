@@ -61,3 +61,10 @@ TODO 限制输入个数的类型必须为整数：1. web端输入限制。 2. �
 checkout功能
 试验
 
+游戏初始化：
+game表中插入数据cash  =  10000, profit = 0 gameround  = 0
+第一局开始查询，gamerond = 0, 的cash
+提交订单，数据库不动
+提交订单，数据库不动
+点击下一回合，从Mygoodshistory表查该回合的所有订单，加减得出balance
+第一局结束插入， 例如 balance = -1000 , cash = 9000 gameround = 1

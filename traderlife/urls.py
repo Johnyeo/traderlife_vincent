@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^updateWareHouse',views.updateWarehouse), # 更新warehouse ajax
     url(r'^favicon.ico$', RedirectView.as_view(url=r'static/favicon.ico')), # 设置favicon
     url(r'^gameover', views.gameover),
+    url(r'^nextTurn', views.nextTurn),
 
 ]

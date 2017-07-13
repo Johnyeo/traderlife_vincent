@@ -93,4 +93,5 @@ def gameover(request):
 
 
 def nextTurn(request):
-    pass
+    data = "hello"
+    return HttpResponse(data)
