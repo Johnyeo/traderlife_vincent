@@ -66,16 +66,9 @@ def update_good_in_wareHouse():
                 )
                 mygoods.save()
 
-def remove_good_if_zero():
-    goods_filter_by_user_gameid = models.My_goods.objects.filter(username='zhangyao', gameid='1000001')
-    for good in goods_filter_by_user_gameid:
-        if good.count == 0:
-            print("产品数量为0>>>>>>>>>>!!!!!!!!!!")
-            good.delete()
-
 # 从my_goods表里面获取，history的表里存每一条记录。 my_goods的表里存当前结果。
 def get_good_from_warehouse_in_json(username, gameid):
-    goodlist = models.My_goods.objects.filter(username = username, gameid_id = gameid).values_list('name','price','count')
+    goodlist = models.My_goods.objects.filter(username = username, gameid_id = gameid, ).exclude(count = 0).values_list('name','price','count')
     result = good_list_to_json(goodlist)
     return result
     # 测试代码
