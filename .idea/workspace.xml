@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/db_handler.py" afterPath="$PROJECT_DIR$/sign/market/db_handler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/guideline.txt" afterPath="$PROJECT_DIR$/guideline.txt" />
     </list>
     <ignored path="traderlife.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="191" column="41" lean-forward="true" selection-start-line="191" selection-start-column="41" selection-end-line="191" selection-end-column="41" />
+            <state relative-caret-position="232">
+              <caret line="189" column="51" lean-forward="true" selection-start-line="189" selection-start-column="51" selection-end-line="189" selection-end-column="51" />
               <folding>
                 <element signature="e#184#199#0" expanded="true" />
                 <marker date="1500021653048" expanded="true" signature="231:233" ph="import ..." />
@@ -114,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guideline.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="guideline.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/guideline.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="69" column="55" lean-forward="true" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
+            <state relative-caret-position="38">
+              <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -214,7 +213,6 @@
         <option value="$PROJECT_DIR$/sign/static/js/gamepage.js" />
         <option value="$PROJECT_DIR$/sign/migrations/0011_auto_20170713_1748.py" />
         <option value="$PROJECT_DIR$/sign/migrations/0011_auto_20170713_1806.py" />
-        <option value="$PROJECT_DIR$/guideline.txt" />
         <option value="$PROJECT_DIR$/traderlife/urls.py" />
         <option value="$PROJECT_DIR$/sign/templates/gameover.html" />
         <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
@@ -222,6 +220,7 @@
         <option value="$PROJECT_DIR$/sign/market/game_thread.py" />
         <option value="$PROJECT_DIR$/sign/views.py" />
         <option value="$PROJECT_DIR$/sign/market/db_handler.py" />
+        <option value="$PROJECT_DIR$/guideline.txt" />
       </list>
     </option>
   </component>
@@ -789,13 +788,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494988351407</updated>
     </task>
-    <task id="LOCAL-00002" summary="1. Feature: add goodname, price, count.&#10;2. File: create developing guideline.">
-      <created>1497525479826</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1497525479826</updated>
-    </task>
     <task id="LOCAL-00003" summary="Js post data to server end">
       <created>1497678358026</created>
       <option name="number" value="00003" />
@@ -1132,7 +1124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500013458237</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="database has been arranged and added gamethread handles">
+      <created>1500022316921</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1500022316921</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1245,7 +1244,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="parse json data responsed from view.py." />
     <MESSAGE value="parse json data with multiple goods responsed from view.py." />
     <MESSAGE value="Failed when try to sum all same goods number up. will alternate to a new way." />
     <MESSAGE value="Failed again sum goods up. Try a new way." />
@@ -1270,7 +1268,8 @@
     <MESSAGE value="Add the functions into nextTurn and newGame" />
     <MESSAGE value="Save gameid in cookie" />
     <MESSAGE value="another way to sum all same goods in &quot;history&quot; up." />
-    <option name="LAST_COMMIT_MESSAGE" value="another way to sum all same goods in &quot;history&quot; up." />
+    <MESSAGE value="database has been arranged and added gamethread handles" />
+    <option name="LAST_COMMIT_MESSAGE" value="database has been arranged and added gamethread handles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1612,14 +1611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/guideline.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="69" column="55" lean-forward="true" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sign/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-133">
@@ -1648,12 +1639,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="191" column="41" lean-forward="true" selection-start-line="191" selection-start-column="41" selection-end-line="191" selection-end-column="41" />
+        <state relative-caret-position="232">
+          <caret line="189" column="51" lean-forward="true" selection-start-line="189" selection-start-column="51" selection-end-line="189" selection-end-column="51" />
           <folding>
             <element signature="e#184#199#0" expanded="true" />
             <marker date="1500021653048" expanded="true" signature="231:233" ph="import ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guideline.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
