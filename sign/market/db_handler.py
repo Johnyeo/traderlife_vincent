@@ -22,11 +22,14 @@ from sign import models
 def put_good_in_warehouse(json_dict, gameid, gameround):
     goods_list = json_dict["order"]
     for good_dict in goods_list:
-        price =  float(good_dict['price'])
+        #不能用传进来的值，要用数据库里的值
+        goodname = good_dict['goodname']
+        price =  getAbsGoodPrice(goodname)[0]
+        price = float(price)
         count = float(good_dict['count'])
         subtotal = price * count
         mygoods = models.My_goods_history(
-            name=good_dict['goodname'],
+            name=goodname,
             price=good_dict['price'],
             count=good_dict['count'],
             total = subtotal,
@@ -53,16 +56,19 @@ def update_good_in_wareHouse(gameid, gameround):
             # 如果该元素在数据库中不存在，进入exception. 如果存在则更新数字。
             # django提供了一个现成的方法update or create，实现思路和下面的一样。都是利用ObjectDoesNotExist。
             # https://docs.djangoproject.com/en/dev/ref/models/querysets/#update-or-create
+            price = getAbsGoodPrice(goodname)[0]
             try:
-                print(models.My_goods.objects.get(name = goodname)) # 这行不能注释，因为下面的exception需要它来判断
+                print(models.My_goods.objects.get(name = goodname, gameid = gameid)) # 这行不能注释，因为下面的exception需要它来判断
                 newtotal = get_good_subtotal(goodname, gameid, gameround)
-                models.My_goods.objects.filter(name=goodname).update(count=good_dict[goodname])
+                models.My_goods.objects.filter(name=goodname, gameid = gameid).update(count=good_dict[goodname], total = newtotal, price = price)
 
             except ObjectDoesNotExist: # 这个exception是从django api里查到的。 get方法当查不到内容的时候回返回这个。
                 print ("bingo --!!!")
+                subtotal = good_dict[goodname]*price
                 mygoods = models.My_goods(
                     name=goodname,
-                    price=10,
+                    # TODO 价格需要参数化
+                    price=price,
                     count=good_dict[goodname],
                     total = good_dict[goodname],
                     username='zhangyao',  # 通过gamethread来获取
@@ -182,17 +188,26 @@ def getCurrentGameround(t_gameid):
 # 然而数据库居然不支持distinct on。 从跟网上搜索到了替代方法。
 # http://blog.csdn.net/zhci31462/article/details/51886660
 def get_good_subtotal(goodname, gameid, gameround):
-    queryset = models.My_goods_history.objects.filter(gameid = gameid, gameround= gameround, username = 'zhangyao')
-    items = []
-    for item in queryset:
-        if item not in items:
-            items.append(item)
+    subtotal_raw = models.My_goods_history.objects.filter(name = goodname, gameid = gameid, ).aggregate(Sum('total'))
+    subtotal = subtotal_raw['total__sum']
+    print (subtotal)
+    print (type(subtotal))
+    return  subtotal
 
-    for i in items:
-        goodname = i.name
-        subtotal = models.My_goods_history.objects.filter(name = goodname, gameid = gameid, ).aggregate(Sum('total'))
 
-    print (items[0].name)
-    print (type(items))
+def getCurrentGoodPrice(goodname, gameid, gameround):
+    pass
+
+
+def getAbsGoodPrice(goodname):
+    gooditem = models.Market_goods.objects.filter(name = goodname).values()
+    print(type(gooditem))
+    basePrice = gooditem[0]['price']
+    priceScope = gooditem[0]['price_scope']
+    print("价格")
+    print(basePrice)
+    print(priceScope)
+    price_set = [basePrice, priceScope]
+    return price_set
 
 

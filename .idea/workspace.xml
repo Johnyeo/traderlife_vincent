@@ -5,9 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/db_handler.py" afterPath="$PROJECT_DIR$/sign/market/db_handler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/game_thread.py" afterPath="$PROJECT_DIR$/sign/market/game_thread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/models.py" afterPath="$PROJECT_DIR$/sign/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/views.py" afterPath="$PROJECT_DIR$/sign/views.py" />
     </list>
     <ignored path="traderlife.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,11 +104,11 @@
       <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="191" column="25" lean-forward="true" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="25" />
+            <state relative-caret-position="270">
+              <caret line="191" column="41" lean-forward="true" selection-start-line="191" selection-start-column="41" selection-end-line="191" selection-end-column="41" />
               <folding>
                 <element signature="e#184#199#0" expanded="true" />
-                <marker date="1500013425407" expanded="true" signature="231:233" ph="import ..." />
+                <marker date="1500021653048" expanded="true" signature="231:233" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -140,8 +137,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="99" column="32" lean-forward="false" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
+            <state relative-caret-position="166">
+              <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -182,8 +179,11 @@
       <find>onload</find>
       <find>.get</find>
       <find>print</find>
-      <find>get</find>
       <find>aggregate</find>
+      <find>values</find>
+      <find>get</find>
+      <find>get(</find>
+      <find>my_goods</find>
       <find>good_subtotal</find>
     </findStrings>
     <replaceStrings>
@@ -789,13 +789,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494988351407</updated>
     </task>
-    <task id="LOCAL-00001" summary="first commit test.">
-      <created>1497522613610</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1497522613610</updated>
-    </task>
     <task id="LOCAL-00002" summary="1. Feature: add goodname, price, count.&#10;2. File: create developing guideline.">
       <created>1497525479826</created>
       <option name="number" value="00002" />
@@ -1132,7 +1125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500001283677</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="another way to sum all same goods in &quot;history&quot; up.">
+      <created>1500013458237</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1500013458237</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1245,7 +1245,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjust bottom UI." />
     <MESSAGE value="parse json data responsed from view.py." />
     <MESSAGE value="parse json data with multiple goods responsed from view.py." />
     <MESSAGE value="Failed when try to sum all same goods number up. will alternate to a new way." />
@@ -1270,7 +1269,8 @@
     <MESSAGE value="Generate gameid and gameround." />
     <MESSAGE value="Add the functions into nextTurn and newGame" />
     <MESSAGE value="Save gameid in cookie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save gameid in cookie" />
+    <MESSAGE value="another way to sum all same goods in &quot;history&quot; up." />
+    <option name="LAST_COMMIT_MESSAGE" value="another way to sum all same goods in &quot;history&quot; up." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1638,8 +1638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="99" column="32" lean-forward="false" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
+        <state relative-caret-position="166">
+          <caret line="79" column="27" lean-forward="false" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
@@ -1648,11 +1648,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="191" column="25" lean-forward="true" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="25" />
+        <state relative-caret-position="270">
+          <caret line="191" column="41" lean-forward="true" selection-start-line="191" selection-start-column="41" selection-end-line="191" selection-end-column="41" />
           <folding>
             <element signature="e#184#199#0" expanded="true" />
-            <marker date="1500013425407" expanded="true" signature="231:233" ph="import ..." />
+            <marker date="1500021653048" expanded="true" signature="231:233" ph="import ..." />
           </folding>
         </state>
       </provider>
