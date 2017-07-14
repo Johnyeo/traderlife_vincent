@@ -34,7 +34,7 @@ def login_action(request):
         if user is not None:
             auth.login(request, user)  # 登录
             request.session['user'] = username
-            response = HttpResponseRedirect('/gamepage/')
+            response = HttpResponseRedirect('/gamepage')
             return response
         else:
             return render(request, 'index.html', {'error': 'username or password error!'})
@@ -93,13 +93,20 @@ def gameover(request):
 
 
 def nextTurn(request):
-    data = "hello"
-    test = game_thread.nextTurn('20170713200537') # gameid应该存在cookie里。
-    return HttpResponse(test)
+    gameid = request.COOKIES.get('gameid','')
+    if gameid == '':
+        print ("gameid是空的。 报错。")
+    test = game_thread.nextTurn(gameid) # gameid应该存在cookie里。
+    final_turn = False
+    if final_turn:
+        response = HttpResponse.delete_cookie('gameid')
+    response = HttpResponse(test)
+    return response
 
 
 def newGame(request):
-    game_thread.startNewGame()
-    # 应该把gameid写入cookie里。
+    new_gameid = game_thread.startNewGame()
     response = HttpResponseRedirect('/gamepage')
+    response.set_cookie('gameid', new_gameid)
+    # 应该把gameid写入cookie里。
     return response

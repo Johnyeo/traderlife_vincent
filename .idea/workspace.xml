@@ -4,9 +4,10 @@
     <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gameover.html" afterPath="$PROJECT_DIR$/sign/templates/gameover.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/db_handler.py" afterPath="$PROJECT_DIR$/sign/market/db_handler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/game_thread.py" afterPath="$PROJECT_DIR$/sign/market/game_thread.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gamepage.html" afterPath="$PROJECT_DIR$/sign/templates/gamepage.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/views.py" afterPath="$PROJECT_DIR$/sign/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/traderlife/urls.py" afterPath="$PROJECT_DIR$/traderlife/urls.py" />
     </list>
     <ignored path="traderlife.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +41,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="210" column="33" lean-forward="true" selection-start-line="210" selection-start-column="33" selection-end-line="210" selection-end-column="33" />
+              <folding>
+                <marker date="1499936946220" expanded="true" signature="3651:3662" ph="..." />
+                <marker date="1499936946220" expanded="true" signature="6642:6653" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
               <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="11" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="325" column="0" lean-forward="false" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -73,11 +97,11 @@
       <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="159" column="17" lean-forward="true" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
+            <state relative-caret-position="304">
+              <caret line="156" column="36" lean-forward="true" selection-start-line="156" selection-start-column="36" selection-end-line="156" selection-end-column="36" />
               <folding>
                 <element signature="e#184#199#0" expanded="true" />
-                <marker date="1499948666360" expanded="true" signature="231:233" ph="import ..." />
+                <marker date="1499999620534" expanded="true" signature="231:233" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -86,8 +110,8 @@
       <file leaf-file-name="game_thread.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/market/game_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state relative-caret-position="280">
+              <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -103,24 +127,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="102" column="25" lean-forward="false" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
+            <state relative-caret-position="223">
+              <caret line="98" column="52" lean-forward="false" selection-start-line="98" selection-start-column="52" selection-end-line="98" selection-end-column="52" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="guideline.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/guideline.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="71" column="9" lean-forward="false" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -185,17 +199,17 @@
         <option value="$PROJECT_DIR$/tradelife_test/test01.py" />
         <option value="$PROJECT_DIR$/traderlife/settings.py" />
         <option value="$PROJECT_DIR$/sign/templates/event_manage.html" />
-        <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
         <option value="$PROJECT_DIR$/sign/static/js/gamepage.js" />
         <option value="$PROJECT_DIR$/sign/migrations/0011_auto_20170713_1748.py" />
         <option value="$PROJECT_DIR$/sign/migrations/0011_auto_20170713_1806.py" />
         <option value="$PROJECT_DIR$/sign/models.py" />
         <option value="$PROJECT_DIR$/guideline.txt" />
-        <option value="$PROJECT_DIR$/sign/market/db_handler.py" />
         <option value="$PROJECT_DIR$/traderlife/urls.py" />
-        <option value="$PROJECT_DIR$/sign/market/game_thread.py" />
         <option value="$PROJECT_DIR$/sign/templates/gameover.html" />
+        <option value="$PROJECT_DIR$/sign/market/game_thread.py" />
+        <option value="$PROJECT_DIR$/sign/market/db_handler.py" />
         <option value="$PROJECT_DIR$/sign/views.py" />
+        <option value="$PROJECT_DIR$/sign/templates/gamepage.html" />
       </list>
     </option>
   </component>
@@ -1092,7 +1106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499948812325</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Add the functions into nextTurn and newGame">
+      <created>1499949891290</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1499949891290</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1205,7 +1226,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add a new post link updateWarehouse" />
     <MESSAGE value="add my warehouse UI and adjust others." />
     <MESSAGE value="adjust bottom UI." />
     <MESSAGE value="parse json data responsed from view.py." />
@@ -1230,7 +1250,8 @@
     <MESSAGE value="Add new models and fix the conflict between model and db by deleting the duplicate table." />
     <MESSAGE value="Try to generate the gameid but not good solution in this version." />
     <MESSAGE value="Generate gameid and gameround." />
-    <option name="LAST_COMMIT_MESSAGE" value="Generate gameid and gameround." />
+    <MESSAGE value="Add the functions into nextTurn and newGame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add the functions into nextTurn and newGame" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1331,13 +1352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python/Python35/Lib/site-packages/django/http/request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="374" column="8" lean-forward="false" selection-start-line="374" selection-start-column="8" selection-end-line="374" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1413,39 +1427,6 @@
         <state relative-caret-position="247">
           <caret line="13" column="61" lean-forward="false" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="329" column="55" lean-forward="false" selection-start-line="329" selection-start-column="55" selection-end-line="329" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h4#0;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h4#1;n#div#0;n#span#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#button#0;n#span#0;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#span#1;n#div#0;n#span#1;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="211" column="18" lean-forward="true" selection-start-line="211" selection-start-column="18" selection-end-line="211" selection-end-column="18" />
-          <folding>
-            <marker date="1499936946220" expanded="true" signature="3651:3662" ph="..." />
-            <marker date="1499936946220" expanded="true" signature="6642:6653" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1561,13 +1542,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sign/templates/event_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/traderlife/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="34" column="36" lean-forward="true" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="159" column="17" lean-forward="true" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
+        <state relative-caret-position="304">
+          <caret line="156" column="36" lean-forward="true" selection-start-line="156" selection-start-column="36" selection-end-line="156" selection-end-column="36" />
           <folding>
             <element signature="e#184#199#0" expanded="true" />
-            <marker date="1499948666360" expanded="true" signature="231:233" ph="import ..." />
+            <marker date="1499999620534" expanded="true" signature="231:233" ph="import ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="210" column="33" lean-forward="true" selection-start-line="210" selection-start-column="33" selection-end-line="210" selection-end-column="33" />
+          <folding>
+            <marker date="1499936946220" expanded="true" signature="3651:3662" ph="..." />
+            <marker date="1499936946220" expanded="true" signature="6642:6653" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1582,8 +1590,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/game_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="280">
+          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python/Python35/Lib/site-packages/django/http/request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="98" column="52" lean-forward="false" selection-start-line="98" selection-start-column="52" selection-end-line="98" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/templates/gameover.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1596,37 +1630,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/templates/event_manage.html">
+    <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        <state relative-caret-position="185">
+          <caret line="325" column="0" lean-forward="false" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/templates/gameover.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/traderlife/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="34" column="36" lean-forward="true" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="102" column="25" lean-forward="false" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -154,8 +154,8 @@ def setNewRound(gameid, new_gameround):
         player="zhangyao",
         gameround = new_gameround, # 初始值是0
         gameid = gameid,
-        cash = 800.00, # 初始值 1000块钱
-        balance = -200.00, # 初始交易金额 0
+        cash = 1000.00, # 初始值 1000块钱
+        balance = 0.00, # 初始交易金额 0
         flag = "A",
         # 创建时间：自动
     )

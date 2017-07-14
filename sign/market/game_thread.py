@@ -14,6 +14,7 @@ from sign.market import db_handler
 def startNewGame():
     new_gameid = db_handler.generateGameidByTime()
     db_handler.setNewGame(new_gameid)
+    return new_gameid
 
 def nextTurn(gameid):
     new_gameround = db_handler.generateGameround(gameid)
