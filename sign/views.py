@@ -68,21 +68,25 @@ def gamepage(request):
 
 # submitOrder,提交订单，获取订单，同时更新数据库
 def submitOrder(request):
+    # 获取gameid和gameround
+    gameid = game_thread.getGameIdFromCookie(request)
+    gameround = db_handler.getCurrentGameround(gameid)
     received_data_body = request.body
     received_json_data_raw = received_data_body.decode(
         'utf-8')  # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
     received_json_data = simplejson.loads(received_json_data_raw)
     # print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
-    db_handler.put_good_in_warehouse(received_json_data)
-    db_handler.update_good_in_wareHouse()
+    db_handler.put_good_in_warehouse(received_json_data, gameid, gameround)
+    db_handler.update_good_in_wareHouse(gameid, gameround)
     return HttpResponse(received_json_data)
 
 
 def updateWarehouse(request):
+    gameid = game_thread.getGameIdFromCookie(request)
     # 把测试数据换成真实数据。
     # 数据格式：
     # warehouse = {'goodlist':[{'goodname': '白菜', 'price':'15', 'count':'2'},{'goodname': '豆角', 'price':'15', 'count':'2'}]}
-    warehouse = db_handler.get_good_from_warehouse_in_json('zhangyao', 1000001)
+    warehouse = db_handler.get_good_from_warehouse_in_json('zhangyao', gameid)
     # 如果产品的数量为0了，就从数据库中移除去该数据。
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
@@ -95,12 +99,13 @@ def gameover(request):
 def nextTurn(request):
     gameid = request.COOKIES.get('gameid','')
     if gameid == '':
-        print ("gameid是空的。 报错。")
-    test = game_thread.nextTurn(gameid) # gameid应该存在cookie里。
+        print ("gameid是空的。 游戏还没有开始。")
+    gameround = game_thread.nextTurn(gameid) # gameid应该存在cookie里。
     final_turn = False
+    # 如果是最后一回合则销毁cookie
     if final_turn:
         response = HttpResponse.delete_cookie('gameid')
-    response = HttpResponse(test)
+    response = HttpResponse(gameround)
     return response
 
 

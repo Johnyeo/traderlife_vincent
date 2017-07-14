@@ -16,10 +16,21 @@ def startNewGame():
     db_handler.setNewGame(new_gameid)
     return new_gameid
 
+
 def nextTurn(gameid):
     new_gameround = db_handler.generateGameround(gameid)
     db_handler.setNewRound(gameid, new_gameround)
     return new_gameround
+
+
+def getGameIdFromCookie(request):
+    gameid = request.COOKIES.get('gameid', '')
+    if gameid == '':
+        print("gameid是空的。 报错。")
+    return gameid
+
+
+
 
 
 

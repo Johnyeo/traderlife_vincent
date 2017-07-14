@@ -14,24 +14,28 @@ from collections import Counter
 
 from django.contrib import auth
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Max
+from django.db.models import Max, Sum
 
 from sign import models
 
 # 将产品加入到仓库
-def put_good_in_warehouse(json_dict):
+def put_good_in_warehouse(json_dict, gameid, gameround):
     goods_list = json_dict["order"]
     for good_dict in goods_list:
+        price =  float(good_dict['price'])
+        count = float(good_dict['count'])
+        subtotal = price * count
         mygoods = models.My_goods_history(
             name=good_dict['goodname'],
             price=good_dict['price'],
             count=good_dict['count'],
+            total = subtotal,
             username='zhangyao',  # 通过gamethread来获取
             status=1,  # 有效
             flag="A",  # 新增操作
             quality=1,
-            gameround=1,  # 通过gamethread来获取
-            gameid_id=1000001  # 通过gamethread来获取
+            gameround=gameround,  # 通过gamethread来获取
+            gameid_id=gameid  # 通过gamethread来获取
         )
         mygoods.save()
 
@@ -39,8 +43,8 @@ def put_good_in_warehouse(json_dict):
 # 根据username和gameid 获取所有的仓库产品记录 -- get_good_from_warehouse_in_json
 # 每回合结束将所有的数量加减后，
 # 把history的内容提出来，写入一个新的表my_goods里。 然后从这个表取数据。
-def update_good_in_wareHouse():
-    goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid='1000001')
+def update_good_in_wareHouse(gameid, gameround):
+    goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid=gameid)
     print(len(goods_filter_by_user_gameid))
     filtered_good_list = get_same_good(goods_filter_by_user_gameid)
     # 写结果
@@ -51,7 +55,8 @@ def update_good_in_wareHouse():
             # https://docs.djangoproject.com/en/dev/ref/models/querysets/#update-or-create
             try:
                 print(models.My_goods.objects.get(name = goodname)) # 这行不能注释，因为下面的exception需要它来判断
-                models.My_goods.objects.filter(name = goodname).update(count = good_dict[goodname])
+                newtotal = get_good_subtotal(goodname, gameid, gameround)
+                models.My_goods.objects.filter(name=goodname).update(count=good_dict[goodname])
 
             except ObjectDoesNotExist: # 这个exception是从django api里查到的。 get方法当查不到内容的时候回返回这个。
                 print ("bingo --!!!")
@@ -59,12 +64,13 @@ def update_good_in_wareHouse():
                     name=goodname,
                     price=10,
                     count=good_dict[goodname],
+                    total = good_dict[goodname],
                     username='zhangyao',  # 通过gamethread来获取
                     status=1,  # 有效
                     flag="A",  # 新增操作
                     quality=1,
-                    gameround=1,  # 通过gamethread来获取
-                    gameid_id=1000001  # 通过gamethread来获取
+                    gameround=gameround,  # 通过gamethread来获取
+                    gameid_id=gameid,  # 通过gamethread来获取
                 )
                 mygoods.save()
 
@@ -160,3 +166,33 @@ def setNewRound(gameid, new_gameround):
         # 创建时间：自动
     )
     newGame.save()
+
+# TODO:
+def getGameroundBalance(gameid, game_round):
+    models.My_goods_history.objects.filter(gameid = gameid, gameround = game_round)
+
+
+def getCurrentGameround(t_gameid):
+    g = models.Game.objects.filter(gameid = t_gameid).aggregate(Max('gameround'))
+    maxgameround = g['gameround__max']
+    return maxgameround
+
+# 不同与之前的做法。 这次是先用select dictinct的sql语句方法， 选出所有的不重复的货物的名字。
+# 然后循环这些名字。
+# 然而数据库居然不支持distinct on。 从跟网上搜索到了替代方法。
+# http://blog.csdn.net/zhci31462/article/details/51886660
+def get_good_subtotal(goodname, gameid, gameround):
+    queryset = models.My_goods_history.objects.filter(gameid = gameid, gameround= gameround, username = 'zhangyao')
+    items = []
+    for item in queryset:
+        if item not in items:
+            items.append(item)
+
+    for i in items:
+        goodname = i.name
+        subtotal = models.My_goods_history.objects.filter(name = goodname, gameid = gameid, ).aggregate(Sum('total'))
+
+    print (items[0].name)
+    print (type(items))
+
+
