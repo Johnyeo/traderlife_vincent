@@ -4,8 +4,8 @@ from django.db import models
 
 class Game(models.Model):
     player = models.CharField(max_length=100)
-    gameround = models.IntegerField()
-    gameid = models.IntegerField()
+    gameround = models.BigIntegerField()
+    gameid = models.BigIntegerField()
     cash = models.DecimalField(max_digits=24, decimal_places=2)
     balance = models.DecimalField(max_digits=24, decimal_places=2)
     flag = models.CharField(max_length=1)
@@ -37,7 +37,7 @@ class My_goods(models.Model):
     create_time = models.DateTimeField(auto_now=True)
     image_url = models.CharField(max_length=200)
     gameid = models.ForeignKey(Game)  # 游戏场次的id
-    gameround = models.IntegerField()   # 该场次，游戏回合的id
+    gameround = models.BigIntegerField()   # 该场次，游戏回合的id
 
 # 数据记录
 class My_goods_history(models.Model):
@@ -52,7 +52,7 @@ class My_goods_history(models.Model):
     create_time = models.DateTimeField(auto_now=True)
     image_url = models.CharField(max_length=200)
     gameid = models.ForeignKey(Game)  # 游戏场次的id
-    gameround = models.IntegerField()   # 该场次，游戏回合的id
+    gameround = models.BigIntegerField()   # 该场次，游戏回合的id
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
