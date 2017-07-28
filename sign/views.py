@@ -115,3 +115,6 @@ def newGame(request):
     response.set_cookie('gameid', new_gameid)
     # 应该把gameid写入cookie里。
     return response
+
+def loginpage(request):
+    return render(request,'loginpage.html')
