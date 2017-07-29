@@ -61,14 +61,15 @@ def gamepage(request):
     market_goods_list = Market_goods.objects.all()
     username = request.session.get('user', '')
     username = "zhangyao"
-    gameid = '1000001'
-    goodlist = models.My_goods.objects.filter(username=username, gameid_id=gameid)
-    return render(request, 'gamepage.html', {'user': username, 'market_goods': market_goods_list, 'my_goods': goodlist})
+    # gameid = '1000001'
+    # goodlist = models.My_goods.objects.filter(username=username, gameid_id=gameid)
+    return render(request, 'gamepage.html', {'user': username, 'market_goods': market_goods_list, })
 
 
 # submitOrder,提交订单，获取订单，同时更新数据库
 def submitOrder(request):
     # 获取gameid和gameround
+    player = "zhangyao"
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
     received_data_body = request.body
@@ -78,6 +79,8 @@ def submitOrder(request):
     # print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
     db_handler.put_good_in_warehouse(received_json_data, gameid, gameround)
     db_handler.update_good_in_wareHouse(gameid, gameround)
+    # 对数据库的余额进行计算
+
     return HttpResponse(received_json_data)
 
 
@@ -90,6 +93,22 @@ def updateWarehouse(request):
     # 如果产品的数量为0了，就从数据库中移除去该数据。
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
+
+# 获取账户信息
+def getAccountInfo(request):
+    gameid = game_thread.getGameIdFromCookie(request)
+    gameround = db_handler.getCurrentGameround(gameid)
+    player = "zhangyao"
+
+#   从game表里面，获取最新的余额
+#   从profile表里面，获得用户的其他信息（游戏中的年龄性别之类的）暂时未创建
+    balance = db_handler.calcuBalance(gameid, gameround, player)['total__sum']
+    totalCash = db_handler.getTotalCash(gameid,gameround,player)
+
+    accountInfo_dict = {"name":"zhangyao", "totalCash":totalCash,
+                        "balance":balance}
+    accountInfo_json = simplejson.dumps(accountInfo_dict)
+    return HttpResponse(accountInfo_json)
 
 
 def gameover(request):

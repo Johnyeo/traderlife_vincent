@@ -161,21 +161,22 @@ def generateGameround(gameid):
     return gameround
 
 
-def setNewRound(gameid, new_gameround):
+def setNewRound(gameid, new_gameround, cash = 1000.00):
     newGame = models.Game(
         player="zhangyao",
         gameround = new_gameround, # 初始值是0
         gameid = gameid,
-        cash = 1000.00, # 初始值 1000块钱
+        cash = cash, # 初始值 1000块钱
         balance = 0.00, # 初始交易金额 0
         flag = "A",
         # 创建时间：自动
     )
     newGame.save()
 
-# TODO:
-def getGameroundBalance(gameid, game_round):
-    models.My_goods_history.objects.filter(gameid = gameid, gameround = game_round)
+
+def calcuBalance(gameid, game_round, player):
+    balance = models.My_goods_history.objects.filter(gameid = gameid, gameround = game_round, username = player).aggregate(Sum('total'))
+    return balance
 
 
 def getCurrentGameround(t_gameid):
@@ -211,3 +212,6 @@ def getAbsGoodPrice(goodname):
     return price_set
 
 
+def getTotalCash(gameid, gameround, player):
+    totalCash = models.Game.objects.filter(player = player, gameid = gameid).aggregate(Sum('balance'))
+    return totalCash["balance__sum"]

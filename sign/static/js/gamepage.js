@@ -77,6 +77,7 @@ $(document).ready(function () {
         // 每次页面刷新都运行
         window.onload = function () {
             getMyGoods()
+            getMyAccount()
         }
 
         // 将物品添加到order里
@@ -163,6 +164,23 @@ $(document).ready(function () {
             });
         }
 
+
+        function displayMyAccountInfo(result) {
+            accountInfo = JSON.parse(result);
+            name = accountInfo.name;
+            totalCash = accountInfo.totalCash;
+            balance = accountInfo.balance;
+            if (balance>0){
+                balance_str = "- $" + balance;
+            }else if (balance<0){
+                balance_str = "+ $" + balance;
+            }
+
+            $("#totalCash").text(totalCash);
+            $("#balance").text(balance_str);
+        }
+
+
         function getMyGoods() {
             $.ajax({
                 type: "POST",
@@ -182,6 +200,28 @@ $(document).ready(function () {
                 }
             })
         }
+
+
+        function getMyAccount() {
+            $.ajax({
+                type: "POST",
+                url: "getAccountInfo",
+                // contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
+                // dataType: "json",  // 规定了返回 数据的类型。
+                data: {username: 'zhangyao'},
+                success: function (result) {
+                    // 转换Unicode成可以正常显示的中文。
+                    result = eval("'" + result + "'");
+                    // 测试代码
+                    // alert(result);
+                    displayMyAccountInfo(result)
+                },
+                error: function (result) {
+                    alert("错误，请稍后再试。")
+                }
+            })
+        }
+
 
         function submitOrder(orderdata) {
             $.ajax({
