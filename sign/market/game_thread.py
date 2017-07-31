@@ -9,10 +9,13 @@
     # 用户A下一次点击生成下一个eroundid
 
 # 数据库写入新的gameid
+import random
+
 from sign.market import db_handler
 
 def startNewGame():
     new_gameid = db_handler.generateGameidByTime()
+    db_handler.generateCurrentMarket(new_gameid)
     db_handler.setNewGame(new_gameid)
     return new_gameid
 
@@ -21,6 +24,8 @@ def nextTurn(gameid):
     player = 'zhangyao'
     new_gameround = db_handler.generateGameround(gameid)
     gameround = db_handler.getCurrentGameround(gameid)
+    db_handler.generateCurrentMarket(gameid)
+
     # 获取上一回合总金额
     cash = db_handler.calcuTotalCash(gameid,gameround, player)
     db_handler.setNewRound(gameid, new_gameround, cash)
@@ -32,6 +37,10 @@ def getGameIdFromCookie(request):
     if gameid == '':
         print("gameid是空的。 报错。")
     return gameid
+
+
+
+
 
 
 

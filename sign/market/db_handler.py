@@ -10,8 +10,10 @@
 #   2. 将处理过的的dict分解成产品
 #   3. 写入数据库
 import datetime
+import random
 from collections import Counter
 
+from decimal import Decimal
 from django.contrib import auth
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Max, Sum
@@ -24,6 +26,7 @@ from sign.market import properties
 
 def put_good_in_warehouse(json_dict, gameid, gameround):
     goods_list = json_dict["order"]
+
     for good_dict in goods_list:
         #不能用传进来的值，要用数据库里的值
         goodname = good_dict['goodname']
@@ -33,7 +36,7 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
         subtotal = price * count
         mygoods = models.My_goods_history(
             name=goodname,
-            price=good_dict['price'],
+            price=price,
             count=good_dict['count'],
             total = subtotal,
             username='zhangyao',  # 通过gamethread来获取
@@ -96,7 +99,9 @@ def get_good_from_warehouse_in_json(username, gameid):
 def good_list_to_json(list):
     templist = []
     for good_tuple in list:
-        tempdict = {'goodname': good_tuple[0], 'price':good_tuple[1], 'count':good_tuple[2]}
+        # 从数据库market里读price,[0]是base， [1]是scope
+        price = getAbsGoodPrice(good_tuple[0])[0]
+        tempdict = {'goodname': good_tuple[0], 'price':price, 'count':good_tuple[2]}
         templist.append(tempdict)
     return {'goodlist':templist}
 
@@ -213,8 +218,44 @@ def get_good_subtotal(goodname, gameid, gameround):
     return  subtotal
 
 
-def getCurrentGoodPrice(goodname, gameid, gameround):
-    pass
+def generateCurrentCount(param):
+    return 100
+
+#   预留方法：未来可能根据产品质量，返回图片或其他。
+def generateCurrentImage(name, quality):
+    image = models.Market_goods.objects.filter(name = name).values()[0]['image_url']
+    return image
+
+
+def generateCurrentPrice(basePrice, scope):
+    scopeForCalcu = 100*scope
+    scopeForCalcu = random.randint(0, scopeForCalcu)
+    scope = scopeForCalcu/100
+    # 转成decimal
+    scope = Decimal(scope)
+    price = scope + basePrice
+    return price
+
+def generateCurrentMarket(gameid):
+    baseMarket = models.Market_goods.objects.values()
+
+    for good_dict in baseMarket:
+        print(good_dict)
+        print(good_dict['name'])
+        price = generateCurrentPrice(good_dict['price'], good_dict['price_scope']),
+        count = generateCurrentCount(good_dict['name']),
+
+        marketHistory = models.Market_goods_history(
+            name = good_dict['name'],
+            price = price,
+            count = count,
+            flag = "A",
+            status = 1,
+            image_url = generateCurrentImage(good_dict['name'], good_dict['quality']),
+            gameround = getCurrentGameround(gameid),
+            gameid_id = gameid
+        )
+        marketHistory.save()
 
 
 def getAbsGoodPrice(goodname):
@@ -243,5 +284,3 @@ def getTotalCash(gameid, gameround, player):
     except ObjectDoesNotExist:
         print("Total is not find")
     return totalCash
-
-
