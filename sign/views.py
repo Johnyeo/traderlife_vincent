@@ -99,12 +99,15 @@ def getAccountInfo(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
     player = "zhangyao"
-
+    print ("game round is %s" % gameround)
 #   从game表里面，获取最新的余额
 #   从profile表里面，获得用户的其他信息（游戏中的年龄性别之类的）暂时未创建
-    balance = db_handler.calcuBalance(gameid, gameround, player)['total__sum']
+    balance = db_handler.calcuBalance(gameid, gameround, player)
+    print(balance)
+    if balance == None:
+        balance = db_handler.getBalance(gameid, gameround, player)
     totalCash = db_handler.getTotalCash(gameid,gameround,player)
-
+    print(totalCash)
     accountInfo_dict = {"name":"zhangyao", "totalCash":totalCash,
                         "balance":balance}
     accountInfo_json = simplejson.dumps(accountInfo_dict)

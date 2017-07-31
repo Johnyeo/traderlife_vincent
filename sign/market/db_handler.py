@@ -19,6 +19,9 @@ from django.db.models import Max, Sum
 from sign import models
 
 # 将产品加入到仓库
+from sign.market import properties
+
+
 def put_good_in_warehouse(json_dict, gameid, gameround):
     goods_list = json_dict["order"]
     for good_dict in goods_list:
@@ -141,14 +144,17 @@ def generateGameidByTime():
     time = timenow.strftime("%Y%m%d%H%M%S")
     return time
 
-
 def setNewGame(new_gameid):
+    # 新游戏
+    cash = 1000.00
+    balance = 0.00
+
     newGame = models.Game(
         player="zhangyao",
         gameround = "0", # 初始值是0
         gameid = new_gameid,
-        cash = 1000.00, # 初始值 1000块钱
-        balance = 0.00, # 初始交易金额 0
+        cash = cash, # 初始值 1000块钱
+        balance = balance, # 初始交易金额 0
         flag = "A",
         # 创建时间：自动
     )
@@ -162,6 +168,7 @@ def generateGameround(gameid):
 
 
 def setNewRound(gameid, new_gameround, cash = 1000.00):
+
     newGame = models.Game(
         player="zhangyao",
         gameround = new_gameround, # 初始值是0
@@ -175,7 +182,17 @@ def setNewRound(gameid, new_gameround, cash = 1000.00):
 
 
 def calcuBalance(gameid, game_round, player):
-    balance = models.My_goods_history.objects.filter(gameid = gameid, gameround = game_round, username = player).aggregate(Sum('total'))
+    balance = models.My_goods_history.objects.filter(gameid = gameid, gameround = game_round, username = player).aggregate(Sum('total'))['total__sum']
+    if balance is None:
+        balance = 0
+    balance = -balance
+    print(balance)
+    models.Game.objects.filter(gameid = gameid, gameround = game_round, player = player).update(balance=balance)
+    return balance
+
+
+def getBalance(gameid, gameround, player):
+    balance = models.Game.objects.filter(gameid=gameid, gameround=gameround, player=player).values()[0]['balance']
     return balance
 
 
@@ -212,6 +229,19 @@ def getAbsGoodPrice(goodname):
     return price_set
 
 
+def calcuTotalCash(gameid, gameround, player):
+    totalBalance = models.Game.objects.filter(player = player, gameid = gameid).aggregate(Sum('balance'))
+    result = totalBalance["balance__sum"]
+    result = result + properties.BASE_MONEY
+    models.Game.objects.filter(player = player, gameround = gameround, gameid = gameid).update(cash = result)
+    return result
+
+
 def getTotalCash(gameid, gameround, player):
-    totalCash = models.Game.objects.filter(player = player, gameid = gameid).aggregate(Sum('balance'))
-    return totalCash["balance__sum"]
+    try:
+        totalCash = models.Game.objects.filter(player = player,gameround = gameround, gameid = gameid).values()[0]['cash']
+    except ObjectDoesNotExist:
+        print("Total is not find")
+    return totalCash
+
+

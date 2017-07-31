@@ -170,11 +170,16 @@ $(document).ready(function () {
             name = accountInfo.name;
             totalCash = accountInfo.totalCash;
             balance = accountInfo.balance;
-            if (balance>0){
+            if (balance<0){
+                balance = Math.abs(balance)
                 balance_str = "- $" + balance;
-            }else if (balance<0){
+            }else if (balance>0){
+                balance = Math.abs(balance)
                 balance_str = "+ $" + balance;
+            }else {
+                balance_str = "  $" + balance;
             }
+
 
             $("#totalCash").text(totalCash);
             $("#balance").text(balance_str);
@@ -249,6 +254,7 @@ $(document).ready(function () {
                 // dataType: "json",  // 规定了返回 数据的类型。
                 success: function (result) {
                     alert(result)
+                    window.location.reload()
                 },
                 error: function (result) {
                     alert("错误，请稍后再试。")

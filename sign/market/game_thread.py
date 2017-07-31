@@ -20,9 +20,9 @@ def startNewGame():
 def nextTurn(gameid):
     player = 'zhangyao'
     new_gameround = db_handler.generateGameround(gameid)
-
+    gameround = db_handler.getCurrentGameround(gameid)
     # 获取上一回合总金额
-    cash = db_handler.getTotalCash(gameid,new_gameround-1, player)
+    cash = db_handler.calcuTotalCash(gameid,gameround, player)
     db_handler.setNewRound(gameid, new_gameround, cash)
     return new_gameround
 
