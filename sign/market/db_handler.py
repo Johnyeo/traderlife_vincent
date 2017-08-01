@@ -240,10 +240,13 @@ def generateCurrentMarket(gameid):
     baseMarket = models.Market_goods.objects.values()
 
     for good_dict in baseMarket:
-        print(good_dict)
-        print(good_dict['name'])
         price = generateCurrentPrice(good_dict['price'], good_dict['price_scope']),
         count = generateCurrentCount(good_dict['name']),
+
+        # 不知道为什么，返回来的 是tuple？？？未解之谜。
+        price  = price[0]
+        count = count[0]
+        gameround  = getCurrentGameround(gameid)
 
         marketHistory = models.Market_goods_history(
             name = good_dict['name'],
@@ -252,7 +255,7 @@ def generateCurrentMarket(gameid):
             flag = "A",
             status = 1,
             image_url = generateCurrentImage(good_dict['name'], good_dict['quality']),
-            gameround = getCurrentGameround(gameid),
+            gameround = gameround,
             gameid_id = gameid
         )
         marketHistory.save()

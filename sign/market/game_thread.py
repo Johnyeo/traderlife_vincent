@@ -15,8 +15,8 @@ from sign.market import db_handler
 
 def startNewGame():
     new_gameid = db_handler.generateGameidByTime()
-    db_handler.generateCurrentMarket(new_gameid)
     db_handler.setNewGame(new_gameid)
+    db_handler.generateCurrentMarket(new_gameid)
     return new_gameid
 
 

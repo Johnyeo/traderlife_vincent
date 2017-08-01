@@ -6,7 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/db_handler.py" afterPath="$PROJECT_DIR$/sign/market/db_handler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/market/game_thread.py" afterPath="$PROJECT_DIR$/sign/market/game_thread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/models.py" afterPath="$PROJECT_DIR$/sign/models.py" />
     </list>
     <ignored path="traderlife.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,7 +42,7 @@
       <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2445">
+            <state relative-caret-position="6232">
               <caret line="328" column="75" lean-forward="false" selection-start-line="328" selection-start-column="75" selection-end-line="328" selection-end-column="75" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -74,7 +73,7 @@
       <file leaf-file-name="gameover.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/templates/gameover.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="855">
               <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="47" selection-end-column="15" />
               <folding />
             </state>
@@ -84,7 +83,7 @@
       <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
+            <state relative-caret-position="6574">
               <caret line="346" column="0" lean-forward="true" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
               <folding>
                 <marker date="1501495385177" expanded="true" signature="3678:3689" ph="..." />
@@ -97,8 +96,8 @@
       <file leaf-file-name="game_thread.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/market/game_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+            <state relative-caret-position="126">
+              <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
               <folding>
                 <element signature="e#217#230#0" expanded="true" />
               </folding>
@@ -109,11 +108,11 @@
       <file leaf-file-name="db_handler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="249" column="26" lean-forward="true" selection-start-line="249" selection-start-column="26" selection-end-line="249" selection-end-column="26" />
+            <state relative-caret-position="200">
+              <caret line="248" column="48" lean-forward="true" selection-start-line="248" selection-start-column="48" selection-end-line="248" selection-end-column="48" />
               <folding>
                 <element signature="e#184#199#0" expanded="true" />
-                <marker date="1501504490429" expanded="true" signature="274:275" ph="import ..." />
+                <marker date="1501579749895" expanded="true" signature="274:275" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -142,8 +141,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1435">
-              <caret line="124" column="64" lean-forward="false" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="64" />
+            <state relative-caret-position="278">
+              <caret line="134" column="36" lean-forward="false" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -770,13 +769,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494988351407</updated>
     </task>
-    <task id="LOCAL-00010" summary="try display selected product on order">
-      <created>1497863234490</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1497863234490</updated>
-    </task>
     <task id="LOCAL-00011" summary="optimize order area tag to &quot;&lt;table&gt;&quot;">
       <created>1497864510716</created>
       <option name="number" value="00011" />
@@ -1113,7 +1105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501495521674</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="build market system 20%">
+      <created>1501504596077</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1501504596077</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1129,18 +1128,17 @@
     <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.289313" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3783784" sideWeight="0.5030257" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19087838" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5650685" sideWeight="0.48789713" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.49092284" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.49394855" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28473282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32612312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19087838" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39899832" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.49394855" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39899832" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1149,6 +1147,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32612312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1226,7 +1225,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix warehouse issues." />
     <MESSAGE value="Before rebuild the js." />
     <MESSAGE value="Rebuild 1.0, those who doesn't kill you makes you stronger." />
     <MESSAGE value="Rebuild 1.1, the houseware still has problem." />
@@ -1251,7 +1249,8 @@
     <MESSAGE value="Build new index page and login page. 20%." />
     <MESSAGE value="Build account. 30%" />
     <MESSAGE value="Build account. 80%" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build account. 80%" />
+    <MESSAGE value="build market system 20%" />
+    <option name="LAST_COMMIT_MESSAGE" value="build market system 20%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1508,7 +1507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
           <caret line="50" column="74" lean-forward="false" selection-start-line="50" selection-start-column="74" selection-end-line="50" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1516,7 +1514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1524,7 +1521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
           <caret line="93" column="17" lean-forward="false" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1532,7 +1528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1546,7 +1541,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2445">
+        <state relative-caret-position="6232">
           <caret line="328" column="75" lean-forward="false" selection-start-line="328" selection-start-column="75" selection-end-line="328" selection-end-column="75" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1567,15 +1562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
           <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1587,19 +1573,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1435">
-          <caret line="124" column="64" lean-forward="false" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sign/templates/gameover.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="855">
           <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="47" selection-end-column="15" />
           <folding />
         </state>
@@ -1607,7 +1583,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="6574">
           <caret line="346" column="0" lean-forward="true" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
           <folding>
             <marker date="1501495385177" expanded="true" signature="3678:3689" ph="..." />
@@ -1616,10 +1592,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sign/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sign/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="134" column="36" lean-forward="false" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/game_thread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        <state relative-caret-position="126">
+          <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
           <folding>
             <element signature="e#217#230#0" expanded="true" />
           </folding>
@@ -1628,11 +1622,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/market/db_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="249" column="26" lean-forward="true" selection-start-line="249" selection-start-column="26" selection-end-line="249" selection-end-column="26" />
+        <state relative-caret-position="200">
+          <caret line="248" column="48" lean-forward="true" selection-start-line="248" selection-start-column="48" selection-end-line="248" selection-end-column="48" />
           <folding>
             <element signature="e#184#199#0" expanded="true" />
-            <marker date="1501504490429" expanded="true" signature="274:275" ph="import ..." />
+            <marker date="1501579749895" expanded="true" signature="274:275" ph="import ..." />
           </folding>
         </state>
       </provider>
