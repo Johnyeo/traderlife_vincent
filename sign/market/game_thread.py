@@ -14,9 +14,10 @@ import random
 from sign.market import db_handler
 
 def startNewGame():
+    startRound = 0
     new_gameid = db_handler.generateGameidByTime()
     db_handler.setNewGame(new_gameid)
-    db_handler.generateCurrentMarket(new_gameid)
+    db_handler.generateCurrentMarket(new_gameid, startRound)
     return new_gameid
 
 
@@ -24,7 +25,7 @@ def nextTurn(gameid):
     player = 'zhangyao'
     new_gameround = db_handler.generateGameround(gameid)
     gameround = db_handler.getCurrentGameround(gameid)
-    db_handler.generateCurrentMarket(gameid)
+    db_handler.generateCurrentMarket(gameid, new_gameround)
 
     # 获取上一回合总金额
     cash = db_handler.calcuTotalCash(gameid,gameround, player)

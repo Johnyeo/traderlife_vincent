@@ -34,8 +34,7 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
         price = Decimal(price)
         count = Decimal(good_dict['count'])
         subtotal = price * count
-        print(subtotal)
-        print(type(subtotal))
+
         mygoods = models.My_goods_history(
             name=goodname,
             price=price,
@@ -56,7 +55,9 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
 # 把history的内容提出来，写入一个新的表my_goods里。 然后从这个表取数据。
 def getCurrentGoodPrice(goodname, gameid, gameround):
     goodprice = models.Market_goods_history.objects.filter(name = goodname, gameid = gameid, gameround = gameround).values()
-    price = goodprice['price']
+    price = goodprice[0]['price']
+    print (price)
+    print (type(price))
     return price
 
 
@@ -245,8 +246,9 @@ def generateCurrentPrice(basePrice, scope):
     price = scope + basePrice
     return price
 
-def generateCurrentMarket(gameid):
+def generateCurrentMarket(gameid, newGameRound):
     baseMarket = models.Market_goods.objects.values()
+    index = 1
 
     for good_dict in baseMarket:
         price = generateCurrentPrice(good_dict['price'], good_dict['price_scope']),
@@ -255,7 +257,7 @@ def generateCurrentMarket(gameid):
         # 不知道为什么，返回来的 是tuple？？？未解之谜。
         price  = price[0]
         count = count[0]
-        gameround  = getCurrentGameround(gameid)
+        gameround  = newGameRound
 
         # 很迷，有的时候写gameid就可以， 有的时候，如下，就需要些gameid_id
         marketHistory = models.Market_goods_history(
@@ -266,9 +268,12 @@ def generateCurrentMarket(gameid):
             status = 1,
             image_url = generateCurrentImage(good_dict['name'], good_dict['quality']),
             gameround = gameround,
-            gameid_id = gameid
+            gameid_id = gameid,
+            index = index,
         )
         marketHistory.save()
+
+        index += 1
 
 
 def getAbsGoodPrice(goodname):

@@ -121,7 +121,7 @@
             <!--判断数据库中，是否是有效的产品（1），如果不是1，则显示一个默认图片-->
             <tr>
                 {% for good in market_goods %}
-                {% if good.id <= 5 %}
+                {% if good.index <= 5 %}
                 {% if good.status == 1 %}
                 <td>
                     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -168,8 +168,8 @@
             <!--第二排-->
             <tr>
                 {% for good in market_goods %}
-                {% if good.id <= 10 %}
-                {% if good.id > 5 %}
+                {% if good.index <= 10 %}
+                {% if good.index > 5 %}
                 {% if good.status == 1 %}
                 <td>
                     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -217,8 +217,8 @@
             <!--第三排-->
             <tr>
                 {% for good in market_goods %}
-                {% if good.id <= 15 %}
-                {% if good.id > 10 %}
+                {% if good.index <= 15 %}
+                {% if good.index > 10 %}
                 {% if good.status == 1 %}
                 <td>
                     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">

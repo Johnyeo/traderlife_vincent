@@ -35,6 +35,7 @@ class Market_goods_history(models.Model):
     image_url = models.CharField(max_length=200)
     gameid = models.ForeignKey(Game)  # 游戏场次的id
     gameround = models.BigIntegerField()   # 该场次，游戏回合的id
+    index = models.IntegerField(default=0)
     def __str__(self):
         return self.name
 
