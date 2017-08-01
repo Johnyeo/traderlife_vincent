@@ -30,10 +30,12 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
     for good_dict in goods_list:
         #不能用传进来的值，要用数据库里的值
         goodname = good_dict['goodname']
-        price =  getAbsGoodPrice(goodname)[0]
-        price = float(price)
-        count = float(good_dict['count'])
+        price =  getCurrentGoodPrice(goodname, gameid, gameround)
+        price = Decimal(price)
+        count = Decimal(good_dict['count'])
         subtotal = price * count
+        print(subtotal)
+        print(type(subtotal))
         mygoods = models.My_goods_history(
             name=goodname,
             price=price,
@@ -52,6 +54,12 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
 # 根据username和gameid 获取所有的仓库产品记录 -- get_good_from_warehouse_in_json
 # 每回合结束将所有的数量加减后，
 # 把history的内容提出来，写入一个新的表my_goods里。 然后从这个表取数据。
+def getCurrentGoodPrice(goodname, gameid, gameround):
+    goodprice = models.Market_goods_history.objects.filter(name = goodname, gameid = gameid, gameround = gameround).values()
+    price = goodprice['price']
+    return price
+
+
 def update_good_in_wareHouse(gameid, gameround):
     goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid=gameid)
     print(len(goods_filter_by_user_gameid))
@@ -62,7 +70,8 @@ def update_good_in_wareHouse(gameid, gameround):
             # 如果该元素在数据库中不存在，进入exception. 如果存在则更新数字。
             # django提供了一个现成的方法update or create，实现思路和下面的一样。都是利用ObjectDoesNotExist。
             # https://docs.djangoproject.com/en/dev/ref/models/querysets/#update-or-create
-            price = getAbsGoodPrice(goodname)[0]
+            price = getCurrentGoodPrice(goodname, gameid, gameround)
+
             try:
                 print(models.My_goods.objects.get(name = goodname, gameid = gameid)) # 这行不能注释，因为下面的exception需要它来判断
                 newtotal = get_good_subtotal(goodname, gameid, gameround)
@@ -248,6 +257,7 @@ def generateCurrentMarket(gameid):
         count = count[0]
         gameround  = getCurrentGameround(gameid)
 
+        # 很迷，有的时候写gameid就可以， 有的时候，如下，就需要些gameid_id
         marketHistory = models.Market_goods_history(
             name = good_dict['name'],
             price = price,

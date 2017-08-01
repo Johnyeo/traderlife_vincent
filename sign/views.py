@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from sign import models
 from sign.market import db_handler, game_thread
-from sign.models import Market_goods, My_goods
+from sign.models import Market_goods, My_goods, Market_goods_history
 
 
 # from sign.market import goods
@@ -58,7 +58,10 @@ def login_action(request):
 
 # @login_required
 def gamepage(request):
-    market_goods_list = Market_goods.objects.all()
+    gameid = game_thread.getGameIdFromCookie(request)
+    gameround = db_handler.getCurrentGameround(gameid)
+
+    market_goods_list = Market_goods_history.objects.filter(gameid = gameid, gameround = gameround)
     username = request.session.get('user', '')
     username = "zhangyao"
     # gameid = '1000001'
