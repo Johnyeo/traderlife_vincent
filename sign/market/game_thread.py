@@ -36,8 +36,10 @@ def nextTurn(gameid):
 def getGameIdFromCookie(request):
     gameid = request.COOKIES.get('gameid', '')
     if gameid == '':
-        print("gameid是空的。 报错。")
+        # print("gameid是空的。 报错。")
+        pass
     return gameid
+
 
 
 

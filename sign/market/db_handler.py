@@ -56,14 +56,13 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
 def getCurrentGoodPrice(goodname, gameid, gameround):
     goodprice = models.Market_goods_history.objects.filter(name = goodname, gameid = gameid, gameround = gameround).values()
     price = goodprice[0]['price']
-    print (price)
-    print (type(price))
+
     return price
 
 
 def update_good_in_wareHouse(gameid, gameround):
     goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid=gameid)
-    print(len(goods_filter_by_user_gameid))
+    # print(len(goods_filter_by_user_gameid))
     filtered_good_list = get_same_good(goods_filter_by_user_gameid)
     # 写结果
     for good_dict in filtered_good_list:
@@ -74,12 +73,11 @@ def update_good_in_wareHouse(gameid, gameround):
             price = getCurrentGoodPrice(goodname, gameid, gameround)
 
             try:
-                print(models.My_goods.objects.get(name = goodname, gameid = gameid)) # 这行不能注释，因为下面的exception需要它来判断
+                models.My_goods.objects.get(name = goodname, gameid = gameid) # 这行不能注释，因为下面的exception需要它来判断
                 newtotal = get_good_subtotal(goodname, gameid, gameround)
                 models.My_goods.objects.filter(name=goodname, gameid = gameid).update(count=good_dict[goodname], total = newtotal, price = price)
 
             except ObjectDoesNotExist: # 这个exception是从django api里查到的。 get方法当查不到内容的时候回返回这个。
-                print ("bingo --!!!")
                 subtotal = good_dict[goodname]*price
                 mygoods = models.My_goods(
                     name=goodname,
@@ -97,20 +95,21 @@ def update_good_in_wareHouse(gameid, gameround):
                 mygoods.save()
 
 # 从my_goods表里面获取，history的表里存每一条记录。 my_goods的表里存当前结果。
-def get_good_from_warehouse_in_json(username, gameid):
+def get_good_from_warehouse_in_json(username, gameid, gameround):
     goodlist = models.My_goods.objects.filter(username = username, gameid_id = gameid, ).exclude(count = 0).values_list('name','price','count')
-    result = good_list_to_json(goodlist)
+    result = good_list_to_json(goodlist, gameid, gameround)
     return result
     # 测试代码
     # return {
     #     'goodlist': [{'goodname': '白菜', 'price': '15', 'count': '2'}, {'goodname': '豆角', 'price': '15', 'count': '2'}]}
 
 # 将从数据库通过valuelist搜出来的结果，转成json格式。！没有通用性！
-def good_list_to_json(list):
+def good_list_to_json(list, gameid, gameround):
     templist = []
     for good_tuple in list:
         # 从数据库market里读price,[0]是base， [1]是scope
-        price = getAbsGoodPrice(good_tuple[0])[0]
+        price = getCurrentGoodPrice(good_tuple[0], gameid, gameround)
+        # price = getAbsGoodPrice(good_tuple[0])[0]
         tempdict = {'goodname': good_tuple[0], 'price':price, 'count':good_tuple[2]}
         templist.append(tempdict)
     return {'goodlist':templist}
@@ -201,7 +200,7 @@ def calcuBalance(gameid, game_round, player):
     if balance is None:
         balance = 0
     balance = -balance
-    print(balance)
+    # print(balance)
     models.Game.objects.filter(gameid = gameid, gameround = game_round, player = player).update(balance=balance)
     return balance
 
@@ -223,8 +222,6 @@ def getCurrentGameround(t_gameid):
 def get_good_subtotal(goodname, gameid, gameround):
     subtotal_raw = models.My_goods_history.objects.filter(name = goodname, gameid = gameid, ).aggregate(Sum('total'))
     subtotal = subtotal_raw['total__sum']
-    print (subtotal)
-    print (type(subtotal))
     return  subtotal
 
 
@@ -278,12 +275,10 @@ def generateCurrentMarket(gameid, newGameRound):
 
 def getAbsGoodPrice(goodname):
     gooditem = models.Market_goods.objects.filter(name = goodname).values()
-    print(type(gooditem))
+
     basePrice = gooditem[0]['price']
     priceScope = gooditem[0]['price_scope']
-    print("价格")
-    print(basePrice)
-    print(priceScope)
+
     price_set = [basePrice, priceScope]
     return price_set
 
@@ -300,5 +295,6 @@ def getTotalCash(gameid, gameround, player):
     try:
         totalCash = models.Game.objects.filter(player = player,gameround = gameround, gameid = gameid).values()[0]['cash']
     except ObjectDoesNotExist:
-        print("Total is not find")
+        # print("Total is not find")
+        pass
     return totalCash

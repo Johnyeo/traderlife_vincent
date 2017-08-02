@@ -89,10 +89,13 @@ def submitOrder(request):
 
 def updateWarehouse(request):
     gameid = game_thread.getGameIdFromCookie(request)
+    gameround = db_handler.getCurrentGameround(gameid)
+    player = 'zhangyao'
+
     # 把测试数据换成真实数据。
     # 数据格式：
     # warehouse = {'goodlist':[{'goodname': '白菜', 'price':'15', 'count':'2'},{'goodname': '豆角', 'price':'15', 'count':'2'}]}
-    warehouse = db_handler.get_good_from_warehouse_in_json('zhangyao', gameid)
+    warehouse = db_handler.get_good_from_warehouse_in_json(player, gameid, gameround)
     # 如果产品的数量为0了，就从数据库中移除去该数据。
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
@@ -102,15 +105,15 @@ def getAccountInfo(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
     player = "zhangyao"
-    print ("game round is %s" % gameround)
+
 #   从game表里面，获取最新的余额
 #   从profile表里面，获得用户的其他信息（游戏中的年龄性别之类的）暂时未创建
     balance = db_handler.calcuBalance(gameid, gameround, player)
-    print(balance)
+
     if balance == None:
         balance = db_handler.getBalance(gameid, gameround, player)
     totalCash = db_handler.getTotalCash(gameid,gameround,player)
-    print(totalCash)
+
     accountInfo_dict = {"name":"zhangyao", "totalCash":totalCash,
                         "balance":balance}
     accountInfo_json = simplejson.dumps(accountInfo_dict)
@@ -124,7 +127,7 @@ def gameover(request):
 def nextTurn(request):
     gameid = request.COOKIES.get('gameid','')
     if gameid == '':
-        print ("gameid是空的。 游戏还没有开始。")
+        response = HttpResponse("error")
     gameround = game_thread.nextTurn(gameid) # gameid应该存在cookie里。
     final_turn = False
     # 如果是最后一回合则销毁cookie

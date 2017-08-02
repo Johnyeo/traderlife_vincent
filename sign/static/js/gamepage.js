@@ -181,7 +181,7 @@ $(document).ready(function () {
             }
 
 
-            $("#totalCash").text(totalCash);
+            $("#totalCash").text("$" + totalCash);
             $("#balance").text(balance_str);
         }
 
@@ -237,7 +237,7 @@ $(document).ready(function () {
                 data: orderdata,
                 success: function (result) {
                     // 测试代码
-                    alert(orderdata);
+                    // alert(orderdata);
                     window.location.reload()
                 },
                 error: function (result) {
@@ -253,7 +253,7 @@ $(document).ready(function () {
                 contentType: "application/json; charset=utf-8", // 规定了发送数据的类型
                 // dataType: "json",  // 规定了返回 数据的类型。
                 success: function (result) {
-                    alert(result)
+                    // alert(result)
                     window.location.reload()
                 },
                 error: function (result) {
