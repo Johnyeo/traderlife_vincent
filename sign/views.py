@@ -1,5 +1,6 @@
 import simplejson
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -17,8 +18,11 @@ def index2(request):
 
 
 def index(request):
+
     return render(request, "index.html")
 
+def loginpage(request):
+    return render(request,'loginpage.html')
 
 def login_action(request):
     if request.method == 'POST':
@@ -56,7 +60,7 @@ def login_action(request):
         # return render(request,'event_manage.html',{'user':username, 'events':event_list ,'name_images_list':name_image_list})
 
 
-# @login_required
+@login_required
 def gamepage(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
@@ -70,6 +74,7 @@ def gamepage(request):
 
 
 # submitOrder,提交订单，获取订单，同时更新数据库
+@login_required
 def submitOrder(request):
     # 获取gameid和gameround
     player = "zhangyao"
@@ -86,7 +91,7 @@ def submitOrder(request):
 
     return HttpResponse(received_json_data)
 
-
+@login_required
 def updateWarehouse(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
@@ -101,6 +106,7 @@ def updateWarehouse(request):
     return HttpResponse(w_data)
 
 # 获取账户信息
+@login_required
 def getAccountInfo(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
@@ -119,11 +125,11 @@ def getAccountInfo(request):
     accountInfo_json = simplejson.dumps(accountInfo_dict)
     return HttpResponse(accountInfo_json)
 
-
+@login_required
 def gameover(request):
     return render(request, 'gameover.html')
 
-
+@login_required
 def nextTurn(request):
     gameid = request.COOKIES.get('gameid','')
     if gameid == '':
@@ -136,7 +142,7 @@ def nextTurn(request):
     response = HttpResponse(gameround)
     return response
 
-
+@login_required
 def newGame(request):
     new_gameid = game_thread.startNewGame()
     response = HttpResponseRedirect('/gamepage')
@@ -144,5 +150,3 @@ def newGame(request):
     # 应该把gameid写入cookie里。
     return response
 
-def loginpage(request):
-    return render(request,'loginpage.html')

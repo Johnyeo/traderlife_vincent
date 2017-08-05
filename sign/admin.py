@@ -4,7 +4,7 @@ from sign.models import *
 # Register your models here.
 
 class MarketGoodsAdmin(admin.ModelAdmin):
-    list_display = ['name','price','count','status','flag','create_time']
+    list_display = ['name','price','count','status','flag','create_time','price_scope']
 
 class MyGoodsAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'count', 'status','flag','username','create_time']
