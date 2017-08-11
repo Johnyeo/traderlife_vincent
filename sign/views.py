@@ -10,7 +10,6 @@ from sign.models import Market_goods, My_goods, Market_goods_history
 
 
 # from sign.market import goods
-
 # Create your views here.
 def index2(request):
     # return HttpResponse("hello,hello")
@@ -18,11 +17,13 @@ def index2(request):
 
 
 def index(request):
+    isLogin = False
+    return render(request, "index.html",{"isLogin":isLogin})
 
-    return render(request, "index.html")
 
-def loginpage(request):
-    return render(request,'loginpage.html')
+def registerPage(request):
+    return render(request,'registerPage.html')
+
 
 def login_action(request):
     if request.method == 'POST':
@@ -31,17 +32,17 @@ def login_action(request):
         # if username == 'admin' and password == '111111':
         # return HttpResponse('login success!')
         # return HttpResponseRedirect('/event_manage/')
-        # response.set_cookie('user', username, 3600) # 添加浏览器的cookie
+        response = HttpResponseRedirect('/gamepage')
+        response.set_cookie('user', username, 3600) # 添加浏览器的cookie
         # response = HttpResponseRedirect('/event_manage/')
-        # request.session['user'] = username # 添加session到浏览器
+        request.session['user'] = username # 添加session到浏览器
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)  # 登录
             request.session['user'] = username
-            response = HttpResponseRedirect('/gamepage')
             return response
         else:
-            return render(request, 'index.html', {'error': 'username or password error!'})
+            return render(request, 'gamepage.html', {'error': 'username or password error!'})
 
         # @login_required
         # def event_manage(request):
