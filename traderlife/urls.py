@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hubsite/index/', views.index2),
     url(r'^index', views.index),
-    url(r'^login_action/$',views.login_action),
+    url(r'login_action$',views.login_action),
     # url(r'^event_manage', views.event_manage),
     url(r'^accounts/login/$', views.index),
     url(r'^gamepage', views.gamepage),
@@ -35,6 +35,6 @@ urlpatterns = [
     url(r'newGame$', views.newGame),
     url(r'^registerpage',views.registerPage),
     url(r'^getAccountInfo', views.getAccountInfo),
-    url(r'^loginpage', views.loginpage),
+    url(r'logout$',views.logout_action),
 
 ]

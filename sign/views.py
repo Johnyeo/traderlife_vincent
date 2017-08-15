@@ -17,8 +17,12 @@ def index2(request):
 
 
 def index(request):
-    isLogin = False
-    return render(request, "index.html",{"isLogin":isLogin})
+    if request.user.is_authenticated:
+        # Do something for authenticated users.
+        return render(request, "index.html", {"is_login":True})
+    else:
+        # Do something for anonymous users.
+        return render(request, "index.html", {"is_login":False})
 
 
 def registerPage(request):
@@ -32,17 +36,19 @@ def login_action(request):
         # if username == 'admin' and password == '111111':
         # return HttpResponse('login success!')
         # return HttpResponseRedirect('/event_manage/')
-        response = HttpResponseRedirect('/gamepage')
-        response.set_cookie('user', username, 3600) # 添加浏览器的cookie
-        # response = HttpResponseRedirect('/event_manage/')
-        request.session['user'] = username # 添加session到浏览器
+        # response = HttpResponseRedirect('/gamepage')
+        # response.set_cookie('user', username, 3600) # 添加浏览器的cookie
+        # # response = HttpResponseRedirect('/event_manage/')
+        # request.session['user'] = username # 添加session到浏览器
         user = auth.authenticate(username=username, password=password)
+        print (user)
         if user is not None:
             auth.login(request, user)  # 登录
             request.session['user'] = username
+            response = HttpResponseRedirect('/index')
             return response
         else:
-            return render(request, 'gamepage.html', {'error': 'username or password error!'})
+            return render(request, 'index.html', {'error': 'username or password error!'}, {'user':[username, password]})
 
         # @login_required
         # def event_manage(request):
@@ -151,3 +157,8 @@ def newGame(request):
     # 应该把gameid写入cookie里。
     return response
 
+@login_required()
+def logout_action(request):
+    auth.logout(request)
+    response = HttpResponseRedirect('/index')
+    return response
