@@ -69,12 +69,15 @@
             <form method="get" action="newGame">
                 <button class="btn btn-lg btn-default">开始游戏</button>
             </form>
-            <a href="/logout">退出登录</a>
+            <div style="margin-top: 20px">
+                <a href="/logout_action" style="color: #999999">退出登录</a>
+            </div>
             {% endif %}
-            <div>{{ error }}</div>
-
-
-
+            <br>
+            <span>{{ error }}</span>
+            {% if error != None %}
+            <a href="/register">新建账号？</a>
+            {% endif %}
                 <div class="mastfoot">
                     <div class="inner">
                         <p>Think a second before you click start.</p>

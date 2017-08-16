@@ -1,17 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
     <title>注册</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../../../static/css/cover.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-<h1>注册</h1>
-<form>
-    <input>
-    <input>
-    <input>
-    <input>
-</form>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Trader Life</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Wikis</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="inner cover">
+                <div style="margin-bottom: 30px">
+                <h1>注册</h1>
+                </div>
+                <form role="form" method="post" class="form-horizontal">
+                    <div class="form-group"><label class="col-md-4 control-label">用户名</label>
+                        <div class="col-md-6"><input type="name" name="name" autofocus="autofocus" class="form-control">
+                            <span class="help-block" style="display: none;">            </span>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-md-4 control-label">邀请码</label>
+                        <div class="col-md-6"><input type="name" name="invitation" class="form-control">
+                            <span class="help-block" style="display: none;">            </span>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-md-4 control-label">密码</label>
+                        <div class="col-md-6"><input type="password" name="password" class="form-control">
+                            <span class="help-block" style="display: none;">            </span>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-md-4 control-label">确认密码</label>
+                        <div class="col-md-6"><input type="password" name="password_confirmation" class="form-control">
+                            <span class="help-block" style="display: none;"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="terms">
+                                    我接受<a href="/terms" target="_blank">用户协议</a>
+                                    </label>
+                                    <span class="help-block" style="display: none;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-4">
+                                <button class="btn btn-primary"><span><i class="fa fa-btn fa-check-circle"></i>确认注册</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

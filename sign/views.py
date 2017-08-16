@@ -41,14 +41,13 @@ def login_action(request):
         # # response = HttpResponseRedirect('/event_manage/')
         # request.session['user'] = username # 添加session到浏览器
         user = auth.authenticate(username=username, password=password)
-        print (user)
         if user is not None:
             auth.login(request, user)  # 登录
             request.session['user'] = username
             response = HttpResponseRedirect('/index')
             return response
         else:
-            return render(request, 'index.html', {'error': 'username or password error!'}, {'user':[username, password]})
+            return render(request, 'index.html', {'error': '用户名或密码错误，','is_login':False})
 
         # @login_required
         # def event_manage(request):
