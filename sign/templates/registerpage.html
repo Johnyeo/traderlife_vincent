@@ -48,46 +48,65 @@
             </div>
             <div class="inner cover">
                 <div style="margin-bottom: 30px">
-                <h1>注册</h1>
+                    {% if account_created == None %}
+                    <h1>注册</h1>
+                    {% elif account_created == True %}
+                    <h1>注册成功</h1>
+                    {% elif account_created == False %}
+                    <h1>注册失败，请重试</h1>
+                    {% endif %}
                 </div>
-                <form role="form" method="post" class="form-horizontal">
+                <form role="form" method="post" class="form-horizontal" action="register">
                     <div class="form-group"><label class="col-md-4 control-label">用户名</label>
-                        <div class="col-md-6"><input type="name" name="name" autofocus="autofocus" class="form-control">
-                            <span class="help-block" style="display: none;">            </span>
+                        <div class="col-md-5"><input type="name" name="username" autofocus="autofocus"
+                                                     class="form-control" value="{{username}}">
+                            {% if username_error != None %}
+                            <span class="help-block" style="text-align: left; ">{{username_error}}</span>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group"><label class="col-md-4 control-label">邀请码</label>
-                        <div class="col-md-6"><input type="name" name="invitation" class="form-control">
-                            <span class="help-block" style="display: none;">            </span>
+                        <div class="col-md-5"><input type="name" name="invitation" class="form-control">
+                            {% if invitation_error != None %}
+                            <span class="help-block" style="text-align: left; ">{{invitation_error}}</span>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group"><label class="col-md-4 control-label">密码</label>
-                        <div class="col-md-6"><input type="password" name="password" class="form-control">
-                            <span class="help-block" style="display: none;">            </span>
+                        <div class="col-md-5"><input type="password" name="password" class="form-control">
+                            {% if password_error != None %}
+                            <span class="help-block" style="text-align: left; ">{{password_error}}</span>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="form-group"><label class="col-md-4 control-label">确认密码</label>
-                        <div class="col-md-6"><input type="password" name="password_confirmation" class="form-control">
-                            <span class="help-block" style="display: none;"></span>
+                        <div class="col-md-5"><input type="password" name="password_confirmation" class="form-control">
+                            {% if confirm_error != None %}
+                            <span class="help-block" style="text-align: left; ">{{confirm_error}}</span>
+                            {% endif %}
                         </div>
                     </div>
                     <div>
                         <div class="form-group">
                             <div class="col-md-3 col-md-offset-4">
                                 <div class="checkbox">
-                                    <label  style="padding-left: 0px"><input type="checkbox" name="terms">
-                                    我接受<a href="/terms" target="_blank">用户协议</a>
+                                    <label style="padding-left: 0px"><input type="checkbox" name="terms" value="on" checked>
+                                        我接受<a href="/terms" target="_blank">用户协议</a>
                                     </label>
-                                    <span class="help-block" style="display: none;"></span>
+                                    {% if terms_error != None %}
+                                    <span class="help-block" style="text-align: left; ">{{terms_error}}</span>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-2 col-md-offset-4">
-                                <button class="btn btn-primary"><span><i class="fa fa-btn fa-check-circle"></i>确认注册</span></button>
+                                <button class="btn btn-primary"><span><i
+                                        class="fa fa-btn fa-check-circle"></i>确认注册</span></button>
                             </div>
                         </div>
                     </div>
+                    {% csrf_token %}
                 </form>
 
             </div>

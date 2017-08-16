@@ -1,6 +1,7 @@
 import simplejson
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -25,8 +26,64 @@ def index(request):
         return render(request, "index.html", {"is_login":False})
 
 
-def registerPage(request):
-    return render(request,'registerPage.html')
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'registerpage.html')
+    elif request.method == 'POST':
+        username = request.POST.get('username','')
+        password = request.POST.get('password','')
+        confirm_pwd = request.POST.get('password_confirmation','')
+        invitation = request.POST.get('invitation','')
+        terms = request.POST.get('terms', '')
+
+        username = username.strip()
+        password = password.strip()
+        confirm_pwd = confirm_pwd.strip()
+
+        user_existed = True
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            user_existed = False
+
+        # 数据为空的校验
+        error_dict = {'username':username}
+        if username == '' or username == None:
+            error_dict['username_error'] = '请输入用户名'
+        if password == '' or password == None:
+            error_dict['password_error'] = '请输入密码'
+        if confirm_pwd == '' or confirm_pwd == None:
+            error_dict['confirm_error'] = '请再次输入密码'
+        if invitation == '' or confirm_pwd == None:
+            error_dict['invitation_error'] = '请输入邀请码'
+        if terms != 'on':
+            error_dict['terms_error'] = '请同意用户协议'
+
+        if len(error_dict) > 1:
+            return render(request, 'registerpage.html', error_dict)
+
+        # 数据有效性校验
+        else:
+            # 用户名
+            if user_existed:
+                error_dict['username_error']= '此用户名已经存在'
+            elif len(username) > 16 or len(username) < 2:
+                error_dict['username_error'] = '用户名应该在2-16位之间'
+            # 密码验证码
+            if password != confirm_pwd:
+                error_dict['confirm_error'] = '两次输入的密码不一致'
+            elif len(password) > 16 or len(password) < 8:
+                error_dict['password_error'] = '密码应该在8-16位之间'
+            # 邀请码
+            if invitation != 'xxxx':
+                error_dict['invitation_error'] = '邀请码不正确'
+
+            if len(error_dict) > 1:
+                return render(request, 'registerpage.html', error_dict)
+
+            else:
+                response = HttpResponseRedirect('/index')
+                return response
 
 
 def login_action(request):

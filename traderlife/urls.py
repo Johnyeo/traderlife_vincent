@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^gameover', views.gameover),
     url(r'^nextTurn', views.nextTurn),
     url(r'newGame$', views.newGame),
-    url(r'^register',views.registerPage),
+    url(r'^register',views.register),
     url(r'^getAccountInfo', views.getAccountInfo),
     url(r'logout',views.logout_action),
 
