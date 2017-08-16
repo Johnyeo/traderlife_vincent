@@ -75,16 +75,15 @@ def register(request):
             elif len(password) > 16 or len(password) < 8:
                 error_dict['password_error'] = '密码应该在8-16位之间'
             # 邀请码
-            if invitation != 'xxxx':
+            if invitation != 'niulanshan2guotou':
                 error_dict['invitation_error'] = '邀请码不正确'
 
             if len(error_dict) > 1:
                 return render(request, 'registerpage.html', error_dict)
 
             else:
-                response = HttpResponseRedirect('/index')
-                return response
-
+                user = User.objects.create_user(username, '', password)
+                return render(request, 'registerpage.html', {'username':username,'account_created':True})
 
 def login_action(request):
     if request.method == 'POST':

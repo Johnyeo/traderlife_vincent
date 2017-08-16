@@ -51,11 +51,12 @@
                     {% if account_created == None %}
                     <h1>注册</h1>
                     {% elif account_created == True %}
-                    <h1>注册成功</h1>
+                    <a href="/index"><h1>注册成功</h1></a>
                     {% elif account_created == False %}
                     <h1>注册失败，请重试</h1>
                     {% endif %}
                 </div>
+                {% if account_created == None %}
                 <form role="form" method="post" class="form-horizontal" action="register">
                     <div class="form-group"><label class="col-md-4 control-label">用户名</label>
                         <div class="col-md-5"><input type="name" name="username" autofocus="autofocus"
@@ -108,7 +109,7 @@
                     </div>
                     {% csrf_token %}
                 </form>
-
+                {% endif %}
             </div>
         </div>
     </div>
