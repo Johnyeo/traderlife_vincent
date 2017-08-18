@@ -1,5 +1,5 @@
 import simplejson
-from django.contrib import auth
+from django.contrib import auth, humanize
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -132,6 +132,11 @@ def gamepage(request):
     username = "zhangyao"
     # gameid = '1000001'
     # goodlist = models.My_goods.objects.filter(username=username, gameid_id=gameid)
+    # market_goods = []
+    # for good_unit in market_goods_list:
+    #     market_goods.append({'name':good_unit.name, 'price':good_unit.price})
+    # print (market_goods)
+    humanize
     return render(request, 'gamepage.html', {'user': username, 'market_goods': market_goods_list, })
 
 

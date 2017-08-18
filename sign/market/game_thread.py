@@ -50,3 +50,5 @@ def getGameIdFromCookie(request):
 
 
 
+
+

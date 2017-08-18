@@ -80,6 +80,11 @@ $(document).ready(function () {
             getMyAccount()
         }
 
+        // 大数字改写为千的形式
+        function kFormatter(num) {
+            return num > 999 ? (num / 1000).toFixed(1) + 'k' : num
+        }
+
         // 将物品添加到order里
         function js_add_good_to_order(good) {
             order.push(good)
@@ -143,7 +148,7 @@ $(document).ready(function () {
                 total = total + good.price * good.count
             })
 
-            $("#order_total").text("$" + total);
+            $("#order_total").text("$" + kFormatter(total));
         }
 
         function displayMyGoods(w_house_json_raw) {
@@ -156,7 +161,7 @@ $(document).ready(function () {
                 warehouse_index = $("<td class='w_index'>").text(i + 1);
                 warehouse_goodname = $("<td class='goodname'>").text(good_warehouse.goodname);
                 warehouse_goodcount = $("<td class='w_count'></td>").text(good_warehouse.count);
-                warehouse_goodprice = $("<td class='w_item_sum'>").text("$" + good_warehouse.count * good_warehouse.price);
+                warehouse_goodprice = $("<td class='w_item_sum'>").text("$" + kFormatter(good_warehouse.count * good_warehouse.price));
                 warehouse_item_del = $("<td></td>").append("<button class='btn btn-xs btn-danger sell_btn' style='width: 60px'>卖出</button>");
                 unit_price = $("<span class='hide unit_price'>").text(good_warehouse.price)
                 warehouse_tr_1 = $("<tr class='w_tr'>").append(warehouse_index, warehouse_goodname, warehouse_goodcount, warehouse_goodprice, warehouse_item_del, unit_price);
@@ -170,18 +175,18 @@ $(document).ready(function () {
             name = accountInfo.name;
             totalCash = accountInfo.totalCash;
             balance = accountInfo.balance;
-            if (balance<0){
+            if (balance < 0) {
                 balance = Math.abs(balance)
-                balance_str = "- $" + balance;
-            }else if (balance>0){
+                balance_str = "- $" + kFormatter(balance);
+            } else if (balance > 0) {
                 balance = Math.abs(balance)
-                balance_str = "+ $" + balance;
-            }else {
-                balance_str = "  $" + balance;
+                balance_str = "+ $" + kFormatter(balance);
+            } else {
+                balance_str = "  $" + kFormatter(balance);
             }
 
 
-            $("#totalCash").text("$" + totalCash);
+            $("#totalCash").text("$" + kFormatter(totalCash));
             $("#balance").text(balance_str);
         }
 
