@@ -18,6 +18,13 @@
     <!--</script>-->
 
     <style type="text/css">
+        body, html {
+            background: url(/static/images/trader_bg2.png);
+            background-size: 160px 160px;
+            height: 100%;
+            margin: 0;
+        }
+
         /* entire container, keeps perspective */
         .flip-container {
             /*perspective: 900;*/
@@ -115,7 +122,7 @@
         <div class="page-header"><h2>市场</h2></div>
         <span>
     <div class="col-md-6">
-        <table class="table table-striped">
+        <table class="table ">
             <tbody>
             <!--显示三排，每排一层循环，两层if判断-->
             <!--循环数据库里，所有的市场产品。
@@ -133,7 +140,7 @@
                                 <div class="pricetag">
                                     <div class="pricetag price"
                                          style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        ${{ good.price }}
+                                        ${{ good.price|kmgnumber }}
                                     </div>
                                     <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
                                          class="img-rounded"
@@ -230,7 +237,7 @@
                                 <div class="pricetag">
                                     <div class="pricetag price"
                                          style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        ${{ good.price }}
+                                        ${{ good.price|kmgnumber }}
                                     </div>
                                     <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
                                          class="img-rounded"
