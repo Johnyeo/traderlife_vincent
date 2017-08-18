@@ -82,7 +82,19 @@ $(document).ready(function () {
 
         // 大数字改写为千的形式
         function kFormatter(num) {
-            return num > 999 ? (num / 1000).toFixed(1) + 'k' : num
+            absNum = Math.abs(num)
+            if (absNum<=1000){
+                return num
+            }else if (absNum>1000 && absNum<=1*1000*1000 ){
+                num = (num/1000).toFixed(2);
+                return num + "K";
+            }else if (absNum>1000000 && absNum<= 1*1000*1000*1000){
+                num = (num/1000000).toFixed(2);
+                return num + "M";
+            }else if (absNum>1000000000){
+                num = (num/1000000000).toFixed(2);
+                return num + "B";
+            }
         }
 
         // 将物品添加到order里

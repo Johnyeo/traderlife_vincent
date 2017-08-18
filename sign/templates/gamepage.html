@@ -9,6 +9,8 @@
     {% load bootstrap3 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    {% load kmgformat %}
+
     <!--<script>-->
     <!--$.ajaxSetup({-->
     <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
@@ -131,7 +133,6 @@
                                 <div class="pricetag">
                                     <div class="pricetag price"
                                          style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        <script src="{% static 'js/gamepage.js' %}"></script>
                                         ${{ good.price }}
                                     </div>
                                     <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
@@ -180,7 +181,7 @@
                                 <div class="pricetag">
                                     <div class="pricetag price"
                                          style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        ${{ good.price }}
+                                        ${{ good.price|kmgnumber }}
                                     </div>
                                     <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
                                          class="img-rounded"
