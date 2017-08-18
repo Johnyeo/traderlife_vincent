@@ -24,7 +24,7 @@ from sign import models
 from sign.market import properties
 
 
-def put_good_in_warehouse(json_dict, gameid, gameround):
+def put_good_in_warehouse(json_dict, gameid, gameround, player):
     goods_list = json_dict["order"]
 
     for good_dict in goods_list:
@@ -40,7 +40,7 @@ def put_good_in_warehouse(json_dict, gameid, gameround):
             price=price,
             count=good_dict['count'],
             total = subtotal,
-            username='zhangyao',  # 通过gamethread来获取
+            username=player,  # 通过gamethread来获取
             status=1,  # 有效
             flag="A",  # 新增操作
             quality=1,
@@ -60,8 +60,8 @@ def getCurrentGoodPrice(goodname, gameid, gameround):
     return price
 
 
-def update_good_in_wareHouse(gameid, gameround):
-    goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username='zhangyao', gameid=gameid)
+def update_good_in_wareHouse(gameid, gameround, player):
+    goods_filter_by_user_gameid = models.My_goods_history.objects.filter(username=player, gameid=gameid)
     # print(len(goods_filter_by_user_gameid))
     filtered_good_list = get_same_good(goods_filter_by_user_gameid)
     # 写结果
@@ -85,7 +85,7 @@ def update_good_in_wareHouse(gameid, gameround):
                     price=price,
                     count=good_dict[goodname],
                     total = good_dict[goodname],
-                    username='zhangyao',  # 通过gamethread来获取
+                    username=player,  # 通过gamethread来获取
                     status=1,  # 有效
                     flag="A",  # 新增操作
                     quality=1,
@@ -158,13 +158,13 @@ def generateGameidByTime():
     time = timenow.strftime("%Y%m%d%H%M%S")
     return time
 
-def setNewGame(new_gameid):
+def setNewGame(new_gameid, player):
     # 新游戏
     cash = 1000.00
     balance = 0.00
 
     newGame = models.Game(
-        player="zhangyao",
+        player= player,
         gameround = "0", # 初始值是0
         gameid = new_gameid,
         cash = cash, # 初始值 1000块钱
@@ -181,10 +181,10 @@ def generateGameround(gameid):
     return gameround
 
 
-def setNewRound(gameid, new_gameround, cash = 1000.00):
+def setNewRound(gameid, new_gameround, player, cash = 1000.00):
 
     newGame = models.Game(
-        player="zhangyao",
+        player=player,
         gameround = new_gameround, # 初始值是0
         gameid = gameid,
         cash = cash, # 初始值 1000块钱
@@ -294,8 +294,9 @@ def calcuTotalCash(gameid, gameround, player):
 def getTotalCash(gameid, gameround, player):
     try:
         totalCash = models.Game.objects.filter(player = player,gameround = gameround, gameid = gameid).values()[0]['cash']
+        print('totoal is found')
     except ObjectDoesNotExist:
-        # print("Total is not find")
+        print("Total is not find")
         pass
     return totalCash
 

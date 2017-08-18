@@ -1,5 +1,5 @@
 import simplejson
-from django.contrib import auth, humanize
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -100,7 +100,9 @@ def login_action(request):
         if user is not None:
             auth.login(request, user)  # 登录
             request.session['user'] = username
+            request.session['test'] = 'test1'
             response = HttpResponseRedirect('/index')
+            response.set_cookie('user', username, 3600)  # 添加浏览器的cookie
             return response
         else:
             return render(request, 'index.html', {'error': '用户名或密码错误，','is_login':False})
@@ -129,22 +131,21 @@ def gamepage(request):
 
     market_goods_list = Market_goods_history.objects.filter(gameid = gameid, gameround = gameround)
     username = request.session.get('user', '')
-    username = "zhangyao"
+
     # gameid = '1000001'
     # goodlist = models.My_goods.objects.filter(username=username, gameid_id=gameid)
     # market_goods = []
     # for good_unit in market_goods_list:
     #     market_goods.append({'name':good_unit.name, 'price':good_unit.price})
     # print (market_goods)
-    humanize
-    return render(request, 'gamepage.html', {'user': username, 'market_goods': market_goods_list, })
+    return render(request, 'gamepage.html', {'market_goods': market_goods_list, })
 
 
 # submitOrder,提交订单，获取订单，同时更新数据库
 @login_required
 def submitOrder(request):
     # 获取gameid和gameround
-    player = "zhangyao"
+    player = request.session['user']
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
     received_data_body = request.body
@@ -152,8 +153,8 @@ def submitOrder(request):
         'utf-8')  # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
     received_json_data = simplejson.loads(received_json_data_raw)
     # print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
-    db_handler.put_good_in_warehouse(received_json_data, gameid, gameround)
-    db_handler.update_good_in_wareHouse(gameid, gameround)
+    db_handler.put_good_in_warehouse(received_json_data, gameid, gameround, player)
+    db_handler.update_good_in_wareHouse(gameid, gameround, player)
     # 对数据库的余额进行计算
 
     return HttpResponse(received_json_data)
@@ -162,7 +163,7 @@ def submitOrder(request):
 def updateWarehouse(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
-    player = 'zhangyao'
+    player = request.session['user']
 
     # 把测试数据换成真实数据。
     # 数据格式：
@@ -177,7 +178,7 @@ def updateWarehouse(request):
 def getAccountInfo(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
-    player = "zhangyao"
+    player = request.session.get('user','')
 
 #   从game表里面，获取最新的余额
 #   从profile表里面，获得用户的其他信息（游戏中的年龄性别之类的）暂时未创建
@@ -187,7 +188,7 @@ def getAccountInfo(request):
         balance = db_handler.getBalance(gameid, gameround, player)
     totalCash = db_handler.getTotalCash(gameid,gameround,player)
 
-    accountInfo_dict = {"name":"zhangyao", "totalCash":totalCash,
+    accountInfo_dict = {"name":player, "totalCash":totalCash,
                         "balance":balance}
     accountInfo_json = simplejson.dumps(accountInfo_dict)
     return HttpResponse(accountInfo_json)
@@ -198,10 +199,11 @@ def gameover(request):
 
 @login_required
 def nextTurn(request):
+    player = request.session['user']
     gameid = request.COOKIES.get('gameid','')
     if gameid == '':
         response = HttpResponse("error")
-    gameround = game_thread.nextTurn(gameid) # gameid应该存在cookie里。
+    gameround = game_thread.nextTurn(gameid, player) # gameid应该存在cookie里。
     final_turn = False
     # 如果是最后一回合则销毁cookie
     if final_turn:
@@ -211,7 +213,8 @@ def nextTurn(request):
 
 @login_required
 def newGame(request):
-    new_gameid = game_thread.startNewGame()
+    player = request.session['user']
+    new_gameid = game_thread.startNewGame(player)
     response = HttpResponseRedirect('/gamepage')
     response.set_cookie('gameid', new_gameid)
     # 应该把gameid写入cookie里。
