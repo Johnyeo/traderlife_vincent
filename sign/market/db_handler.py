@@ -27,6 +27,12 @@ from sign.market import properties
 def put_good_in_warehouse(json_dict, gameid, gameround, player):
     goods_list = json_dict["order"]
 
+    totalCash = getTotalCash(gameid, gameround, player)
+
+
+    # 验证是否余额小于0. 未来可以允许轻微透支 根据百分数
+    balance = Decimal(0)
+        #balance 是负值因此相加
     for good_dict in goods_list:
         #不能用传进来的值，要用数据库里的值
         goodname = good_dict['goodname']
@@ -34,21 +40,26 @@ def put_good_in_warehouse(json_dict, gameid, gameround, player):
         price = Decimal(price)
         count = Decimal(good_dict['count'])
         subtotal = price * count
-
-        mygoods = models.My_goods_history(
-            name=goodname,
-            price=price,
-            count=good_dict['count'],
-            total = subtotal,
-            username=player,  # 通过gamethread来获取
-            status=1,  # 有效
-            flag="A",  # 新增操作
-            quality=1,
-            gameround=gameround,  # 通过gamethread来获取
-            gameid_id=gameid  # 通过gamethread来获取
-        )
-        mygoods.save()
-
+        balance += subtotal
+    print(totalCash, balance)
+    if totalCash -  balance >= 0:
+        for good_dict in goods_list:
+            mygoods = models.My_goods_history(
+                name=goodname,
+                price=price,
+                count=good_dict['count'],
+                total = subtotal,
+                username=player,  # 通过gamethread来获取
+                status=1,  # 有效
+                flag="A",  # 新增操作
+                quality=1,
+                gameround=gameround,  # 通过gamethread来获取
+                gameid_id=gameid  # 通过gamethread来获取
+            )
+            mygoods.save()
+        return {'isSuccess':True, 'errorType':'', 'message':''}
+    else:
+        return {'isSuccess': False, 'errorType':'01' ,  'message': '余额不足'}
 
 # 根据username和gameid 获取所有的仓库产品记录 -- get_good_from_warehouse_in_json
 # 每回合结束将所有的数量加减后，
@@ -294,9 +305,9 @@ def calcuTotalCash(gameid, gameround, player):
 def getTotalCash(gameid, gameround, player):
     try:
         totalCash = models.Game.objects.filter(player = player,gameround = gameround, gameid = gameid).values()[0]['cash']
-        print('totoal is found')
+        # print('totoal is found')
     except ObjectDoesNotExist:
-        print("Total is not find")
+        # print("Total is not find")
         pass
     return totalCash
 

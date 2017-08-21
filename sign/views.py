@@ -144,6 +144,7 @@ def gamepage(request):
 # submitOrder,提交订单，获取订单，同时更新数据库
 @login_required
 def submitOrder(request):
+    insertGoodCallback ={}
     # 获取gameid和gameround
     player = request.session['user']
     gameid = game_thread.getGameIdFromCookie(request)
@@ -153,11 +154,14 @@ def submitOrder(request):
         'utf-8')  # 需要decode(“utf-8”)一下。 否则报错JSON object must be str, not 'bytes'
     received_json_data = simplejson.loads(received_json_data_raw)
     # print (received_json_data) # 调试代码。 经过loads之后，json str果然变成了dict。
-    db_handler.put_good_in_warehouse(received_json_data, gameid, gameround, player)
-    db_handler.update_good_in_wareHouse(gameid, gameround, player)
+    insertGoodCallback = db_handler.put_good_in_warehouse(received_json_data, gameid, gameround, player)
+    # 返回一个dict {'isSuccess': False, 'errorType':'01' ,  'message': '余额不足'}
+    if insertGoodCallback['isSuccess']:
+        db_handler.update_good_in_wareHouse(gameid, gameround, player)
     # 对数据库的余额进行计算
-
-    return HttpResponse(received_json_data)
+    insertGoodCallback_json = simplejson.dumps(insertGoodCallback)
+    # print (insertGoodCallback_json)
+    return HttpResponse(insertGoodCallback_json)
 
 @login_required
 def updateWarehouse(request):

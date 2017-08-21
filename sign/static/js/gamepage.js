@@ -112,6 +112,11 @@ $(document).ready(function () {
             return ""
         }
 
+        $('#warnMessage_close').click(function () {
+            $('#warnMessage').hide(1000);
+        })
+
+
         // 将物品添加到order里
         function js_add_good_to_order(good) {
             order.push(good)
@@ -270,7 +275,15 @@ $(document).ready(function () {
                 success: function (result) {
                     // 测试代码
                     // alert(orderdata);
-                    window.location.reload()
+                    result = eval("'" + result + "'");
+                    submit_response = JSON.parse(result);
+                    if (submit_response.isSuccess === true){
+                        window.location.reload();
+                    }else {
+                        message = submit_response.message
+                        $("#warnMessage").show(1000);
+                        $("#message_content").text(message);
+                    }
                 },
                 error: function (result) {
                     alert("错误，请稍后再试。")
