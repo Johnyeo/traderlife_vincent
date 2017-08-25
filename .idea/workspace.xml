@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="Warn message on &quot;insufficient balance&quot;.">
+    <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="traderlife.iws" />
@@ -76,7 +76,7 @@
       <file leaf-file-name="guideline.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/guideline.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
+            <state relative-caret-position="249">
               <caret line="83" column="11" lean-forward="true" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
               <folding />
             </state>
@@ -1011,13 +1011,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494988351407</updated>
     </task>
-    <task id="LOCAL-00029" summary="Failed again sum goods up. Try a new way.">
-      <created>1498463667907</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1498463667907</updated>
-    </task>
     <task id="LOCAL-00030" summary="Add the method to get same good number from list.">
       <created>1498544217074</created>
       <option name="number" value="00030" />
@@ -1354,7 +1347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1503320377784</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Milestone setup. Currently 0.6.">
+      <created>1503663180750</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1503663180751</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1368,15 +1368,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27099237" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3783784" sideWeight="0.5030257" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19087838" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.562396" sideWeight="0.48789713" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.49092284" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.562396" sideWeight="0.48789713" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.49092284" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.49394855" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39899832" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1467,7 +1466,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Save gameid in cookie" />
     <MESSAGE value="another way to sum all same goods in &quot;history&quot; up." />
     <MESSAGE value="database has been arranged and added gamethread handles" />
     <MESSAGE value="Milestone setup. Currently 0.4." />
@@ -1492,7 +1490,8 @@
     <MESSAGE value="Fixed the user system(new player are able to join the game)" />
     <MESSAGE value="Format &amp; background files upload" />
     <MESSAGE value="Warn message on &quot;insufficient balance&quot;." />
-    <option name="LAST_COMMIT_MESSAGE" value="Warn message on &quot;insufficient balance&quot;." />
+    <MESSAGE value="Milestone setup. Currently 0.6." />
+    <option name="LAST_COMMIT_MESSAGE" value="Milestone setup. Currently 0.6." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1883,7 +1882,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/guideline.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="249">
           <caret line="83" column="11" lean-forward="true" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
           <folding />
         </state>
