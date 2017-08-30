@@ -1,0 +1,80 @@
+
+body, html {
+    background: url(/static/images/trader_bg2.png);
+    background-size: 160px 160px;
+    height: 100%;
+    margin: 0;
+}
+
+.operation-board {
+    background: #dddddd;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+    /*perspective: 900;*/
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 90px;
+    height: 90px;
+}
+
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}
+
+.pricetag {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+
+}
+
+.pricetag.price {
+    position: absolute;
+    font-style: normal;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 30px;
+    color: #C0C0C0;
+    bottom: 0%;
+}
+
+.add2order_btn {
+    margin-top: 4px;
+}
+
+.goodname {
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
