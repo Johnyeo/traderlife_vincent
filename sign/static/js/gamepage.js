@@ -277,9 +277,9 @@ $(document).ready(function () {
                     // alert(orderdata);
                     result = eval("'" + result + "'");
                     submit_response = JSON.parse(result);
-                    if (submit_response.isSuccess === true){
+                    if (submit_response.isSuccess === true) {
                         window.location.reload();
-                    }else {
+                    } else {
                         message = submit_response.message
                         $("#warnMessage").show(1000);
                         $("#message_content").text(message);
@@ -387,5 +387,43 @@ $(document).ready(function () {
                 add_good_count(order, goodname, count, price, good_2b_add_id)
             }
         })
+
+        // 调用toggleNavigation
+        $(function () {
+            $('.toggle-nav').click(function () {
+                toggleNavigation();
+            });
+        });
+
+        // toggleNavigation 方法
+        function toggleNavigation() {
+            if ($('#container').hasClass('display-nav')) {
+                // 关闭 Nav
+                $('#container').removeClass('display-nav');
+            } else {
+                // 打开 Nav
+                $('#container').addClass('display-nav');
+            }
+        }
+
+        $("#toggle > li > div").click(function () {
+            if (false == $(this).next().is(':visible')) {
+                $('#toggle ul').slideUp();
+            }
+
+            var $currIcon = $(this).find("span.the-btn");
+
+            $("span.the-btn").not($currIcon).addClass('fa-plus').removeClass('fa-minus');
+
+            $currIcon.toggleClass('fa-minus fa-plus');
+
+            $(this).next().slideToggle();
+
+            $("#toggle > li > div").removeClass("active");
+            $(this).addClass('active');
+
+        });
+
+
     }
 )
