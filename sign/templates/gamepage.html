@@ -59,183 +59,183 @@
 
     <div style="height: 350px">
 
-    <div class="col-md-6">
-        <table class="table ">
-            <tbody>
-            <!--显示三排，每排一层循环，两层if判断-->
-            <!--循环数据库里，所有的市场产品。
-            <!--根据排判断，显示(0,5)的图，(5,10)的图，(10,15)的图-->
-            <!--判断数据库中，是否是有效的产品（1），如果不是1，则显示一个默认图片-->
-            <tr>
-                {% for good in market_goods %}
-                {% if good.index <= 5 %}
-                {% if good.status == 1 %}
-                <td>
-                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                        <div class="flipper">
-                            <div class="front">
-                                <!-- 前面内容 -->
-                                <div class="pricetag">
-                                    <div class="pricetag price"
-                                         style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        ${{ good.price|kmgnumber }}
+        <div class="col-md-6">
+            <table class="table ">
+                <tbody>
+                <!--显示三排，每排一层循环，两层if判断-->
+                <!--循环数据库里，所有的市场产品。
+                <!--根据排判断，显示(0,5)的图，(5,10)的图，(10,15)的图-->
+                <!--判断数据库中，是否是有效的产品（1），如果不是1，则显示一个默认图片-->
+                <tr>
+                    {% for good in market_goods %}
+                    {% if good.index <= 5 %}
+                    {% if good.status == 1 %}
+                    <td>
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front">
+                                    <!-- 前面内容 -->
+                                    <div class="pricetag">
+                                        <div class="pricetag price"
+                                             style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                            ${{ good.price|kmgnumber }}
+                                        </div>
+                                        <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                             class="img-rounded"
+                                             width="90" height="90">
                                     </div>
-                                    <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
-                                         class="img-rounded"
-                                         width="90" height="90">
+                                </div>
+                                <div class="back">
+                                    <!-- 背面内容 -->
+                                    <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
                                 </div>
                             </div>
-                            <div class="back">
-                                <!-- 背面内容 -->
-                                <!--<form method="post">-->
-                                <input type="hidden" name="good_name" value="{{ good.name }}"
-                                       class="goodname">
-                                <div>{{ good.name }}</div>
-                                <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
-                                <input name="count" type="number" min="1" max="99999" class="form-control"
-                                       placeholder="数量">
-
-                                <button class="add2order_btn">加入订单</button>
-                                {% csrf_token %}
-                            </div>
                         </div>
-                    </div>
-                </td>
-                {% elif good.status == 0 %}
-                <td>
-                    <div class="goodname"></div>
-                    <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
-                         class="img-rounded"
-                         width="90" height="90">
-                </td>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <!--第二排-->
-            <tr>
-                {% for good in market_goods %}
-                {% if good.index <= 10 %}
-                {% if good.index > 5 %}
-                {% if good.status == 1 %}
-                <td>
-                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                        <div class="flipper">
-                            <div class="front">
-                                <!-- 前面内容 -->
-                                <div class="pricetag">
-                                    <div class="pricetag price"
-                                         style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        ${{ good.price|kmgnumber }}
+                    </td>
+                    {% elif good.status == 0 %}
+                    <td>
+                        <div class="goodname"></div>
+                        <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
+                             class="img-rounded"
+                             width="90" height="90">
+                    </td>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <!--第二排-->
+                <tr>
+                    {% for good in market_goods %}
+                    {% if good.index <= 10 %}
+                    {% if good.index > 5 %}
+                    {% if good.status == 1 %}
+                    <td>
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front">
+                                    <!-- 前面内容 -->
+                                    <div class="pricetag">
+                                        <div class="pricetag price"
+                                             style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                            ${{ good.price|kmgnumber }}
+                                        </div>
+                                        <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                             class="img-rounded"
+                                             width="90" height="90">
                                     </div>
-                                    <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
-                                         class="img-rounded"
-                                         width="90" height="90">
+                                </div>
+                                <div class="back">
+                                    <!-- 背面内容 -->
+                                    <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
                                 </div>
                             </div>
-                            <div class="back">
-                                <!-- 背面内容 -->
-                                <!--<form method="post">-->
-                                <input type="hidden" name="good_name" value="{{ good.name }}"
-                                       class="goodname">
-                                <div>{{ good.name }}</div>
-                                <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
-                                <input name="count" type="number" min="1" max="99999" class="form-control"
-                                       placeholder="数量">
-
-                                <button class="add2order_btn">加入订单</button>
-                                {% csrf_token %}
-                            </div>
                         </div>
-                    </div>
-                </td>
-                {% elif good.status == 0 %}
-                <td>
-                    <div class="goodname"></div>
-                    <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
-                         class="img-rounded"
-                         width="90" height="90">
-                </td>
-                {% endif %}
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-            </tr>
-            <!--第三排-->
-            <tr>
-                {% for good in market_goods %}
-                {% if good.index <= 15 %}
-                {% if good.index > 10 %}
-                {% if good.status == 1 %}
-                <td>
-                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                        <div class="flipper">
-                            <div class="front">
-                                <!-- 前面内容 -->
-                                <div class="pricetag">
-                                    <div class="pricetag price"
-                                         style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
-                                        ${{ good.price|kmgnumber }}
+                    </td>
+                    {% elif good.status == 0 %}
+                    <td>
+                        <div class="goodname"></div>
+                        <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
+                             class="img-rounded"
+                             width="90" height="90">
+                    </td>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <!--第三排-->
+                <tr>
+                    {% for good in market_goods %}
+                    {% if good.index <= 15 %}
+                    {% if good.index > 10 %}
+                    {% if good.status == 1 %}
+                    <td>
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front">
+                                    <!-- 前面内容 -->
+                                    <div class="pricetag">
+                                        <div class="pricetag price"
+                                             style="background:#000;filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6">
+                                            ${{ good.price|kmgnumber }}
+                                        </div>
+                                        <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
+                                             class="img-rounded"
+                                             width="90" height="90">
                                     </div>
-                                    <img src="{% static good.image_url %}" alt="{% static 'images/default.png' %}"
-                                         class="img-rounded"
-                                         width="90" height="90">
+                                </div>
+                                <div class="back">
+                                    <!-- 背面内容 -->
+                                    <!--<form method="post">-->
+                                    <input type="hidden" name="good_name" value="{{ good.name }}"
+                                           class="goodname">
+                                    <div>{{ good.name }}</div>
+                                    <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
+                                    <input name="count" type="number" min="1" max="99999" class="form-control"
+                                           placeholder="数量">
+
+                                    <button class="add2order_btn">加入订单</button>
+                                    {% csrf_token %}
                                 </div>
                             </div>
-                            <div class="back">
-                                <!-- 背面内容 -->
-                                <!--<form method="post">-->
-                                <input type="hidden" name="good_name" value="{{ good.name }}"
-                                       class="goodname">
-                                <div>{{ good.name }}</div>
-                                <input type="hidden" name="good_price" value="{{ good.price }}" class="price">
-                                <input name="count" type="number" min="1" max="99999" class="form-control"
-                                       placeholder="数量">
-
-                                <button class="add2order_btn">加入订单</button>
-                                {% csrf_token %}
-                            </div>
                         </div>
-                    </div>
-                </td>
-                {% elif good.status == 0 %}
-                <td>
-                    <div class="goodname"></div>
-                    <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
-                         class="img-rounded"
-                         width="90" height="90">
-                </td>
-                {% endif %}
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="col-md-6">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>序号</th>
-                <th>名称</th>
-                <th>数量</th>
-                <th>金额</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody class="order_list">
-            </tbody>
-            <!--这里用tr 加行， td加元素-->
-        </table>
-
-        <div>
-            <span>总金额：</span>
-            <span id="order_total">$0</span>
+                    </td>
+                    {% elif good.status == 0 %}
+                    <td>
+                        <div class="goodname"></div>
+                        <img src="{% static 'images/default.png' %}" alt="{% static 'images/default.png' %}"
+                             class="img-rounded"
+                             width="90" height="90">
+                    </td>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
         </div>
 
-    </div>
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>名称</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="order_list">
+                </tbody>
+                <!--这里用tr 加行， td加元素-->
+            </table>
+
+            <div>
+                <span>总金额：</span>
+                <span id="order_total">$0</span>
+            </div>
+
+        </div>
 
     </div>
 
@@ -255,7 +255,7 @@
         </table>
     </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom" style="height: 70px">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" style="height: 70px">
         <div class="container">
 
             <div style="float: left; margin-right: 10px; margin-top: 15px;color: #dddddd">
@@ -280,12 +280,22 @@
                 </div>
             </div>
 
-    </div>
-</nav>
+        </div>
+    </nav>
 </div>
 
-<div style="position: fixed; top: 50%; right: 0px" class="toggle-nav"><div id="container" class="panel">我的手机</div></div>
-<div></div>
+
+<div class="phone-toggle" style="position: fixed; top: 50%; right: 0px">
+    我的手机
+</div>
+
+<div id="panel" class="show-phone" style="position: fixed;right: -600px;top: 0px; width: 600px; height: 100%; background-color: #222;" >
+    <div style="position: relative; top: 50%;left: 0px; color: #dddddd" >
+        <div class="phone-toggle">收起</div>
+    </div>
+    <div class="phone" style=""><iframe src="index.html" scrolling="no"></iframe><div class="statusbar"></div></div>
+</div>
+
 
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

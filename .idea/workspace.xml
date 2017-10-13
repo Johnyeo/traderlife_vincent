@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="adding the phone off canvas 10%.">
+    <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/static/css/gamepage.css" afterPath="$PROJECT_DIR$/sign/static/css/gamepage.css" />
@@ -88,8 +88,8 @@
       <file leaf-file-name="gamepage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="286" column="95" lean-forward="false" selection-start-line="286" selection-start-column="90" selection-end-line="286" selection-end-column="95" />
+            <state relative-caret-position="287">
+              <caret line="295" column="70" lean-forward="false" selection-start-line="295" selection-start-column="70" selection-end-line="295" selection-end-column="70" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -120,6 +120,8 @@
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,9 +130,11 @@
       <file leaf-file-name="gamepage.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sign/static/css/gamepage.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="246" column="27" lean-forward="true" selection-start-line="246" selection-start-column="27" selection-end-line="246" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="273">
+              <caret line="279" column="15" lean-forward="false" selection-start-line="279" selection-start-column="15" selection-end-line="279" selection-end-column="15" />
+              <folding>
+                <element signature="e#6081#12330#2" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,11 +142,11 @@
       <file leaf-file-name="gamepage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="393" column="29" lean-forward="true" selection-start-line="393" selection-start-column="29" selection-end-line="393" selection-end-column="29" />
+            <state relative-caret-position="259">
+              <caret line="399" column="52" lean-forward="false" selection-start-line="399" selection-start-column="52" selection-end-line="399" selection-end-column="52" />
               <folding>
-                <marker date="1507806192571" expanded="true" signature="4988:4999" ph="..." />
-                <marker date="1507806192571" expanded="true" signature="8003:8014" ph="..." />
+                <marker date="1507878338031" expanded="true" signature="4988:4999" ph="..." />
+                <marker date="1507878338031" expanded="true" signature="8003:8014" ph="..." />
               </folding>
             </state>
           </provider>
@@ -797,13 +801,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494988351407</updated>
     </task>
-    <task id="LOCAL-00031" summary="Great! build relation between database table my_goods and my_good_history&#10;Sync the data between 2 database">
-      <created>1498547069744</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1498547069744</updated>
-    </task>
     <task id="LOCAL-00032" summary="changed to use simplejson. better than original json">
       <created>1498550776299</created>
       <option name="number" value="00032" />
@@ -1140,7 +1137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504088106108</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Reforming phone panel. Changed the bootstrap cdn address.">
+      <created>1507862488374</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1507862488378</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1265,7 +1269,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Milestone setup. Currently 0.4." />
     <MESSAGE value="modify database: gameid --&gt; BigInt, gameround --&gt; BigInt" />
     <MESSAGE value="Fix: remove js in Gameover page." />
     <MESSAGE value="Build new index page and login page. 20%." />
@@ -1290,7 +1293,8 @@
     <MESSAGE value="Milestone setup. Currently 0.6." />
     <MESSAGE value="put css from gamepage to a individual file." />
     <MESSAGE value="adding the phone off canvas 10%." />
-    <option name="LAST_COMMIT_MESSAGE" value="adding the phone off canvas 10%." />
+    <MESSAGE value="Reforming phone panel. Changed the bootstrap cdn address." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reforming phone panel. Changed the bootstrap cdn address." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1644,21 +1648,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sign/market/properties.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="37" lean-forward="false" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sign/static/js/gamepage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="393" column="29" lean-forward="true" selection-start-line="393" selection-start-column="29" selection-end-line="393" selection-end-column="29" />
+        <state relative-caret-position="259">
+          <caret line="399" column="52" lean-forward="false" selection-start-line="399" selection-start-column="52" selection-end-line="399" selection-end-column="52" />
           <folding>
-            <marker date="1507806192571" expanded="true" signature="4988:4999" ph="..." />
-            <marker date="1507806192571" expanded="true" signature="8003:8014" ph="..." />
+            <marker date="1507878338031" expanded="true" signature="4988:4999" ph="..." />
+            <marker date="1507878338031" expanded="true" signature="8003:8014" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/templates/gamepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="286" column="95" lean-forward="false" selection-start-line="286" selection-start-column="90" selection-end-line="286" selection-end-column="95" />
+        <state relative-caret-position="287">
+          <caret line="295" column="70" lean-forward="false" selection-start-line="295" selection-start-column="70" selection-end-line="295" selection-end-column="70" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1689,23 +1701,19 @@
             <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sign/market/properties.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="37" lean-forward="false" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sign/static/css/gamepage.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="246" column="27" lean-forward="true" selection-start-line="246" selection-start-column="27" selection-end-line="246" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="273">
+          <caret line="279" column="15" lean-forward="false" selection-start-line="279" selection-start-column="15" selection-end-line="279" selection-end-column="15" />
+          <folding>
+            <element signature="e#6081#12330#2" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

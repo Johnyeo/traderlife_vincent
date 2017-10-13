@@ -390,19 +390,21 @@ $(document).ready(function () {
 
         // 调用toggleNavigation
         $(function () {
-            $('.toggle-nav').click(function () {
+            $('.phone-toggle').click(function () {
                 phonepanel();
             });
         });
 
         //手机面板
         function phonepanel(){
-            if ($('#container').hasClass('display-phone')) {
+            if ($('body').hasClass('background-Cover')) {
                 // 关闭 Nav
-                $('#container').removeClass('display-phone');
+                // $('#panel').removeClass('show-phone');
+                $('body').removeClass('background-Cover');
             } else {
                 // 打开 Nav
-                $('#container').addClass('display-phone');
+                // $('#panel').addClass('show-phone');
+                $('body').addClass('background-Cover');
             }
         };
 
