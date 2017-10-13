@@ -103,7 +103,7 @@ body, html {
 #nav {
     width: 300px;
     height: 100%;
-    background: #38935f;
+    background: #222;
     position: absolute;
     right: 0px;
     top: 0;
@@ -160,7 +160,7 @@ body, html {
     color: #fff;
 }
 #toggle div.active {
-    background: #1f9d55;
+    background: #222;
 }
 #toggle div {
     cursor: pointer;
@@ -239,4 +239,19 @@ span.the-btn {
     font-weight: 300;
     font-size: 2em;
     font-family: 'Raleway', Arial;
+}
+
+.panel {
+    width: 100px;
+    height: auto;
+    background-color: #222;
+
+}
+
+.display-phone{
+    translateX: 200px;
+
+
+
+
 }

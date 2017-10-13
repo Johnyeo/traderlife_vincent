@@ -391,38 +391,20 @@ $(document).ready(function () {
         // 调用toggleNavigation
         $(function () {
             $('.toggle-nav').click(function () {
-                toggleNavigation();
+                phonepanel();
             });
         });
 
-        // toggleNavigation 方法
-        function toggleNavigation() {
-            if ($('#container').hasClass('display-nav')) {
+        //手机面板
+        function phonepanel(){
+            if ($('#container').hasClass('display-phone')) {
                 // 关闭 Nav
-                $('#container').removeClass('display-nav');
+                $('#container').removeClass('display-phone');
             } else {
                 // 打开 Nav
-                $('#container').addClass('display-nav');
+                $('#container').addClass('display-phone');
             }
-        }
-
-        $("#toggle > li > div").click(function () {
-            if (false == $(this).next().is(':visible')) {
-                $('#toggle ul').slideUp();
-            }
-
-            var $currIcon = $(this).find("span.the-btn");
-
-            $("span.the-btn").not($currIcon).addClass('fa-plus').removeClass('fa-minus');
-
-            $currIcon.toggleClass('fa-minus fa-plus');
-
-            $(this).next().slideToggle();
-
-            $("#toggle > li > div").removeClass("active");
-            $(this).addClass('active');
-
-        });
+        };
 
 
     }
