@@ -286,14 +286,19 @@
 
 
 <div class="phone-toggle" style="position: fixed; top: 50%; right: 0px">
-    我的手机
+    <img src="/static/images/myPhone2.png" alt="展开我的电话">
 </div>
 
-<div id="panel" class="show-phone" style="position: fixed;right: -600px;top: 0px; width: 600px; height: 100%; background-color: #222;" >
-    <div style="position: relative; top: 50%;left: 0px; color: #dddddd" >
-        <div class="phone-toggle">收起</div>
+<div id="panel" class="show-phone blackboard" style="">
+    <div style="position: relative; top: 50%;left: 0px; color: #dddddd">
+        <div class="phone-toggle"><img src="/static/images/closeMyPhone.png" alt="收起我的电话"></div>
     </div>
-    <div class="phone" style=""><iframe src="index.html" scrolling="no"></iframe><div class="statusbar"></div></div>
+    <div class="phone" style="" >
+        <div style="width: 320px;height:568px;overflow: hidden">
+        <iframe src="myphone/homepage.html" style="width: 338px;"></iframe>
+        <div class="statusbar"></div>
+        </div>
+    </div>
 </div>
 
 

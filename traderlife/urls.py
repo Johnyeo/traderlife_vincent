@@ -21,7 +21,6 @@ from sign import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hubsite/index/', views.index2),
     url(r'^index', views.index),
     url(r'login_action$',views.login_action),
     # url(r'^event_manage', views.event_manage),
@@ -36,5 +35,7 @@ urlpatterns = [
     url(r'^register',views.register),
     url(r'^getAccountInfo', views.getAccountInfo),
     url(r'logout',views.logout_action),
+    url(r'myphone/homepage',views.myphone_homepage),
+    url(r'myphone/message',views.myphone_message),
 
 ]

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>welcome to tradecenter</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <<script src="{% static 'js/myphone.js' %}"></script>
+    <link href="../../../../static/css/myphone.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--{% load bootstrap3 %}-->
+    <!--{% bootstrap_css %}-->
+    <!--{% bootstrap_javascript %}-->
+    {% load kmgformat %}
+
+    <!--<script>-->
+    <!--$.ajaxSetup({-->
+    <!--data: {csrfmiddlewaretoken: '{{ csrf_token }}'},-->
+    <!--});-->
+    <!--</script>-->
+
+</head>
+<body role='document'>
+
+
+<nav style="margin-top: 18px" class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/event_manage/">TRADERLIFE</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">市场</a></li>
+                <li><a href="/guest_manage/">个人</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{user}}</a></li>
+                <li><a href="/logout/">退出</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="alert alert-warning alert-dismissible navbar-fixed-top" role="alert"
+     style="margin-top: 51px;display: none;" id="warnMessage">
+    <button type="button" class="close" aria-label="Close"><span
+            aria-hidden="true" id="warnMessage_close">&times;</span></button>
+    <p id="message_content"></p>
+</div>
+
+<div class="container" role="main" style="margin-top: 50px">
+    <div class="page-header"><h2>市场</h2></div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>名称</th>
+            <th>数量</th>
+            <th>价值</th>
+            <th>操作</th>
+        </tr>
+        <tbody id="warehouse_list">
+        </tbody>
+        </thead>
+    </table>
+</div>
+
+
+<div id="dock" style="">
+    <div>
+        <ul>
+            <li><a href="/"><img src="../static/images/phone.png" alt="phone" width="40px" height="40px" ></a></li>
+            <li><a href="/"><img src="../static/images/email.png" alt="email"width="40px" height="40px" ></a></li>
+            <li><a href="/"><img src="../static/images/message.png" alt="message" width="40px" height="40px"></a></li>
+            <li><a href="/"><img src="../static/images/safari.png" alt="safari" width="40px" height="40px"></a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

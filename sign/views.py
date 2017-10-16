@@ -229,3 +229,11 @@ def logout_action(request):
     auth.logout(request)
     response = HttpResponseRedirect('/index')
     return response
+
+@login_required()
+def myphone_homepage(request):
+    return render(request, "myphone/homepage.html")
+
+@login_required()
+def myphone_message(request):
+    return render(request, "myphone/message.html")

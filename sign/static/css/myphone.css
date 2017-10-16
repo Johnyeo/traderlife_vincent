@@ -1,0 +1,21 @@
+#dock {
+    height: 100px;
+    width: 100%;
+    bottom: 0px;
+    position: fixed;
+    background-color: #eee;
+}
+
+#dock li {
+    float: left;
+    text-decoration: none;
+    display: inline;
+    width: 50px;
+    height:50px;
+    margin-right: 18px;
+    margin-top: 10px;
+
+}
+
+
+
