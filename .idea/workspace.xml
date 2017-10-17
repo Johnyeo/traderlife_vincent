@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2af36a1-93e3-4676-af32-9b980fdcd531" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/static/css/gamepage.css" afterPath="$PROJECT_DIR$/sign/static/css/gamepage.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sign/templates/gamepage.html" afterPath="$PROJECT_DIR$/sign/templates/gamepage.html" />
     </list>
     <ignored path="traderlife.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -185,7 +182,7 @@
         <entry file="file://$PROJECT_DIR$/sign/static/css/gamepage.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
-              <caret line="301" column="4" lean-forward="false" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
+              <caret line="301" column="0" lean-forward="false" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -897,13 +894,6 @@
       <option name="presentableId" value="Default" />
       <updated>1494988351407</updated>
     </task>
-    <task id="LOCAL-00035" summary="Rebuild 1.0, those who doesn't kill you makes you stronger.">
-      <created>1499257418163</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1499257418163</updated>
-    </task>
     <task id="LOCAL-00036" summary="Rebuild 1.1, the houseware still has problem.">
       <created>1499830810780</created>
       <option name="number" value="00036" />
@@ -1240,7 +1230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508208975991</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Improve: scrollable phone UI.">
+      <created>1508218422189</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1508218422189</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1353,7 +1350,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Build account. 30%" />
     <MESSAGE value="Build account. 80%" />
     <MESSAGE value="build market system 20%" />
     <MESSAGE value="build market system 40%" />
@@ -1378,7 +1374,8 @@
     <MESSAGE value="Phone UI implemented. Phone's content's awwaiting." />
     <MESSAGE value="Phone ui improved. (remove hubsite)." />
     <MESSAGE value="Phone's background pic and apps settled.UI improved." />
-    <option name="LAST_COMMIT_MESSAGE" value="Phone's background pic and apps settled.UI improved." />
+    <MESSAGE value="Improve: scrollable phone UI." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve: scrollable phone UI." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1806,7 +1803,7 @@
     <entry file="file://$PROJECT_DIR$/sign/static/css/gamepage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
-          <caret line="301" column="4" lean-forward="false" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
+          <caret line="301" column="0" lean-forward="false" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
           <folding />
         </state>
       </provider>
