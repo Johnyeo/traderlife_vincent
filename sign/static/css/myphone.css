@@ -1,3 +1,4 @@
+/*底部导航栏的样式*/
 #dock {
     height: 100px;
     width: 100%;
@@ -21,25 +22,61 @@
 
 }
 
+/*我的手机表格间距*/
 #myphone_homepage table {
-
+    margin-top: 15px;
 }
 
 #myphone_homepage table tr {
     padding: 14px;
-
 }
 
 #myphone_homepage table td {
     padding: 14px;
-
 }
 
-
-
-.actionbar_title {
-    display: inline;
-    color: #ddd;
-    vertical-align: middle;
+/*信息列表的样式*/
+.message_menu {
+    list-style: none;
+    padding-left: 0px;
 }
 
+.message_item {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    list-style: none;
+    display: block;
+}
+
+.message_item:hover {
+    background-color: #eee;
+}
+
+a.message_item, button.message_item {
+    color: #555;
+    text-decoration: none;
+}
+
+a.message_item:hover {
+    color: #555;
+    text-decoration: none;
+}
+.message_from {
+    font-weight: bold;
+    margin: 6px;
+}
+
+.message_title {
+    margin: 6px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: 190px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.message_date{
+    float: right;
+    margin: 6px;
+    display: inline-block;
+}

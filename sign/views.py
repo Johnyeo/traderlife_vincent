@@ -237,3 +237,7 @@ def myphone_homepage(request):
 @login_required()
 def myphone_message(request):
     return render(request, "myphone/message.html")
+
+@login_required()
+def myphone_news(request):
+    return render(request, "myphone/news.html")

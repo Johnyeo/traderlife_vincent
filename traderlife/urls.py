@@ -37,5 +37,6 @@ urlpatterns = [
     url(r'logout',views.logout_action),
     url(r'myphone/homepage',views.myphone_homepage),
     url(r'myphone/message',views.myphone_message),
+    url(r'myphone/news',views.myphone_news),
 
 ]
