@@ -299,7 +299,7 @@ span.the-btn {
     position: absolute;
     width: 320px;
     height: 20px;
-
+    background: url('/static/images/myphone/statusbar.png');
     left: 50%;
     margin-left: -160px;
     top: 70px;
@@ -335,5 +335,6 @@ span.the-btn {
     height: 100%;
     background-color: #222;
 }
+
 
 

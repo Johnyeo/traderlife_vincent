@@ -15,24 +15,31 @@
     text-decoration: none;
     display: inline;
     width: 60px;
-    height:60px;
+    height: 60px;
     margin-right: 10px;
     margin-top: 10px;
 
 }
 
-#myphone_homepage table{
-
+#myphone_homepage table {
 
 }
-#myphone_homepage table tr{
+
+#myphone_homepage table tr {
     padding: 14px;
 
 }
 
-#myphone_homepage table td{
+#myphone_homepage table td {
     padding: 14px;
 
 }
 
+
+
+.actionbar_title {
+    display: inline;
+    color: #ddd;
+    vertical-align: middle;
+}
 
