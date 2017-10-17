@@ -39,6 +39,7 @@
 .message_menu {
     list-style: none;
     padding-left: 0px;
+    margin-bottom: 70px;
 }
 
 .message_item {
@@ -63,20 +64,26 @@ a.message_item:hover {
 }
 .message_from {
     font-weight: bold;
-    margin: 6px;
-}
-
-.message_title {
-    margin: 6px;
-    display: inline-block;
-    text-overflow: ellipsis;
-    width: 190px;
+    margin: 5px;
     overflow: hidden;
-    white-space: nowrap;
+    max-height: 100px;
+    display: inline-block;
 }
 
 .message_date{
     float: right;
-    margin: 6px;
+    margin: 5px;
+    padding-right: 12px;
     display: inline-block;
 }
+
+.message_title {
+    margin: 5px;
+    text-overflow: ellipsis;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+/*头像*/
