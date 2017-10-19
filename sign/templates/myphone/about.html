@@ -27,7 +27,7 @@
     <!--<a class="navbar-brand" href="/event_manage/">TRADERLIFE</a>-->
     <a style="margin: 5px; vertical-align: middle;" href="/myphone/homepage">
         <img style="margin: 5px" src="/static/images/myphone/backward_bt.png"></a>
-    <div style="vertical-align: middle;margin: 5px;padding-top: 5px; display: inline-block; font-size: 20px; color: #ddd; ">靠谱的新闻</div>
+    <div style="vertical-align: middle;margin: 5px;padding-top: 5px; display: inline-block; font-size: 20px; color: #ddd; ">关于</div>
 </div>
 
 <div class="alert alert-warning alert-dismissible navbar-fixed-top" role="alert"
@@ -37,27 +37,13 @@
     <p id="message_content"></p>
 </div>
 
-<div class="message_menu" style="margin-top: 55px">
-    {% if newslist %}
-    {% for news in newslist %}
-    <a class="message_item" href="{{news.detail_url}}">
-        <div class="message_from"><img src="{{news.img_url}}"></div>
-        <div class="message_from">{{news.title}}</div>
-        <div class="news_date">{{news.date}}</div>
-        <div class="news_title">{{news.content}}</div>
-    </a>
-    {% endfor %}
-    {% elif not newslist %}
-    <div class="no_data"><h1>没有数据</h1></div>
-    {% endif %}
+    <div class="no_data"><h1 style="">没有数据</h1></div>
+        <div>helloenola@163.com</div>
 
-</div>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom" style="height: 70px">
-    <div class="container">
 
-
-    </div>
 </nav>
 </div>
 

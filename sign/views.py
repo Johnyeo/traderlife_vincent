@@ -20,20 +20,20 @@ def index2(request):
 def index(request):
     if request.user.is_authenticated:
         # Do something for authenticated users.
-        return render(request, "index.html", {"is_login":True})
+        return render(request, "index.html", {"is_login": True})
     else:
         # Do something for anonymous users.
-        return render(request, "index.html", {"is_login":False})
+        return render(request, "index.html", {"is_login": False})
 
 
 def register(request):
     if request.method == 'GET':
         return render(request, 'registerpage.html')
     elif request.method == 'POST':
-        username = request.POST.get('username','')
-        password = request.POST.get('password','')
-        confirm_pwd = request.POST.get('password_confirmation','')
-        invitation = request.POST.get('invitation','')
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        confirm_pwd = request.POST.get('password_confirmation', '')
+        invitation = request.POST.get('invitation', '')
         terms = request.POST.get('terms', '')
 
         username = username.strip()
@@ -47,7 +47,7 @@ def register(request):
             user_existed = False
 
         # 数据为空的校验
-        error_dict = {'username':username}
+        error_dict = {'username': username}
         if username == '' or username == None:
             error_dict['username_error'] = '请输入用户名'
         if password == '' or password == None:
@@ -66,7 +66,7 @@ def register(request):
         else:
             # 用户名
             if user_existed:
-                error_dict['username_error']= '此用户名已经存在'
+                error_dict['username_error'] = '此用户名已经存在'
             elif len(username) > 16 or len(username) < 2:
                 error_dict['username_error'] = '用户名应该在2-16位之间'
             # 密码验证码
@@ -83,7 +83,8 @@ def register(request):
 
             else:
                 user = User.objects.create_user(username, '', password)
-                return render(request, 'registerpage.html', {'username':username,'account_created':True})
+                return render(request, 'registerpage.html', {'username': username, 'account_created': True})
+
 
 def login_action(request):
     if request.method == 'POST':
@@ -105,23 +106,23 @@ def login_action(request):
             response.set_cookie('user', username, 3600)  # 添加浏览器的cookie
             return response
         else:
-            return render(request, 'index.html', {'error': '用户名或密码错误，','is_login':False})
+            return render(request, 'index.html', {'error': '用户名或密码错误，', 'is_login': False})
 
-        # @login_required
-        # def event_manage(request):
-        # username = request.COOKIES.get('user','') # 读取cookie
-        # username = request.session.get('user', '') # 读取浏览器的session
-        # return render(request, "event_manage.html" , {"user":username})
+            # @login_required
+            # def event_manage(request):
+            # username = request.COOKIES.get('user','') # 读取cookie
+            # username = request.session.get('user', '') # 读取浏览器的session
+            # return render(request, "event_manage.html" , {"user":username})
 
-        # image_list = images.MarketGoods().get_market_goods_images(4)   # 获取4张图片，不足的用default图片补齐
-        # image_list = images.MarketGoods().get_market_goods_images_fixed_group(['牛奶','电子元件'])
-        # name_list = images.MarketGoods().get_market_goods_names_fixed_group(['牛奶','电子元件'])
+            # image_list = images.MarketGoods().get_market_goods_images(4)   # 获取4张图片，不足的用default图片补齐
+            # image_list = images.MarketGoods().get_market_goods_images_fixed_group(['牛奶','电子元件'])
+            # name_list = images.MarketGoods().get_market_goods_names_fixed_group(['牛奶','电子元件'])
 
-        # name_image_list = goods.MarketGoods().get_market_goods_names_images_fixed_group(['牛奶','电子元件'])
-        # print(name_image_list)
-        # event_list = Event.objects.all()
-        # username = request.session.get('user','')
-        # return render(request,'event_manage.html',{'user':username, 'events':event_list ,'name_images_list':name_image_list})
+            # name_image_list = goods.MarketGoods().get_market_goods_names_images_fixed_group(['牛奶','电子元件'])
+            # print(name_image_list)
+            # event_list = Event.objects.all()
+            # username = request.session.get('user','')
+            # return render(request,'event_manage.html',{'user':username, 'events':event_list ,'name_images_list':name_image_list})
 
 
 @login_required
@@ -129,7 +130,7 @@ def gamepage(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
 
-    market_goods_list = Market_goods_history.objects.filter(gameid = gameid, gameround = gameround)
+    market_goods_list = Market_goods_history.objects.filter(gameid=gameid, gameround=gameround)
     username = request.session.get('user', '')
 
     # gameid = '1000001'
@@ -144,7 +145,7 @@ def gamepage(request):
 # submitOrder,提交订单，获取订单，同时更新数据库
 @login_required
 def submitOrder(request):
-    insertGoodCallback ={}
+    insertGoodCallback = {}
     # 获取gameid和gameround
     player = request.session['user']
     gameid = game_thread.getGameIdFromCookie(request)
@@ -163,6 +164,7 @@ def submitOrder(request):
     # print (insertGoodCallback_json)
     return HttpResponse(insertGoodCallback_json)
 
+
 @login_required
 def updateWarehouse(request):
     gameid = game_thread.getGameIdFromCookie(request)
@@ -177,43 +179,47 @@ def updateWarehouse(request):
     w_data = simplejson.dumps(warehouse)
     return HttpResponse(w_data)
 
+
 # 获取账户信息
 @login_required
 def getAccountInfo(request):
     gameid = game_thread.getGameIdFromCookie(request)
     gameround = db_handler.getCurrentGameround(gameid)
-    player = request.session.get('user','')
+    player = request.session.get('user', '')
 
-#   从game表里面，获取最新的余额
-#   从profile表里面，获得用户的其他信息（游戏中的年龄性别之类的）暂时未创建
+    #   从game表里面，获取最新的余额
+    #   从profile表里面，获得用户的其他信息（游戏中的年龄性别之类的）暂时未创建
     balance = db_handler.calcuBalance(gameid, gameround, player)
 
     if balance == None:
         balance = db_handler.getBalance(gameid, gameround, player)
-    totalCash = db_handler.getTotalCash(gameid,gameround,player)
+    totalCash = db_handler.getTotalCash(gameid, gameround, player)
 
-    accountInfo_dict = {"name":player, "totalCash":totalCash,
-                        "balance":balance}
+    accountInfo_dict = {"name": player, "totalCash": totalCash,
+                        "balance": balance}
     accountInfo_json = simplejson.dumps(accountInfo_dict)
     return HttpResponse(accountInfo_json)
+
 
 @login_required
 def gameover(request):
     return render(request, 'gameover.html')
 
+
 @login_required
 def nextTurn(request):
     player = request.session['user']
-    gameid = request.COOKIES.get('gameid','')
+    gameid = request.COOKIES.get('gameid', '')
     if gameid == '':
         response = HttpResponse("error")
-    gameround = game_thread.nextTurn(gameid, player) # gameid应该存在cookie里。
+    gameround = game_thread.nextTurn(gameid, player)  # gameid应该存在cookie里。
     final_turn = False
     # 如果是最后一回合则销毁cookie
     if final_turn:
         response = HttpResponse.delete_cookie('gameid')
     response = HttpResponse(gameround)
     return response
+
 
 @login_required
 def newGame(request):
@@ -224,20 +230,34 @@ def newGame(request):
     # 应该把gameid写入cookie里。
     return response
 
+
 @login_required()
 def logout_action(request):
     auth.logout(request)
     response = HttpResponseRedirect('/index')
     return response
 
+
 @login_required()
 def myphone_homepage(request):
     return render(request, "myphone/homepage.html")
 
+
 @login_required()
 def myphone_message(request):
-    return render(request, "myphone/message.html")
+    message_ls = [
+    # {'from':'神秘人','content':'很长很长的信息内容','date':'2017-10-10','contact_url':'','head_img':'/static/images/myphone/head_red.png'}
+    ]
+    return render(request, "myphone/message.html",{'messagelist':message_ls})
+
 
 @login_required()
 def myphone_news(request):
-    return render(request, "myphone/news.html")
+    news_ls = [
+        # {'title': '新闻的标题', 'img_url': '/static/images/events/news001.png', 'date': '2017-10-18', 'content': '新闻的内容可以很长很长很长很长很长很长很长很长', 'detail_url': ''},
+    ]
+    return render(request, "myphone/news.html", {'newslist': news_ls})
+
+
+def myphone_about(request):
+    return render(request, "myphone/about.html")

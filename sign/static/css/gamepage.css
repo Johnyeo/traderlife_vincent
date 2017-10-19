@@ -336,5 +336,18 @@ span.the-btn {
     background-color: #222;
 }
 
+.notice {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 100%;
+    float: right;
+    text-align: center;
+    padding-top: 5px;
+    color: #ddd;
+    position: relative;
+    margin-bottom: -10px;
+}
 
 
